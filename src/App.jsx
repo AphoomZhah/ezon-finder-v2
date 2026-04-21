@@ -20,7 +20,7 @@ function Screen({ children, dir = 'forward', style }) {
 function EntryScreen({ onStart }) {
   return (
     <Screen style={{ background: BG_APP }}>
-      <HeroImage style={{ width: '100%', height: 295, flexShrink: 0 }}>
+      <HeroImage style={{ width: '100%', height: 480, flexShrink: 0 }}>
         <div style={{
           position: 'absolute', top: 20, left: 24,
           fontFamily: "'Montserrat', sans-serif", fontWeight: 900,
@@ -92,7 +92,7 @@ function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <BackButton onClick={onBack}/>
         <ProgressBar step={1}/>
         <h2 style={headingStyle}>¿De qué material es tu puerta?</h2>
-        <p style={subStyle}>La foto te ayuda a identificarla — no necesitas saber el nombre técnico.</p>
+        <p style={subStyle}>La foto te ayuda a identificarla, no necesitas saber el nombre técnico.</p>
       </div>
 
       <div style={{ padding: '16px 20px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
@@ -152,7 +152,7 @@ function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <BackButton onClick={onBack}/>
         <ProgressBar step={2}/>
         <h2 style={headingStyle}>¿Qué tan grueso es el canto lateral de tu puerta?</h2>
-        <p style={subStyle}>El canto es la orilla donde se instala la cerradura — mídelo de frente a fondo.</p>
+        <p style={subStyle}>El canto es la orilla donde se instala la cerradura, mídelo de frente a fondo.</p>
       </div>
 
       <div style={{ padding: '16px 20px 0' }}>
@@ -296,7 +296,7 @@ function OpeningScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <BackButton onClick={onBack}/>
         <ProgressBar step={4}/>
         <h2 style={headingStyle}>¿Cómo se abre tu puerta?</h2>
-        <p style={subStyle}>Reconoce tu tipo de puerta por la foto — no hace falta el nombre técnico.</p>
+        <p style={subStyle}>Reconoce tu tipo de puerta por la foto, no hace falta el nombre técnico.</p>
       </div>
 
       <div style={{ padding: '16px 20px 0', display: 'flex', flexDirection: 'column', gap: 14 }}>

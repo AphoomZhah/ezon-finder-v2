@@ -322,7 +322,7 @@ export function HeroImage({ style, className, children }) {
       style={{
         backgroundImage: 'url("/assets/img/entry-bg.jpg")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center top',
+        backgroundPosition: 'center center',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
