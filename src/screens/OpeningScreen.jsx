@@ -1,4 +1,4 @@
-import { Screen, BackButton, ProgressBar, PhotoPlaceholder, PrimaryButton, VERDE, BORDER_REST, BG_APP, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, PhotoPlaceholder, PrimaryButton, VERDE, BORDER_REST, BG_APP, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const OPENINGS = [
   { id: 'abatible',   label: 'Abatible', hint: 'Se abre hacia adentro o afuera, sobre bisagras', mood: 'abatible' },
@@ -8,10 +8,9 @@ const OPENINGS = [
 export function OpeningScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.opening;
   return (
-    <Screen dir={dir} style={{ background: BG_APP }}>
-      <div style={{ padding: '20px 20px 0' }}>
-        <BackButton onClick={onBack}/>
-        <ProgressBar step={4}/>
+    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={!sel}>CONTINUAR</PrimaryButton>}>
+      <StepHeader onBack={onBack} step={4} totalSteps={6} />
+      <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿Cómo se abre tu puerta?</h2>
         <p style={subStyle}>Reconoce tu tipo de puerta por la foto, no hace falta el nombre técnico.</p>
       </div>
@@ -69,9 +68,6 @@ export function OpeningScreen({ answers, setAnswers, onNext, onBack, dir }) {
         ))}
       </div>
 
-      <div style={{ padding: '16px 20px 32px', marginTop: 'auto' }}>
-        <PrimaryButton onClick={onNext} disabled={!sel}>CONTINUAR</PrimaryButton>
-      </div>
-    </Screen>
+    </StepLayout>
   );
 }

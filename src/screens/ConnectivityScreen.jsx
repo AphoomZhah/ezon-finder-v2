@@ -1,4 +1,4 @@
-import { Screen, BackButton, ProgressBar, AccessIcon, PrimaryButton, VERDE, BORDER_REST, BG_APP, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, AccessIcon, PrimaryButton, VERDE, BORDER_REST, BG_APP, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const CONNECTIVITY = [
   { id: 'wifi',   label: 'WiFi y notificaciones remotas', desc: 'Recibe alertas en tu teléfono y controla desde cualquier lugar' },
@@ -9,10 +9,9 @@ export function ConnectivityScreen({ answers, setAnswers, onNext, onBack, dir })
   const sel = answers.connectivity || [];
 
   return (
-    <Screen dir={dir} style={{ background: BG_APP }}>
-      <div style={{ padding: '20px 20px 0' }}>
-        <BackButton onClick={onBack}/>
-        <ProgressBar step={6}/>
+    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={sel.length === 0 && !answers.connectivityNone}>VER MIS RESULTADOS</PrimaryButton>}>
+      <StepHeader onBack={onBack} step={6} totalSteps={6} />
+      <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿Qué funciones adicionales te interesan?</h2>
         <p style={subStyle}>Estas funciones son opcionales. Si no las necesitas, puedes omitirlas.</p>
       </div>
@@ -80,11 +79,6 @@ export function ConnectivityScreen({ answers, setAnswers, onNext, onBack, dir })
         </button>
       </div>
 
-      <div style={{ padding: '12px 20px 32px', marginTop: 'auto' }}>
-        <PrimaryButton onClick={onNext} disabled={sel.length === 0 && !answers.connectivityNone}>
-          VER MIS RESULTADOS
-        </PrimaryButton>
-      </div>
-    </Screen>
+    </StepLayout>
   );
 }

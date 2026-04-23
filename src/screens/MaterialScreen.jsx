@@ -1,4 +1,4 @@
-import { Screen, BackButton, ProgressBar, PhotoPlaceholder, WhatsAppLink, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, BG_APP, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, PhotoPlaceholder, WhatsAppLink, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, BG_APP, headingStyle, subStyle } from '../components';
 
 const MATERIALS = [
   { id: 'madera',   label: 'Madera',   mood: 'madera',   hint: 'Puertas residenciales, interior o entrada' },
@@ -10,10 +10,9 @@ const MATERIALS = [
 export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.material;
   return (
-    <Screen dir={dir} style={{ background: BG_APP }}>
-      <div style={{ padding: '20px 20px 0' }}>
-        <BackButton onClick={onBack}/>
-        <ProgressBar step={1}/>
+    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={!sel}>CONTINUAR</PrimaryButton>}>
+      <StepHeader onBack={onBack} step={1} totalSteps={6} />
+      <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿De qué material es tu puerta?</h2>
         <p style={subStyle}>La foto te ayuda a identificarla, no necesitas saber el nombre técnico.</p>
       </div>
@@ -52,9 +51,6 @@ export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <WhatsAppLink text="No reconozco el material de mi puerta"/>
       </div>
 
-      <div style={{ padding: '12px 20px 32px', marginTop: 'auto' }}>
-        <PrimaryButton onClick={onNext} disabled={!sel}>CONTINUAR</PrimaryButton>
-      </div>
-    </Screen>
+    </StepLayout>
   );
 }

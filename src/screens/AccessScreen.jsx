@@ -1,4 +1,4 @@
-import { Screen, BackButton, ProgressBar, AccessIcon, PrimaryButton, VERDE, BORDER_REST, BG_APP, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, AccessIcon, PrimaryButton, VERDE, BORDER_REST, BG_APP, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const ACCESS_METHODS = [
   { id: 'huella',  label: 'Huella digital' },
@@ -16,10 +16,9 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
     return { ...a, accessMethods: cur.includes(id) ? cur.filter(x => x !== id) : [...cur, id] };
   });
   return (
-    <Screen dir={dir} style={{ background: BG_APP }}>
-      <div style={{ padding: '20px 20px 0' }}>
-        <BackButton onClick={onBack}/>
-        <ProgressBar step={5}/>
+    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={sel.length === 0}>CONTINUAR</PrimaryButton>}>
+      <StepHeader onBack={onBack} step={5} totalSteps={6} />
+      <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿Cómo quieres abrir tu cerradura?</h2>
         <p style={subStyle}>Puedes elegir varios. Lo que selecciones define los métodos disponibles día a día.</p>
       </div>
@@ -59,9 +58,6 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
         </div>
       </div>
 
-      <div style={{ padding: '20px 20px 32px', marginTop: 'auto' }}>
-        <PrimaryButton onClick={onNext} disabled={sel.length === 0}>CONTINUAR</PrimaryButton>
-      </div>
-    </Screen>
+    </StepLayout>
   );
 }
