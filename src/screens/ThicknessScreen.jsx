@@ -1,21 +1,17 @@
-import { StepLayout, StepHeader, BillIllustration, WhatsAppLink, PrimaryButton, VERDE, BORDER_REST, BG_APP, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, BillIllustration, WhatsAppCTA, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const THICKNESSES = [
-  { id: '2-3', label: '2–3 cm', hint: 'Puertas ligeras, interiores' },
-  { id: '3-5', label: '3–5 cm', hint: 'Estándar — mayoría de departamentos' },
-  { id: '5-7', label: '5–7 cm', hint: 'Reforzadas o acceso principal' },
-  { id: '7-10',label: '7–10 cm',hint: 'Seguridad o blindadas' },
+  { id: '2-3',  label: '2–3 cm',  hint: 'Puertas ligeras, interiores' },
+  { id: '3-5',  label: '3–5 cm',  hint: 'Estándar — mayoría de departamentos' },
+  { id: '5-7',  label: '5–7 cm',  hint: 'Reforzadas o acceso principal' },
+  { id: '7-10', label: '7–10 cm', hint: 'Seguridad o blindadas' },
 ];
 
 export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.thickness;
   return (
-    <StepLayout dir={dir} cta={
-      sel === 'no-se'
-        ? <WhatsAppLink text="Pedir ayuda para medir"/>
-        : <PrimaryButton onClick={onNext} disabled={!sel}>CONTINUAR</PrimaryButton>
-    }>
-      <StepHeader onBack={onBack} step={2} totalSteps={6} />
+    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={!sel}>CONTINUAR</PrimaryButton>}>
+      <StepHeader onBack={onBack} step={2} totalSteps={7} />
       <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿Qué tan grueso es el canto lateral de tu puerta?</h2>
         <p style={subStyle}>El canto es la orilla donde se instala la cerradura, mídelo de frente a fondo.</p>
@@ -50,26 +46,7 @@ export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
           </button>
         ))}
 
-        <button onClick={() => setAnswers(a => ({ ...a, thickness: 'no-se' }))}
-          style={{
-            width: '100%', marginBottom: 10,
-            border: `2px solid ${sel === 'no-se' ? VERDE : BORDER_REST}`,
-            borderRadius: 10, padding: '14px 16px',
-            background: sel === 'no-se' ? '#F2FDF3' : BG_WHITE,
-            cursor: 'pointer', textAlign: 'left',
-            display: 'flex', alignItems: 'center', gap: 10,
-            transition: 'border-color 0.15s, background 0.15s',
-          }}>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="8.5" stroke={TEXT_SECONDARY} strokeWidth="1.5"/>
-            <path d="M10 6c1.5 0 2.5 1 2.5 2.2 0 1-1 1.8-2 2.3-.7.3-1 .8-1 1.5" stroke={TEXT_SECONDARY} strokeWidth="1.5" strokeLinecap="round"/>
-            <circle cx="10" cy="14.5" r="1" fill={TEXT_SECONDARY}/>
-          </svg>
-          <div>
-            <p style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 600, fontSize: 14, color: TEXT_PRIMARY }}>No sé / Ayúdame a medir</p>
-            <p style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 11.5, color: TEXT_SECONDARY, marginTop: 1 }}>Un asesor te guía por WhatsApp</p>
-          </div>
-        </button>
+        <WhatsAppCTA context="grosor" style={{ marginBottom: 10 }}/>
       </div>
 
     </StepLayout>

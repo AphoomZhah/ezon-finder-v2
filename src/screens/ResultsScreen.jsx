@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Screen, LockProductPlaceholder, WhatsAppLink, VERDE, BORDER_REST, BG_WHITE, BG_APP, TEXT_PRIMARY, TEXT_SECONDARY } from '../components';
+import { Screen, LockProductPlaceholder, WhatsAppCTA, VERDE, BORDER_REST, BG_WHITE, BG_APP, TEXT_PRIMARY, TEXT_SECONDARY } from '../components';
 import { matchProducts } from '../data/matcher';
 
 function formatPrice(n) {
@@ -137,7 +137,7 @@ export function ResultsScreen({ answers, onRestart, dir }) {
             <p style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 14, color: TEXT_SECONDARY, lineHeight: 1.6, marginBottom: 24 }}>
               Es posible que tu puerta tenga características especiales. Un asesor EZON puede ayudarte a encontrar la solución correcta en minutos.
             </p>
-            <WhatsAppLink text="Hablar con un asesor EZON"/>
+            <WhatsAppCTA context="resultados"/>
             <button onClick={onRestart} style={{
               display: 'block', margin: '16px auto 0',
               background: 'none', border: 'none', cursor: 'pointer',
@@ -158,12 +158,7 @@ export function ResultsScreen({ answers, onRestart, dir }) {
           ))
         )}
 
-        <div style={{ background: BG_WHITE, borderRadius: 12, border: `1px solid ${BORDER_REST}`, padding: '20px 16px', textAlign: 'center', marginBottom: 32 }}>
-          <p style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 13, color: TEXT_SECONDARY, marginBottom: 12, lineHeight: 1.5 }}>
-            ¿Quieres validar tu elección con un experto antes de comprar?
-          </p>
-          <WhatsAppLink text="Hablar con un asesor EZON"/>
-        </div>
+        <WhatsAppCTA context="resultados" style={{ marginBottom: 32 }}/>
       </div>
     </Screen>
   );

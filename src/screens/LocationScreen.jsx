@@ -1,4 +1,4 @@
-import { StepLayout, StepHeader, AlertBox, WhatsAppLink, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, TEXT_SECONDARY as TS, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, AlertBox, WhatsAppCTA, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const INTERIOR_LOCS = [
   { id: 'interiorPrincipal', label: 'Puerta principal',   hint: 'Entrada al departamento o casa' },
@@ -81,7 +81,7 @@ export function LocationScreen({ answers, setAnswers, onNext, onBack, dir }) {
                 <strong style={{ display: 'block', marginBottom: 5 }}>Atención: exposición solar directa</strong>
                 La pantalla táctil de la mayoría de cerraduras se daña en 6–12 meses bajo el sol directo. Te mostramos las opciones disponibles, pero te recomendamos hablar con un asesor para la solución más duradera.
                 <div style={{ marginTop: 12 }}>
-                  <WhatsAppLink text="Hablar con un asesor" style={{ borderColor: '#F6D860', background: 'transparent', padding: '10px 16px', fontSize: 13 }}/>
+                  <WhatsAppCTA context="exterior"/>
                 </div>
               </AlertBox>
             )}

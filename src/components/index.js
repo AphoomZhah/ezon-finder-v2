@@ -8,6 +8,7 @@ export { HeroImage } from './HeroImage';
 export { ProgressBar } from './ProgressBar';
 export { PrimaryButton } from './PrimaryButton';
 export { WhatsAppLink } from './WhatsAppLink';
+export { WhatsAppCTA } from './WhatsAppCTA';
 export { AlertBox } from './AlertBox';
 export { BillIllustration } from './BillIllustration';
 export { AccessIcon } from './AccessIcon';

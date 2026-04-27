@@ -1,4 +1,4 @@
-import { StepLayout, StepHeader, PhotoPlaceholder, WhatsAppLink, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, PhotoPlaceholder, WhatsAppCTA, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const MATERIALS = [
   { id: 'madera', label: 'Madera',  mood: 'madera', hint: 'Puertas residenciales, departamentos y casas' },
@@ -70,7 +70,7 @@ export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
       </div>
 
       <div style={{ padding: '0 20px', marginBottom: 6 }}>
-        <WhatsAppLink text="No reconozco el material de mi puerta"/>
+        <WhatsAppCTA context="material"/>
       </div>
 
     </StepLayout>
