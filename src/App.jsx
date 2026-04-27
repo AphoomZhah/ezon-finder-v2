@@ -1,53 +1,110 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { EntryScreen } from './screens/EntryScreen';
 import { MaterialScreen } from './screens/MaterialScreen';
 import { ThicknessScreen } from './screens/ThicknessScreen';
 import { LocationScreen } from './screens/LocationScreen';
-import { OpeningScreen } from './screens/OpeningScreen';
+import { DoorTypeScreen } from './screens/DoorTypeScreen';
 import { AccessScreen } from './screens/AccessScreen';
-import { ConnectivityScreen } from './screens/ConnectivityScreen';
+import { FunctionsScreen } from './screens/FunctionsScreen';
+import { LockTypeScreen } from './screens/LockTypeScreen';
+import { IncompatibleScreen } from './screens/IncompatibleScreen';
 import { LoadingScreen } from './screens/LoadingScreen';
 import { ResultsScreen } from './screens/ResultsScreen';
 
-const SCREENS = ['entry','material','thickness','location','opening','access','connectivity','loading','results'];
-
 const INITIAL_ANSWERS = {
-  material: null, thickness: null, location: null,
-  opening: null, accessMethods: [], connectivity: [], connectivityNone: false,
+  material: null,
+  doorType: null,
+  thickness: null,
+  location: null,
+  accessMethods: [],
+  functions: [],
+  functionsNone: false,
+  lockType: null,
 };
 
 export default function App() {
-  const [screenIdx, setScreenIdx] = useState(0);
-  const [dir, setDir] = useState('forward');
   const [answers, setAnswers] = useState(INITIAL_ANSWERS);
-  const screenKey = useRef(0);
+  const [dir, setDir] = useState('forward');
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const saved = localStorage.getItem('ezon_finder_screen');
-    if (saved) setScreenIdx(parseInt(saved, 10));
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('ezon_finder_screen', String(screenIdx));
-  }, [screenIdx]);
+  const go = (path, direction = 'forward') => {
+    setDir(direction);
+    navigate(path);
+  };
 
-  const goNext = () => { setDir('forward'); screenKey.current++; setScreenIdx(i => Math.min(i + 1, SCREENS.length - 1)); };
-  const goBack = () => { setDir('back'); screenKey.current++; setScreenIdx(i => Math.max(i - 1, 0)); };
-  const goTo = (name) => { setDir('forward'); screenKey.current++; setScreenIdx(SCREENS.indexOf(name)); };
+  const reset = () => {
+    setAnswers(INITIAL_ANSWERS);
+    go('/');
+  };
 
-  const screen = SCREENS[screenIdx];
-  const props = { answers, setAnswers, onNext: goNext, onBack: goBack, dir };
+  const p = { answers, setAnswers, dir };
 
   return (
-    <div key={screenKey.current} style={{ minHeight: '100%' }}>
-      {screen === 'entry'        && <EntryScreen onStart={goNext}/>}
-      {screen === 'material'     && <MaterialScreen {...props}/>}
-      {screen === 'thickness'    && <ThicknessScreen {...props}/>}
-      {screen === 'location'     && <LocationScreen {...props}/>}
-      {screen === 'opening'      && <OpeningScreen {...props}/>}
-      {screen === 'access'       && <AccessScreen {...props}/>}
-      {screen === 'connectivity' && <ConnectivityScreen {...props}/>}
-      {screen === 'loading'      && <LoadingScreen onDone={() => goTo('results')} dir={dir}/>}
-      {screen === 'results'      && <ResultsScreen onRestart={() => { setAnswers(INITIAL_ANSWERS); goTo('entry'); }} dir={dir}/>}
-    </div>
+    <Routes>
+      <Route path="/" element={
+        <EntryScreen onStart={() => go('/material')}/>
+      }/>
+
+      <Route path="/material" element={
+        <MaterialScreen {...p}
+          onNext={() => {
+            const m = answers.material;
+            if (m === 'vidrio' || m === 'otros') go('/incompatible');
+            else go('/thickness');
+          }}
+          onBack={() => go('/', 'back')}/>
+      }/>
+
+      <Route path="/incompatible" element={
+        <IncompatibleScreen onRestart={reset}/>
+      }/>
+
+      <Route path="/thickness" element={
+        <ThicknessScreen {...p}
+          onNext={() => go('/location')}
+          onBack={() => go('/material', 'back')}/>
+      }/>
+
+      <Route path="/location" element={
+        <LocationScreen {...p}
+          onNext={() => go('/door-type')}
+          onBack={() => go('/thickness', 'back')}/>
+      }/>
+
+      <Route path="/door-type" element={
+        <DoorTypeScreen {...p}
+          onNext={() => go('/access')}
+          onBack={() => go('/location', 'back')}/>
+      }/>
+
+      <Route path="/access" element={
+        <AccessScreen {...p}
+          onNext={() => go('/functions')}
+          onBack={() => go('/door-type', 'back')}/>
+      }/>
+
+      <Route path="/functions" element={
+        <FunctionsScreen {...p}
+          onNext={() => go('/lock-type')}
+          onBack={() => go('/access', 'back')}/>
+      }/>
+
+      <Route path="/lock-type" element={
+        <LockTypeScreen {...p}
+          onNext={() => go('/loading')}
+          onBack={() => go('/functions', 'back')}/>
+      }/>
+
+      <Route path="/loading" element={
+        <LoadingScreen dir={dir} onDone={() => go('/results')}/>
+      }/>
+
+      <Route path="/results" element={
+        <ResultsScreen answers={answers} onRestart={reset} dir={dir}/>
+      }/>
+
+      <Route path="*" element={<Navigate to="/" replace/>}/>
+    </Routes>
   );
 }

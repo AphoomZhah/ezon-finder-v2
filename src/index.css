@@ -12,3 +12,26 @@ body {
   max-width: 480px;
   margin: 0 auto;
 }
+
+@keyframes slideInForward {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInBack {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.screen-forward {
+  animation: slideInForward 0.22s ease;
+}
+
+.screen-back {
+  animation: slideInBack 0.22s ease;
+}
