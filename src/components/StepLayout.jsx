@@ -1,21 +1,14 @@
 import { Screen } from './Screen';
-import { BG_APP, BORDER_REST } from '../design-tokens/tokens';
+import { BG_APP } from '../design-tokens/tokens';
+import { FinderFooter } from './FinderFooter';
 
-export function StepLayout({ children, cta, dir = 'forward' }) {
+export function StepLayout({ children, dir = 'forward', footerProps }) {
   return (
     <Screen dir={dir} style={{ background: BG_APP }}>
-      <div style={{ flex: 1, overflowY: 'auto', paddingBottom: 8 }}>
+      <div style={{ paddingBottom: 8 }}>
         {children}
       </div>
-      <div style={{
-        position: 'sticky',
-        bottom: 0,
-        background: BG_APP,
-        padding: '12px 20px 28px',
-        borderTop: `1px solid ${BORDER_REST}`,
-      }}>
-        {cta}
-      </div>
+      <FinderFooter {...footerProps} />
     </Screen>
   );
 }

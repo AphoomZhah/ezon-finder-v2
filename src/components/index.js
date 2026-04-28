@@ -3,6 +3,8 @@ import { TEXT_PRIMARY, TEXT_SECONDARY } from '../design-tokens/tokens';
 export { Screen } from './Screen';
 export { StepHeader } from './StepHeader';
 export { StepLayout } from './StepLayout';
+export { FinderFooter } from './FinderFooter';
+export { OptionCardGrid } from './OptionCardGrid';
 export { PhotoPlaceholder } from './PhotoPlaceholder';
 export { HeroImage } from './HeroImage';
 export { ProgressBar } from './ProgressBar';

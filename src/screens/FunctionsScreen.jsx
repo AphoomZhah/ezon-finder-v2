@@ -1,4 +1,4 @@
-import { StepLayout, StepHeader, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const FUNCTIONS = [
   {
@@ -102,8 +102,8 @@ export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const canContinue = sel.length > 0 || noneSelected;
 
   return (
-    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={!canContinue}>VER MIS RESULTADOS</PrimaryButton>}>
-      <StepHeader onBack={onBack} step={6} totalSteps={7} />
+    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: !canContinue, step: 5, totalSteps: 6, label: 'VER MIS RESULTADOS' }}>
+      <StepHeader />
       <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿Qué funciones necesitas?</h2>
         <p style={subStyle}>Elige todas las que te interesen. Estas funciones filtran los modelos disponibles.</p>

@@ -1,12 +1,12 @@
-import { StepLayout, StepHeader, AccessIcon, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, AccessIcon, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const ACCESS_METHODS = [
-  { id: 'huella',       label: 'Huella digital' },
-  { id: 'pin',          label: 'Código PIN' },
-  { id: 'rfid',         label: 'Tarjeta RFID' },
-  { id: 'app',          label: 'App móvil' },
-  { id: 'facial',       label: 'Reconocimiento facial' },
-  { id: 'llaveRespaldo',label: 'Llave mecánica' },
+  { id: 'huella',        label: 'Huella digital',          sub: 'Pones tu dedo en el lector.' },
+  { id: 'pin',           label: 'Código PIN',               sub: 'Tecleas un código numérico.' },
+  { id: 'rfid',          label: 'Tarjeta RFID',             sub: 'Acercas una tarjeta o llavero.' },
+  { id: 'app',           label: 'App móvil',                sub: 'Abres desde tu celular.' },
+  { id: 'facial',        label: 'Reconocimiento facial',    sub: 'La cerradura te identifica por tu rostro.' },
+  { id: 'llaveRespaldo', label: 'Llave mecánica',           sub: 'Llave física tradicional como respaldo.' },
 ];
 
 export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
@@ -17,10 +17,10 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   });
 
   return (
-    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={sel.length === 0}>CONTINUAR</PrimaryButton>}>
-      <StepHeader onBack={onBack} step={5} totalSteps={7} />
+    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: sel.length === 0, step: 4, totalSteps: 6 }}>
+      <StepHeader />
       <div style={{ padding: '0 20px 4px' }}>
-        <h2 style={headingStyle}>¿Cómo quieres abrir tu cerradura?</h2>
+        <h2 style={headingStyle}>Selecciona tus métodos de acceso principal</h2>
         <p style={subStyle}>Puedes elegir varios. Lo que selecciones define los métodos disponibles día a día.</p>
       </div>
 
@@ -52,6 +52,9 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
                 </div>
                 <span style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 600, fontSize: 11.5, color: active ? TEXT_PRIMARY : TEXT_SECONDARY, lineHeight: 1.3, textAlign: 'center' }}>
                   {m.label}
+                </span>
+                <span style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 10, color: TEXT_SECONDARY, lineHeight: 1.3, textAlign: 'center' }}>
+                  {m.sub}
                 </span>
               </button>
             );

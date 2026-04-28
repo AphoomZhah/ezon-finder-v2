@@ -1,4 +1,4 @@
-import { StepLayout, StepHeader, BillIllustration, WhatsAppCTA, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, StepHeader, BillIllustration, WhatsAppCTA, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const THICKNESSES = [
   { id: '2-3',  label: '2–3 cm',  hint: 'Puertas ligeras, interiores' },
@@ -10,8 +10,8 @@ const THICKNESSES = [
 export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.thickness;
   return (
-    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={!sel}>CONTINUAR</PrimaryButton>}>
-      <StepHeader onBack={onBack} step={2} totalSteps={7} />
+    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: !sel, step: 3, totalSteps: 6 }}>
+      <StepHeader />
       <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿Qué tan grueso es el canto lateral de tu puerta?</h2>
         <p style={subStyle}>El canto es la orilla donde se instala la cerradura, mídelo de frente a fondo.</p>
