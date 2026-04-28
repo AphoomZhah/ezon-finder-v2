@@ -1,12 +1,14 @@
 export * from '../design-tokens/tokens';
 import { TEXT_PRIMARY, TEXT_SECONDARY } from '../design-tokens/tokens';
 export { Screen } from './Screen';
+export { StepHeader } from './StepHeader';
+export { StepLayout } from './StepLayout';
 export { PhotoPlaceholder } from './PhotoPlaceholder';
 export { HeroImage } from './HeroImage';
 export { ProgressBar } from './ProgressBar';
-export { BackButton } from './BackButton';
 export { PrimaryButton } from './PrimaryButton';
 export { WhatsAppLink } from './WhatsAppLink';
+export { WhatsAppCTA } from './WhatsAppCTA';
 export { AlertBox } from './AlertBox';
 export { BillIllustration } from './BillIllustration';
 export { AccessIcon } from './AccessIcon';
