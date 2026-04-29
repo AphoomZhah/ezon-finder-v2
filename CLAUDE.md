@@ -188,7 +188,6 @@ This is a placeholder. Replace with the real number when provided by EZON.
 
 | # | Task | Context | Size |
 |---|---|---|---|
-| DL-6 | Tarea 6: Componente `<FinderFooter />` (full canónico + sticky-on-scroll) | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 6 | MD |
 | DL-7 | Tarea 7: Migración de pantallas restantes (Apertura, Grosor, Métodos, Funciones, Tipo) | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 7 | XL |
 
 ### 🟡 In Progress
@@ -200,6 +199,7 @@ _Ninguna tarea en progreso._
 
 | # | Task | Completed |
 |---|---|---|
+| DL-6 | EZON Design Language — Tarea 6: `<FinderFooter />` canónico (negro→verde, sticky-on-scroll) | 2026-04-29 |
 | DL-5 | EZON Design Language — Tarea 5: `<OptionCard />` y `<OptionCardGrid />` | 2026-04-29 |
 | DL-4 | EZON Design Language — Tarea 4: Componentes `<ScreenTitle />` y `<ScreenDeck />` | 2026-04-29 |
 | DL-3 | EZON Design Language — Tarea 3: Componente `<StepMeta />` | 2026-04-29 |
