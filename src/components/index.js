@@ -8,7 +8,7 @@ export { ScreenTitle } from './ScreenTitle';
 export { ScreenDeck } from './ScreenDeck';
 export { StepLayout } from './StepLayout';
 export { FinderFooter } from './FinderFooter';
-export { OptionCardGrid } from './OptionCardGrid';
+export { OptionCard, OptionCardGrid } from './OptionCardGrid';
 export { PhotoPlaceholder } from './PhotoPlaceholder';
 export { HeroImage } from './HeroImage';
 export { ProgressBar } from './ProgressBar';
