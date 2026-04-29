@@ -3,10 +3,34 @@ import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../componen
 const WA_URL = 'https://wa.me/525500000000';
 
 const MATERIALS = [
-  { id: 'madera', title: 'Madera',  subtitle: 'Puertas residenciales, departamentos y casas', mood: 'madera' },
-  { id: 'metal',  title: 'Metal',   subtitle: 'Herrería pesada, portones o puertas industriales', mood: 'metal' },
-  { id: 'vidrio', title: 'Vidrio',  subtitle: 'Templado, sin marcos metálicos o con herraje', mood: 'vidrio' },
-  { id: 'otros',  title: 'Otro',    subtitle: 'Aluminio, PVC u otro material', mood: 'neutral' },
+  {
+    id: 'madera',
+    title: 'Madera',
+    subtitle: 'Puertas residenciales, departamentos y casas',
+    mood: 'madera',
+    badgeLabel: 'Madera',
+  },
+  {
+    id: 'metal',
+    title: 'Metal',
+    subtitle: 'Herrería pesada, portones o puertas industriales',
+    mood: 'metal',
+    badgeLabel: 'Metal',
+  },
+  {
+    id: 'vidrio',
+    title: 'Vidrio',
+    subtitle: 'Templado, sin marcos metálicos o con herraje',
+    mood: 'vidrio',
+    badgeLabel: 'Vidrio',
+  },
+  {
+    id: 'otros',
+    title: 'Otro',
+    subtitle: 'Aluminio, PVC u otro material',
+    mood: 'neutral',
+    badgeLabel: 'Otro',
+  },
 ];
 
 export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
@@ -22,8 +46,10 @@ export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <ScreenDeck>La foto te ayuda a identificarla, no necesitas saber el nombre técnico.</ScreenDeck>
       </div>
 
-      <div style={{ padding: '16px 20px' }}>
+      <div style={{ padding: '0 24px 4px' }}>
         <OptionCardGrid
+          variant="visual"
+          gap={10}
           options={MATERIALS}
           value={sel}
           onChange={(id) => setAnswers(a => ({ ...a, material: id }))}
@@ -34,8 +60,6 @@ export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
           }}
         />
       </div>
-
-
     </StepLayout>
   );
 }

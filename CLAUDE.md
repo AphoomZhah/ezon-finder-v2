@@ -24,7 +24,7 @@
 | Deployment | Netlify (continuous deploy from GitHub) |
 | Build | `npm run build` → outputs to `dist/` |
 | Dev | `npm run dev` → localhost:5173 |
-| Fonts | Montserrat (headings, weight 900) + Open Sans (body) — loaded via Google Fonts in index.html |
+| Fonts | Montserrat (400–800) + Open Sans (400–500–600) — loaded via Google Fonts in `index.html` |
 | No router | Navigation is a state machine (screenIdx integer), not React Router |
 
 ---
@@ -188,21 +188,22 @@ This is a placeholder. Replace with the real number when provided by EZON.
 
 | # | Task | Context | Size |
 |---|---|---|---|
-| 02 | Continuar con las tareas establecidas (DL-5+) en archivo CLAUDE/EZON_PROMPT_CLAUDE_CODE.md | LG |
+| DL-6 | Tarea 6: Componente `<FinderFooter />` (full canónico + sticky-on-scroll) | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 6 | MD |
+| DL-7 | Tarea 7: Migración de pantallas restantes (Apertura, Grosor, Métodos, Funciones, Tipo) | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 7 | XL |
 
 ### 🟡 In Progress
 
-| # | Task | Started |
-|---|---|---|
-| 02 | Iteration on frontend (Claude Design base) | 2026-04-21 |
+_Ninguna tarea en progreso._
+
 
 ### ✅ Done
 
 | # | Task | Completed |
 |---|---|---|
-| DL-4 | EZON Design Language — Tarea 4: Componentes ScreenTitle y ScreenDeck | 2026-04-29 |
-| DL-3 | EZON Design Language — Tarea 3: Componente StepMeta | 2026-04-29 |
-| DL-2 | EZON Design Language — Tarea 2: Componente AppHeader | 2026-04-29 |
+| DL-5 | EZON Design Language — Tarea 5: `<OptionCard />` y `<OptionCardGrid />` | 2026-04-29 |
+| DL-4 | EZON Design Language — Tarea 4: Componentes `<ScreenTitle />` y `<ScreenDeck />` | 2026-04-29 |
+| DL-3 | EZON Design Language — Tarea 3: Componente `<StepMeta />` | 2026-04-29 |
+| DL-2 | EZON Design Language — Tarea 2: Componente `<AppHeader />` | 2026-04-29 |
 | DL-1 | EZON Design Language — Tarea 1: Setup tokens y fuentes | 2026-04-29 |
 | — | Project architecture refactor (screens/, components/, data/, design-tokens/) | 2026-04-23 |
 | — | Fix Netlify deployment (vite.config lib mode → app mode, netlify.toml) | 2026-04-23 |
@@ -210,6 +211,83 @@ This is a placeholder. Replace with the real number when provided by EZON.
 | — | Two functional React prototypes (Claude Design + Gemini) | 2026-04 |
 | — | Flow decision: Claude Design is the frontend base | 2026-04-21 |
 | — | Frozen finder flow v2 | 2026-04-21 |
+
+---
+
+## DL-5 Plan — Tarea 5: `<OptionCard />` y `<OptionCardGrid />`
+
+> Ref: `CLAUDE/EZON_PROMPT_CLAUDE_CODE.md` §Tarea 5  
+> Ref visual: `dist/ezon_finder_screen01_material.html` (variante `visual`)  
+> Ref visual: `public/ezon_finder_screen03_v2.html` (variante `diagram` + `unknown`)
+
+### Estado actual del componente
+
+El `OptionCardGrid.jsx` actual tiene estas discrepancias contra el design language:
+
+| Elemento | Estado actual | Estado requerido |
+|---|---|---|
+| Borde seleccionado | 2px verde `#7EDB8A` + fondo `#F2FDF3` (flood fill verde) | 1px negro → 0 0 0 2px negro + dot verde en esquina — sin fondo verde |
+| Checkmark | Círculo verde con ícono — posición `top:8 right:8` sin anillo blanco | `top:12 right:12`, 16×16px, con `box-shadow: 0 0 0 4px white` |
+| Foto/visual hero | `PhotoPlaceholder` con diagonales de color sólido — sin badge de material | Gradientes CSS ricos (madera, metal, vidrio, otro) + badge negro backdrop-blur |
+| Variante `diagram` | No existe — ThicknessScreen usa botones horizontales ad-hoc | Tarjeta con diagrama CSS a escala (rectángulo proporcional al grosor), valor 22px, desc |
+| Variante `unknown` | Botón sin borde punteado, sin círculo con `?`, fondo `#EBEBEB` | `border-style: dashed`, círculo 38×38px borde 1.5px, `?` Montserrat 700, bg `--surface-deep` |
+| Borde hover | Solo color (`VERDE`) | `border-color: --ink-secondary + translateY(-2px) + box-shadow` |
+| Grid gap | 12px | 10px (Material) / 8px (Thickness) |
+| Padding interno cards | `10px 12px 12px` | `14px 14px 16px` (body) |
+| Tipografía título | Montserrat 900, 13.5px | Montserrat 700, 16px, `letter-spacing: -0.015em` |
+| Tipografía desc | Open Sans 11px | Open Sans 400 12px |
+| `PhotoPlaceholder` | Recibe `mood` → diagonales, no hay badge | Texturas CSS ricas por material + badge negro con dot verde |
+
+### Subtareas concretas
+
+**5.1 — Refactorizar `OptionCardGrid.jsx` en tres variantes limpias**
+- Exportar `OptionCard` con prop `variant: 'visual' | 'diagram' | 'unknown'`
+- Variante `visual`: visual hero 124px con texturas CSS inline (patrón del HTML ref), badge negro con dot verde, body con título 700/16px y desc 400/12px
+- Variante `diagram`: zona de 56px con `door-section` negra a escala (widths por `data-thickness`), measure-line, valor 22px, desc; sin badge
+- Variante `unknown`: bg `SURFACE_DEEP`, `border: 1px dashed INK_QUATERNARY`, círculo 38×38 con `?` Montserrat 700, título 700/15px
+- Estado seleccionado canónico en las tres variantes: `border: 2px solid INK_PRIMARY + box-shadow: 0 0 0 2px INK_PRIMARY` + `::before` dot verde 16×16 con `box-shadow: 0 0 0 4px white` + `::after` checkmark SVG — **sin fondo verde**
+- Grid: `display: grid; grid-template-columns: 1fr 1fr; gap: 8px` (ajustable por prop)
+- Multi-select via prop `multiple` (ya existe, mantener)
+
+**5.2 — Texturas CSS materiales**
+Crear objetos de estilo para los 4 materiales del HTML de referencia (extraídos de `ezon_finder_screen01_material.html`):
+- `wood`: gradientes con vetas + knots radiales + base cálida
+- `metal`: repeating-linear brushed + radial highlight + base cool-dark
+- `glass`: diagonal light streak + base blue-grey
+- `other`: dot pattern radial + base neutro
+
+Mantener soporte del `mood` para cuando la tarjeta no tenga textura propia (Apertura usa SVG en `image`). Si `image` está presente, render sobre el visual sin textura de fondo (bg neutro oscuro tipo `photoMoods.abatible`).
+
+**5.3 — Migrar `MaterialScreen.jsx`**
+- Usar `OptionCard variant="visual"` para los 4 materiales
+- Usar `OptionCard variant="unknown"` para "No lo sé"
+- Eliminar padding redundante del `<div>` wrapper (el StepLayout ya tiene `padding: 0 24px`)
+- Eliminar cualquier CTA inferior
+- Verificar que el grid queda `padding: 0 24px` con gap 10px (como Material HTML ref)
+
+**5.4 — Actualizar `components/index.js`**
+- Exportar `OptionCard` además de `OptionCardGrid`
+
+**5.5 — Verificar `ThicknessScreen.jsx` y `DoorTypeScreen.jsx`**
+- `ThicknessScreen`: migrar a `OptionCard variant="diagram"` + `OptionCardGrid`
+- `DoorTypeScreen`: ya usa `OptionCardGrid` pero hereda las discrepancias del componente — se corrigen automáticamente al refactorizar el grid
+
+### Archivos a tocar
+
+```
+src/components/OptionCardGrid.jsx   ← refactor principal
+src/screens/MaterialScreen.jsx      ← migración a nueva API
+src/screens/ThicknessScreen.jsx     ← migración a diagram variant
+src/components/index.js             ← exportar OptionCard
+```
+
+### Criterio de aceptación DL-5
+- La `MaterialScreen` renderiza idéntica al `dist/ezon_finder_screen01_material.html`
+- Click en tarjeta → borde negro + dot verde + checkmark, sin flood fill verde
+- Click en "No lo sé" → abre WhatsApp
+- `ThicknessScreen` usa `OptionCard variant="diagram"` con diagramas CSS a escala
+- `DoorTypeScreen` hereda correcciones automáticamente
+- `npm run build` pasa sin errores
 
 ---
 
