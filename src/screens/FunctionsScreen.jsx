@@ -1,4 +1,4 @@
-import { StepLayout, ScreenTitle, ScreenDeck, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY } from '../components';
+import { StepLayout, ScreenTitle, ScreenDeck, HorizontalOptionCard } from '../components';
 
 const FUNCTIONS = [
   {
@@ -84,6 +84,18 @@ const FUNCTIONS = [
   },
 ];
 
+const NONE_OPTION = {
+  id: '__none__',
+  label: 'Solo lo básico',
+  desc: 'Sin funciones adicionales — la cerradura abre y ya',
+  icon: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+      <circle cx="12" cy="12" r="9"/>
+      <line x1="8" y1="12" x2="16" y2="12"/>
+    </svg>
+  ),
+};
+
 export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.functions || [];
   const noneSelected = answers.functionsNone;
@@ -99,6 +111,10 @@ export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
     });
   };
 
+  const toggleNone = () => {
+    setAnswers(a => ({ ...a, functions: [], functionsNone: !a.functionsNone }));
+  };
+
   const canContinue = sel.length > 0 || noneSelected;
 
   return (
@@ -112,64 +128,22 @@ export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <ScreenDeck>Elige todas las que te interesen. Estas funciones filtran los modelos disponibles.</ScreenDeck>
       </div>
 
-      <div style={{ padding: '16px 20px 0' }}>
-        {FUNCTIONS.map(fn => {
-          const active = sel.includes(fn.id);
-          return (
-            <button key={fn.id} onClick={() => toggle(fn.id)}
-              style={{
-                width: '100%', marginBottom: 10,
-                border: `2px solid ${active ? VERDE : BORDER_REST}`,
-                borderRadius: 10, padding: '14px 16px',
-                background: active ? '#F2FDF3' : BG_WHITE,
-                cursor: 'pointer', textAlign: 'left',
-                display: 'flex', alignItems: 'center', gap: 14,
-                transition: 'border-color 0.15s, background 0.15s',
-                position: 'relative',
-              }}>
-              {active && (
-                <div style={{
-                  position: 'absolute', top: 10, right: 10,
-                  width: 18, height: 18, borderRadius: '50%', background: VERDE,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <svg width="10" height="10" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#111" strokeWidth="1.8" fill="none" strokeLinecap="round"/></svg>
-                </div>
-              )}
-              <div style={{ color: active ? '#2A6A30' : TEXT_SECONDARY, flexShrink: 0 }}>
-                {fn.icon}
-              </div>
-              <div>
-                <p style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 600, fontSize: 13.5, color: TEXT_PRIMARY, marginBottom: 2 }}>{fn.label}</p>
-                <p style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 11.5, color: TEXT_SECONDARY, lineHeight: 1.4 }}>{fn.desc}</p>
-              </div>
-            </button>
-          );
-        })}
-
-        <button onClick={() => setAnswers(a => ({ ...a, functions: [], functionsNone: true }))}
-          style={{
-            width: '100%', marginBottom: 10,
-            border: `2px solid ${noneSelected ? VERDE : BORDER_REST}`,
-            borderRadius: 10, padding: '14px 16px',
-            background: noneSelected ? '#F2FDF3' : BG_WHITE,
-            cursor: 'pointer', textAlign: 'left',
-            display: 'flex', alignItems: 'center', gap: 14,
-            transition: 'border-color 0.15s, background 0.15s',
-          }}>
-          <div style={{ color: noneSelected ? '#2A6A30' : TEXT_SECONDARY, flexShrink: 0 }}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
-              <circle cx="12" cy="12" r="9"/>
-              <line x1="8" y1="12" x2="16" y2="12"/>
-            </svg>
-          </div>
-          <div>
-            <p style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 600, fontSize: 13.5, color: TEXT_PRIMARY }}>Solo lo básico</p>
-            <p style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 11.5, color: TEXT_SECONDARY, marginTop: 2 }}>Sin funciones adicionales — la cerradura abre y ya</p>
-          </div>
-        </button>
+      <div style={{ padding: '0 24px 4px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {FUNCTIONS.map(fn => (
+          <HorizontalOptionCard
+            key={fn.id}
+            option={fn}
+            isSelected={sel.includes(fn.id)}
+            onClick={() => toggle(fn.id)}
+          />
+        ))}
+        {/* "Solo lo básico" option */}
+        <HorizontalOptionCard
+          option={NONE_OPTION}
+          isSelected={noneSelected}
+          onClick={toggleNone}
+        />
       </div>
-
     </StepLayout>
   );
 }

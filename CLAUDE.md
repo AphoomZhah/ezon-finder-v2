@@ -188,11 +188,11 @@ This is a placeholder. Replace with the real number when provided by EZON.
 
 | # | Task | Context | Size |
 |---|---|---|---|
-| DL-7 | Tarea 7: Migración de pantallas restantes (Apertura, Grosor, Métodos, Funciones, Tipo) | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 7 | XL |
+| DL-8 | Tarea 8: QA visual transversal | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 8 | S |
 
 ### 🟡 In Progress
 
-_Ninguna tarea en progreso._
+| DL-7 | Tarea 7: Migración de pantallas restantes (Apertura, Grosor, Métodos, Funciones, Tipo) | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 7 | XL |
 
 
 ### ✅ Done

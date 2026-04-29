@@ -94,7 +94,7 @@ export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <ScreenDeck>El tipo de apertura define qué mecanismo de cerradura es compatible.</ScreenDeck>
       </div>
 
-      <div style={{ padding: '16px 20px' }}>
+      <div style={{ padding: '0 24px' }}>
         <OptionCardGrid
           options={DOOR_TYPES}
           value={sel}

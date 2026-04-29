@@ -1,20 +1,71 @@
-import { StepLayout, ScreenTitle, ScreenDeck, AccessIcon, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY } from '../components';
+import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid, AccessIcon } from '../components';
 
 const ACCESS_METHODS = [
-  { id: 'huella',        label: 'Huella digital',          sub: 'Pones tu dedo en el lector.' },
-  { id: 'pin',           label: 'Código PIN',               sub: 'Tecleas un código numérico.' },
-  { id: 'rfid',          label: 'Tarjeta RFID',             sub: 'Acercas una tarjeta o llavero.' },
-  { id: 'app',           label: 'App móvil',                sub: 'Abres desde tu celular.' },
-  { id: 'facial',        label: 'Reconocimiento facial',    sub: 'La cerradura te identifica por tu rostro.' },
-  { id: 'llaveRespaldo', label: 'Llave mecánica',           sub: 'Llave física tradicional como respaldo.' },
+  {
+    id: 'huella',
+    title: 'Huella digital',
+    subtitle: 'Pones tu dedo en el lector.',
+    mood: 'access-huella',
+    iconType: 'huella',
+  },
+  {
+    id: 'pin',
+    title: 'Código PIN',
+    subtitle: 'Tecleas un código numérico.',
+    mood: 'access-pin',
+    iconType: 'pin',
+  },
+  {
+    id: 'rfid',
+    title: 'Tarjeta RFID',
+    subtitle: 'Acercas una tarjeta o llavero.',
+    mood: 'access-rfid',
+    iconType: 'rfid',
+  },
+  {
+    id: 'app',
+    title: 'App móvil',
+    subtitle: 'Abres desde tu celular.',
+    mood: 'access-app',
+    iconType: 'app',
+  },
+  {
+    id: 'facial',
+    title: 'Reconocimiento facial',
+    subtitle: 'La cerradura te identifica por tu rostro.',
+    mood: 'access-facial',
+    iconType: 'facial',
+  },
+  {
+    id: 'llaveRespaldo',
+    title: 'Llave mecánica',
+    subtitle: 'Llave física tradicional como respaldo.',
+    mood: 'access-llave',
+    iconType: 'llave',
+  },
 ];
+
+// Map access method options to inject an icon image element that sits centered
+// in the visual hero area (neutral dark background, icon centered).
+const ACCESS_OPTIONS = ACCESS_METHODS.map(m => ({
+  ...m,
+  // The VisualCard renders `option.image` centered over the texture when present.
+  // We use a neutral dark mood so the icon reads on a dark surface.
+  image: (
+    <div style={{
+      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
+    }}>
+      <div style={{ color: '#FAFAF8', opacity: 0.85 }}>
+        <AccessIcon type={m.iconType} size={28} />
+      </div>
+    </div>
+  ),
+  // Override badge: don't show material badge for access method cards
+  badge: false,
+}));
 
 export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.accessMethods || [];
-  const toggle = (id) => setAnswers(a => {
-    const cur = a.accessMethods || [];
-    return { ...a, accessMethods: cur.includes(id) ? cur.filter(x => x !== id) : [...cur, id] };
-  });
 
   return (
     <StepLayout
@@ -27,44 +78,16 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <ScreenDeck>Puedes elegir varios. Lo que selecciones define los métodos disponibles día a día.</ScreenDeck>
       </div>
 
-      <div style={{ padding: '16px 20px 0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
-          {ACCESS_METHODS.map(m => {
-            const active = sel.includes(m.id);
-            return (
-              <button key={m.id} onClick={() => toggle(m.id)} style={{
-                border: `2px solid ${active ? VERDE : BORDER_REST}`,
-                borderRadius: 10, padding: '16px 8px 14px',
-                background: active ? '#F2FDF3' : BG_WHITE,
-                cursor: 'pointer', textAlign: 'center',
-                transition: 'border-color 0.15s, background 0.15s',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-                position: 'relative',
-              }}>
-                {active && (
-                  <div style={{
-                    position: 'absolute', top: 6, right: 6,
-                    width: 16, height: 16, borderRadius: '50%', background: VERDE,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <svg width="9" height="9" viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#111" strokeWidth="1.6" fill="none" strokeLinecap="round"/></svg>
-                  </div>
-                )}
-                <div style={{ color: active ? '#2A6A30' : TEXT_SECONDARY }}>
-                  <AccessIcon type={m.id} size={26}/>
-                </div>
-                <span style={{ fontFamily: "'Open Sans', sans-serif", fontWeight: 600, fontSize: 11.5, color: active ? TEXT_PRIMARY : TEXT_SECONDARY, lineHeight: 1.3, textAlign: 'center' }}>
-                  {m.label}
-                </span>
-                <span style={{ fontFamily: "'Open Sans', sans-serif", fontSize: 10, color: TEXT_SECONDARY, lineHeight: 1.3, textAlign: 'center' }}>
-                  {m.sub}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+      <div style={{ padding: '0 24px 4px' }}>
+        <OptionCardGrid
+          variant="visual"
+          gap={8}
+          multiple
+          options={ACCESS_OPTIONS}
+          value={sel}
+          onChange={(ids) => setAnswers(a => ({ ...a, accessMethods: ids }))}
+        />
       </div>
-
     </StepLayout>
   );
 }
