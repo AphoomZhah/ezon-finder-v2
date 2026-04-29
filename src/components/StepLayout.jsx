@@ -1,11 +1,17 @@
 import { Screen } from './Screen';
-import { BG_APP } from '../design-tokens/tokens';
+import { AppHeader } from './AppHeader';
 import { FinderFooter } from './FinderFooter';
+import { SURFACE } from '../design-tokens/tokens';
 
-export function StepLayout({ children, dir = 'forward', footerProps }) {
+export function StepLayout({ children, dir = 'forward', footerProps, showBack = true, onHelp }) {
   return (
-    <Screen dir={dir} style={{ background: BG_APP }}>
-      <div style={{ paddingBottom: 8 }}>
+    <Screen dir={dir} style={{ background: SURFACE }}>
+      <AppHeader
+        onBack={footerProps?.onBack}
+        showBack={showBack}
+        onHelp={onHelp}
+      />
+      <div style={{ flex: 1 }}>
         {children}
       </div>
       <FinderFooter {...footerProps} />

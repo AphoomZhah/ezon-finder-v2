@@ -1,8 +1,40 @@
-export const VERDE = '#7EDB8A';
-export const BG_APP = '#F5F5F5';
-export const BG_WHITE = '#FFFFFF';
-export const TEXT_PRIMARY = '#111111';
-export const TEXT_SECONDARY = '#6B6B6B';
-export const BORDER_REST = '#E5E5E5';
-export const ALERT_BG = '#FEF3C7';
+/* EZON Design Language — token values (mirrors CSS custom properties in index.css) */
+
+/* Ink scale */
+export const INK_PRIMARY    = '#0A0A0A';
+export const INK_SECONDARY  = '#4A4A4A';
+export const INK_TERTIARY   = '#8A8A8A';
+export const INK_QUATERNARY = '#BCBCBC';
+
+/* Borders */
+export const LINE        = '#E4E4E4';
+export const LINE_STRONG = '#1A1A1A';
+
+/* Surfaces */
+export const SURFACE       = '#F4F3EF';
+export const SURFACE_RAISED = '#FAFAF8';
+export const SURFACE_CARD  = '#FFFFFF';
+export const SURFACE_DEEP  = '#ECEAE3';
+
+/* EZON green — single accent */
+export const EZON        = '#7EDB8A';
+export const EZON_INK    = '#0A0A0A';
+export const EZON_SHADOW = 'rgba(126, 219, 138, 0.35)';
+
+/* Geometry */
+export const RADIUS_SM = '4px';
+export const RADIUS_MD = '8px';
+export const RADIUS_LG = '14px';
+export const RADIUS_XL = '22px';
+
+/* Alerts (keep existing — not in design language but used by AlertBox) */
+export const ALERT_BG   = '#FEF3C7';
 export const ALERT_TEXT = '#92400E';
+
+/* Legacy aliases — kept for backwards compatibility with existing screen code */
+export const VERDE         = EZON;
+export const BG_APP        = SURFACE;
+export const BG_WHITE      = SURFACE_CARD;
+export const TEXT_PRIMARY  = INK_PRIMARY;
+export const TEXT_SECONDARY = INK_SECONDARY;
+export const BORDER_REST   = LINE;

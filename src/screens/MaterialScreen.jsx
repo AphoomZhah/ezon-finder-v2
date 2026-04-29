@@ -1,4 +1,4 @@
-import { StepLayout, StepHeader, OptionCardGrid, WhatsAppCTA, headingStyle, subStyle } from '../components';
+import { StepLayout, OptionCardGrid, headingStyle, subStyle } from '../components';
 
 const WA_URL = 'https://wa.me/525500000000';
 
@@ -13,7 +13,6 @@ export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.material;
   return (
     <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: !sel, step: 1, totalSteps: 6 }}>
-      <StepHeader />
       <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿De qué material es tu puerta?</h2>
         <p style={subStyle}>La foto te ayuda a identificarla, no necesitas saber el nombre técnico.</p>
@@ -32,9 +31,7 @@ export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
         />
       </div>
 
-      <div style={{ padding: '0 20px', marginBottom: 6 }}>
-        <WhatsAppCTA context="material" />
-      </div>
+
     </StepLayout>
   );
 }
