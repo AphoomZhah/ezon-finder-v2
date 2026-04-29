@@ -1,4 +1,4 @@
-import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid, WhatsAppCTA } from '../components';
+import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid, SectionLabel, MeasurementInstrument } from '../components';
 
 const WA_URL = 'https://wa.me/525500000000';
 
@@ -19,22 +19,30 @@ export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
     >
       <div style={{ padding: '0 24px 4px' }}>
         <ScreenTitle>¿Qué tan grueso es el canto de tu puerta?</ScreenTitle>
-        <ScreenDeck>El canto es la orilla donde se instala la cerradura, mídelo de frente a fondo.</ScreenDeck>
+        <ScreenDeck>El canto es la orilla donde se instala la cerradura. Mídelo de frente a fondo.</ScreenDeck>
       </div>
 
-      <div style={{ padding: '0 24px 4px' }}>
-        <OptionCardGrid
-          variant="diagram"
-          gap={8}
-          options={THICKNESSES}
-          value={sel}
-          onChange={(id) => setAnswers(a => ({ ...a, thickness: id }))}
-          unknownOption={{
-            title: 'No lo sé',
-            subtitle: 'Te conectamos con un asesor',
-            onSelect: () => window.open(WA_URL, '_blank'),
-          }}
-        />
+      <div style={{ padding: '0 24px' }}>
+        {/* Section A — Options grid */}
+        <SectionLabel letter="A">Selecciona el rango</SectionLabel>
+        <div style={{ marginBottom: 36 }}>
+          <OptionCardGrid
+            variant="diagram"
+            gap={8}
+            options={THICKNESSES}
+            value={sel}
+            onChange={(id) => setAnswers(a => ({ ...a, thickness: id }))}
+            unknownOption={{
+              title: 'No lo sé',
+              subtitle: 'Te conectamos con un asesor',
+              onSelect: () => window.open(WA_URL, '_blank'),
+            }}
+          />
+        </div>
+
+        {/* Section B — Measurement instrument */}
+        <SectionLabel letter="B">Instrumento de medición</SectionLabel>
+        <MeasurementInstrument />
       </div>
     </StepLayout>
   );
