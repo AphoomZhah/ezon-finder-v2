@@ -1,4 +1,4 @@
-import { StepLayout, OptionCardGrid, headingStyle, subStyle } from '../components';
+import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../components';
 
 const WA_URL = 'https://wa.me/525500000000';
 
@@ -12,10 +12,14 @@ const MATERIALS = [
 export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.material;
   return (
-    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: !sel, step: 1, totalSteps: 6 }}>
-      <div style={{ padding: '0 20px 4px' }}>
-        <h2 style={headingStyle}>¿De qué material es tu puerta?</h2>
-        <p style={subStyle}>La foto te ayuda a identificarla, no necesitas saber el nombre técnico.</p>
+    <StepLayout
+      dir={dir}
+      stepMeta={{ currentStep: 1, totalSteps: 6, stepName: 'Material de la puerta' }}
+      footerProps={{ onBack, onNext, disabled: !sel, step: 1, totalSteps: 6 }}
+    >
+      <div style={{ padding: '0 24px 4px' }}>
+        <ScreenTitle>¿De qué material es tu puerta?</ScreenTitle>
+        <ScreenDeck>La foto te ayuda a identificarla, no necesitas saber el nombre técnico.</ScreenDeck>
       </div>
 
       <div style={{ padding: '16px 20px' }}>

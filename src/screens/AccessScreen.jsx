@@ -1,4 +1,4 @@
-import { StepLayout, AccessIcon, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, ScreenTitle, ScreenDeck, AccessIcon, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY } from '../components';
 
 const ACCESS_METHODS = [
   { id: 'huella',        label: 'Huella digital',          sub: 'Pones tu dedo en el lector.' },
@@ -17,10 +17,14 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   });
 
   return (
-    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: sel.length === 0, step: 4, totalSteps: 6 }}>
-      <div style={{ padding: '0 20px 4px' }}>
-        <h2 style={headingStyle}>Selecciona tus métodos de acceso principal</h2>
-        <p style={subStyle}>Puedes elegir varios. Lo que selecciones define los métodos disponibles día a día.</p>
+    <StepLayout
+      dir={dir}
+      stepMeta={{ currentStep: 4, totalSteps: 6, stepName: 'Métodos de acceso' }}
+      footerProps={{ onBack, onNext, disabled: sel.length === 0, step: 4, totalSteps: 6 }}
+    >
+      <div style={{ padding: '0 24px 4px' }}>
+        <ScreenTitle>Selecciona tus métodos de acceso principal</ScreenTitle>
+        <ScreenDeck>Puedes elegir varios. Lo que selecciones define los métodos disponibles día a día.</ScreenDeck>
       </div>
 
       <div style={{ padding: '16px 20px 0' }}>

@@ -188,7 +188,7 @@ This is a placeholder. Replace with the real number when provided by EZON.
 
 | # | Task | Context | Size |
 |---|---|---|---|
-| 02 | Continuar con las tareas establecidas (DL-2) en archivo CLAUDE/EZON_PROMPT_CLAUDE_CODE.md | LG |
+| 02 | Continuar con las tareas establecidas (DL-5+) en archivo CLAUDE/EZON_PROMPT_CLAUDE_CODE.md | LG |
 
 ### 🟡 In Progress
 
@@ -200,6 +200,8 @@ This is a placeholder. Replace with the real number when provided by EZON.
 
 | # | Task | Completed |
 |---|---|---|
+| DL-4 | EZON Design Language — Tarea 4: Componentes ScreenTitle y ScreenDeck | 2026-04-29 |
+| DL-3 | EZON Design Language — Tarea 3: Componente StepMeta | 2026-04-29 |
 | DL-2 | EZON Design Language — Tarea 2: Componente AppHeader | 2026-04-29 |
 | DL-1 | EZON Design Language — Tarea 1: Setup tokens y fuentes | 2026-04-29 |
 | — | Project architecture refactor (screens/, components/, data/, design-tokens/) | 2026-04-23 |

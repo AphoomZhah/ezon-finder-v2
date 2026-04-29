@@ -1,4 +1,4 @@
-import { StepLayout, OptionCardGrid, headingStyle, subStyle } from '../components';
+import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../components';
 
 const WA_URL = 'https://wa.me/525500000000';
 
@@ -84,10 +84,14 @@ export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.doorType;
 
   return (
-    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: !sel, step: 2, totalSteps: 6 }}>
-      <div style={{ padding: '0 20px 4px' }}>
-        <h2 style={headingStyle}>¿Cómo se abre tu puerta?</h2>
-        <p style={subStyle}>El tipo de apertura define qué mecanismo de cerradura es compatible.</p>
+    <StepLayout
+      dir={dir}
+      stepMeta={{ currentStep: 2, totalSteps: 6, stepName: 'Tipo de apertura' }}
+      footerProps={{ onBack, onNext, disabled: !sel, step: 2, totalSteps: 6 }}
+    >
+      <div style={{ padding: '0 24px 4px' }}>
+        <ScreenTitle>¿Cómo se abre tu puerta?</ScreenTitle>
+        <ScreenDeck>El tipo de apertura define qué mecanismo de cerradura es compatible.</ScreenDeck>
       </div>
 
       <div style={{ padding: '16px 20px' }}>

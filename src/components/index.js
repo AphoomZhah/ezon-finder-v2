@@ -3,6 +3,9 @@ import { TEXT_PRIMARY, TEXT_SECONDARY } from '../design-tokens/tokens';
 export { Screen } from './Screen';
 export { AppHeader } from './AppHeader';
 export { StepHeader } from './StepHeader';
+export { StepMeta } from './StepMeta';
+export { ScreenTitle } from './ScreenTitle';
+export { ScreenDeck } from './ScreenDeck';
 export { StepLayout } from './StepLayout';
 export { FinderFooter } from './FinderFooter';
 export { OptionCardGrid } from './OptionCardGrid';
@@ -17,6 +20,7 @@ export { BillIllustration } from './BillIllustration';
 export { AccessIcon } from './AccessIcon';
 export { LockProductPlaceholder } from './LockProductPlaceholder';
 
+// Deprecated style objects — use <ScreenTitle /> and <ScreenDeck /> instead.
 export const headingStyle = {
   fontFamily: "'Montserrat', sans-serif",
   fontWeight: 700,

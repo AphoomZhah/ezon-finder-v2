@@ -1,4 +1,4 @@
-import { StepLayout, PhotoPlaceholder, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, ScreenTitle, ScreenDeck, PhotoPlaceholder, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY } from '../components';
 
 const LOCK_TYPES = [
   {
@@ -64,10 +64,14 @@ export function LockTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.lockType;
 
   return (
-    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: false, step: 6, totalSteps: 6, label: 'VER MIS RESULTADOS' }}>
-      <div style={{ padding: '0 20px 4px' }}>
-        <h2 style={headingStyle}>¿Qué tipo de cerradura prefieres?</h2>
-        <p style={subStyle}>Opcional — si no sabes, puedes omitir esta pregunta y continuar.</p>
+    <StepLayout
+      dir={dir}
+      stepMeta={{ currentStep: 6, totalSteps: 6, stepName: 'Tipo de cerradura' }}
+      footerProps={{ onBack, onNext, disabled: false, step: 6, totalSteps: 6, label: 'VER MIS RESULTADOS' }}
+    >
+      <div style={{ padding: '0 24px 4px' }}>
+        <ScreenTitle>¿Qué tipo de cerradura prefieres?</ScreenTitle>
+        <ScreenDeck>Opcional — si no sabes, puedes omitir esta pregunta y continuar.</ScreenDeck>
       </div>
 
       <div style={{ padding: '16px 20px 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>

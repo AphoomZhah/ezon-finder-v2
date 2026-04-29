@@ -1,4 +1,4 @@
-import { StepLayout, BillIllustration, WhatsAppCTA, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, ScreenTitle, ScreenDeck, BillIllustration, WhatsAppCTA, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY } from '../components';
 
 const THICKNESSES = [
   { id: '2-3',  label: '2–3 cm',  hint: 'Puertas ligeras, interiores' },
@@ -10,10 +10,14 @@ const THICKNESSES = [
 export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.thickness;
   return (
-    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: !sel, step: 3, totalSteps: 6 }}>
-      <div style={{ padding: '0 20px 4px' }}>
-        <h2 style={headingStyle}>¿Qué tan grueso es el canto lateral de tu puerta?</h2>
-        <p style={subStyle}>El canto es la orilla donde se instala la cerradura, mídelo de frente a fondo.</p>
+    <StepLayout
+      dir={dir}
+      stepMeta={{ currentStep: 3, totalSteps: 6, stepName: 'Grosor del canto' }}
+      footerProps={{ onBack, onNext, disabled: !sel, step: 3, totalSteps: 6 }}
+    >
+      <div style={{ padding: '0 24px 4px' }}>
+        <ScreenTitle>¿Qué tan grueso es el canto de tu puerta?</ScreenTitle>
+        <ScreenDeck>El canto es la orilla donde se instala la cerradura, mídelo de frente a fondo.</ScreenDeck>
       </div>
 
       <div style={{ padding: '16px 20px 0' }}>
