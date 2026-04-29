@@ -14,6 +14,7 @@ export { MeasurementInstrument } from './MeasurementInstrument';
 export { SectionLabel } from './SectionLabel';
 export { PhotoPlaceholder } from './PhotoPlaceholder';
 export { HeroImage } from './HeroImage';
+export { HeroChip } from './HeroChip';
 export { ProgressBar } from './ProgressBar';
 export { PrimaryButton } from './PrimaryButton';
 export { WhatsAppLink } from './WhatsAppLink';
