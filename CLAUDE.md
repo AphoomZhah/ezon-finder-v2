@@ -188,12 +188,7 @@ This is a placeholder. Replace with the real number when provided by EZON.
 
 | # | Task | Context | Size |
 |---|---|---|---|
-| 02 | Implement UI adjustments on frontend | Add EZON logo. Add "prefiero hablar con ventas" secondary CTA on entry. Add "No lo sé" option per question. Remove % match label. Restructure result card (larger photo area). Update entry copy. No photos needed now. | M |
-| 03 | Update entry screen copy | Support paragraph + "4–6 preguntas · ~2 minutos" + bill/ruler tip + replace "Ver catálogo" with "Prefiero hablar con ventas". | XS |
-| 04 | Refine Location screen | Interior → sub-options (cuarto, closet, bodega, oficina). Exterior → sub-options (puerta principal, reja). Keep solar exposure alert. | S |
-| 05 | Simplify Opening Type screen | Remove English terms. Keep "abatible" / "corrediza" only. Add sub-question: one leaf or two? Affects latch/strike compatibility. | XS |
-| 06 | Decision flow → data mapping diagram | Map every answer combination → recommended SKUs. Bridge between visual flow and recommendation matrix. Deliverable for next Dan session. | M |
-| 09 | Define embed URL with Jonathan | Subdomain vs path on ezonmexico.com. | XS |
+| 02 | Continuar con las tareas establecidas (DL-5+) en archivo CLAUDE/EZON_PROMPT_CLAUDE_CODE.md | LG |
 
 ### 🟡 In Progress
 
@@ -205,6 +200,10 @@ This is a placeholder. Replace with the real number when provided by EZON.
 
 | # | Task | Completed |
 |---|---|---|
+| DL-4 | EZON Design Language — Tarea 4: Componentes ScreenTitle y ScreenDeck | 2026-04-29 |
+| DL-3 | EZON Design Language — Tarea 3: Componente StepMeta | 2026-04-29 |
+| DL-2 | EZON Design Language — Tarea 2: Componente AppHeader | 2026-04-29 |
+| DL-1 | EZON Design Language — Tarea 1: Setup tokens y fuentes | 2026-04-29 |
 | — | Project architecture refactor (screens/, components/, data/, design-tokens/) | 2026-04-23 |
 | — | Fix Netlify deployment (vite.config lib mode → app mode, netlify.toml) | 2026-04-23 |
 | — | Recommendation matrix Excel (initial version) | 2026-04-22 |

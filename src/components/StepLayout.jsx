@@ -1,21 +1,38 @@
 import { Screen } from './Screen';
-import { BG_APP, BORDER_REST } from '../design-tokens/tokens';
+import { AppHeader } from './AppHeader';
+import { FinderFooter } from './FinderFooter';
+import { StepMeta } from './StepMeta';
+import { SURFACE } from '../design-tokens/tokens';
 
-export function StepLayout({ children, cta, dir = 'forward' }) {
+/**
+ * StepLayout — shared shell for all question screens.
+ *
+ * Props:
+ *  stepMeta  — { currentStep, totalSteps, stepName }
+ *              When provided, renders <StepMeta /> just below the AppHeader
+ *              and above the screen's own children.
+ */
+export function StepLayout({ children, dir = 'forward', footerProps, stepMeta, showBack = true, onHelp }) {
   return (
-    <Screen dir={dir} style={{ background: BG_APP }}>
-      <div style={{ flex: 1, overflowY: 'auto', paddingBottom: 8 }}>
+    <Screen dir={dir} style={{ background: SURFACE }}>
+      <AppHeader
+        onBack={footerProps?.onBack}
+        showBack={showBack}
+        onHelp={onHelp}
+      />
+      <div style={{ flex: 1 }}>
+        {stepMeta && (
+          <div style={{ padding: '0 24px' }}>
+            <StepMeta
+              currentStep={stepMeta.currentStep}
+              totalSteps={stepMeta.totalSteps}
+              stepName={stepMeta.stepName}
+            />
+          </div>
+        )}
         {children}
       </div>
-      <div style={{
-        position: 'sticky',
-        bottom: 0,
-        background: BG_APP,
-        padding: '12px 20px 28px',
-        borderTop: `1px solid ${BORDER_REST}`,
-      }}>
-        {cta}
-      </div>
+      <FinderFooter {...footerProps} />
     </Screen>
   );
 }

@@ -9,6 +9,7 @@ export const photoMoods = {
   exterior_abierto: { bg: '#8098B0', stripe: '#6888A0' },
   abatible:         { bg: '#B0A494', stripe: '#9C9080' },
   corrediza:        { bg: '#94A8B4', stripe: '#8098A4' },
+  neutral:          { bg: '#C8C8C8', stripe: '#B8B8B8' },
   product1:         { bg: '#DDE4EC', stripe: '#CDD4DC' },
   product2:         { bg: '#E4E0DC', stripe: '#D4D0CC' },
   product3:         { bg: '#E0E8E4', stripe: '#D0D8D4' },

@@ -1,4 +1,4 @@
-import { StepLayout, StepHeader, AlertBox, WhatsAppCTA, PrimaryButton, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
+import { StepLayout, AlertBox, WhatsAppCTA, VERDE, BORDER_REST, BG_WHITE, TEXT_PRIMARY, TEXT_SECONDARY, headingStyle, subStyle } from '../components';
 
 const INTERIOR_LOCS = [
   { id: 'interiorPrincipal', label: 'Puerta principal',   hint: 'Entrada al departamento o casa' },
@@ -59,8 +59,7 @@ export function LocationScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const onSelect = (id) => setAnswers(a => ({ ...a, location: id }));
 
   return (
-    <StepLayout dir={dir} cta={<PrimaryButton onClick={onNext} disabled={!sel}>CONTINUAR</PrimaryButton>}>
-      <StepHeader onBack={onBack} step={3} totalSteps={7} />
+    <StepLayout dir={dir} footerProps={{ onBack, onNext, disabled: !sel, step: 3, totalSteps: 7 }}>
       <div style={{ padding: '0 20px 4px' }}>
         <h2 style={headingStyle}>¿Dónde está ubicada tu puerta?</h2>
         <p style={subStyle}>La ubicación determina la resistencia necesaria y los modelos disponibles.</p>

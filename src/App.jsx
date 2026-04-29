@@ -3,7 +3,6 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { EntryScreen } from './screens/EntryScreen';
 import { MaterialScreen } from './screens/MaterialScreen';
 import { ThicknessScreen } from './screens/ThicknessScreen';
-import { LocationScreen } from './screens/LocationScreen';
 import { DoorTypeScreen } from './screens/DoorTypeScreen';
 import { AccessScreen } from './screens/AccessScreen';
 import { FunctionsScreen } from './screens/FunctionsScreen';
@@ -51,7 +50,7 @@ export default function App() {
           onNext={() => {
             const m = answers.material;
             if (m === 'vidrio' || m === 'otros') go('/incompatible');
-            else go('/thickness');
+            else go('/door-type');
           }}
           onBack={() => go('/', 'back')}/>
       }/>
@@ -60,28 +59,22 @@ export default function App() {
         <IncompatibleScreen onRestart={reset}/>
       }/>
 
-      <Route path="/thickness" element={
-        <ThicknessScreen {...p}
-          onNext={() => go('/location')}
+      <Route path="/door-type" element={
+        <DoorTypeScreen {...p}
+          onNext={() => go('/thickness')}
           onBack={() => go('/material', 'back')}/>
       }/>
 
-      <Route path="/location" element={
-        <LocationScreen {...p}
-          onNext={() => go('/door-type')}
-          onBack={() => go('/thickness', 'back')}/>
-      }/>
-
-      <Route path="/door-type" element={
-        <DoorTypeScreen {...p}
+      <Route path="/thickness" element={
+        <ThicknessScreen {...p}
           onNext={() => go('/access')}
-          onBack={() => go('/location', 'back')}/>
+          onBack={() => go('/door-type', 'back')}/>
       }/>
 
       <Route path="/access" element={
         <AccessScreen {...p}
           onNext={() => go('/functions')}
-          onBack={() => go('/door-type', 'back')}/>
+          onBack={() => go('/thickness', 'back')}/>
       }/>
 
       <Route path="/functions" element={

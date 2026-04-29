@@ -54,8 +54,9 @@ export function matchProducts(answers) {
     .filter(p =>
       categoryHard(p.material, answers.material) &&
       categoryHard(p.doorType, answers.doorType) &&
-      thicknessHard(p, answers.thickness) &&
-      categoryHard(p.location, answers.location)
+      thicknessHard(p, answers.thickness)
+      // TODO post-V1: reactivar cuando se reintroduzca LocationScreen
+      // && categoryHard(p.location, answers.location)
     )
     .map(p => ({ ...p, score: softScore(p, answers) }))
     .filter(p => p.score > 0)

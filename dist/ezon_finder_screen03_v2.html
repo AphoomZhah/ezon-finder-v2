@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EZON · Finder · Grosor del canto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     DESIGN TOKENS — EZON Finder Premium Hardware language v2
+     ─ Identity-aligned typography: Montserrat (display) + Open Sans (body)
+     ─ Instrument Serif italic reserved for one editorial accent
+     ═══════════════════════════════════════════════════════════ */
+  :root {
+    /* Surfaces */
+    --ink-primary:      #0A0A0A;
+    --ink-secondary:    #4A4A4A;
+    --ink-tertiary:     #8A8A8A;
+    --ink-quaternary:   #BCBCBC;
+    --line:             #E4E4E4;
+    --line-strong:      #1A1A1A;
+    --surface:          #F4F3EF;       /* off-white cálido */
+    --surface-raised:   #FAFAF8;
+    --surface-card:     #FFFFFF;
+    --surface-deep:     #ECEAE3;
+
+    /* EZON green — single accent, used with restraint */
+    --ezon:             #7EDB8A;
+    --ezon-ink:         #0A0A0A;
+    --ezon-shadow:      rgba(126, 219, 138, 0.35);
+
+    /* Type — EZON brand identity */
+    --font-display:     'Montserrat', -apple-system, sans-serif;
+    --font-body:        'Open Sans', -apple-system, sans-serif;
+    --font-editorial:   'Instrument Serif', 'Times New Roman', serif;
+
+    /* Geometry */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+    --radius-xl: 22px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: var(--font-body);
+    font-feature-settings: 'cv11', 'ss01';
+    background: #1A1A1A;
+    color: var(--ink-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 12px;
+    min-height: 100vh;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     DEVICE FRAME — mobile 375px showcase
+     ═══════════════════════════════════════════════════════════ */
+  .device {
+    width: 375px;
+    background: var(--surface);
+    min-height: 812px;
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.04),
+      0 24px 80px -20px rgba(0,0,0,0.4),
+      0 6px 24px -8px rgba(0,0,0,0.3);
+  }
+
+  /* ─── Status bar (decorative) ──────────────────────────── */
+  .status-bar {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-primary);
+    font-variant-numeric: tabular-nums;
+  }
+  .status-bar .right { display: flex; gap: 6px; align-items: center; }
+  .status-bar .right span:first-child { font-size: 11px; }
+  .battery {
+    width: 22px; height: 11px;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    position: relative;
+  }
+  .battery::after {
+    content: '';
+    position: absolute;
+    right: -3px; top: 2px;
+    width: 1.5px; height: 5px;
+    background: currentColor;
+    border-radius: 0 1px 1px 0;
+  }
+  .battery::before {
+    content: '';
+    position: absolute;
+    left: 1px; top: 1px; bottom: 1px;
+    width: 70%;
+    background: currentColor;
+    border-radius: 1px;
+  }
+
+  /* ─── App header ───────────────────────────────────────── */
+  .app-header {
+    padding: 4px 24px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--surface-card);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+  .back-btn:hover { background: var(--surface-deep); border-color: var(--ink-quaternary); }
+  .back-btn svg { width: 14px; height: 14px; stroke: var(--ink-primary); stroke-width: 1.8; fill: none; }
+  .brand {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: var(--ink-primary);
+    text-transform: uppercase;
+  }
+  .brand .accent { color: var(--ezon); }
+  .help-btn {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--ink-tertiary);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    cursor: pointer;
+  }
+  .help-btn:hover { color: var(--ink-primary); border-color: var(--ink-primary); }
+
+  /* ═══════════════════════════════════════════════════════════
+     CONTENT
+     ═══════════════════════════════════════════════════════════ */
+  .content {
+    padding: 0 24px 140px;
+  }
+
+  /* ─── Step header ──────────────────────────────────────── */
+  .step-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+  .step-meta .dot { width: 4px; height: 4px; background: var(--ezon); border-radius: 50%; }
+  .step-meta .num { color: var(--ink-primary); }
+
+  .question {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink-primary);
+    margin-bottom: 12px;
+  }
+  .question em {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-primary);
+    font-size: 32px;
+    letter-spacing: -0.005em;
+    padding: 0 1px;
+  }
+  .question-deck {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+    margin-bottom: 28px;
+    max-width: 32ch;
+  }
+
+  /* ─── Section labels ───────────────────────────────────── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    font-variant-numeric: tabular-nums;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  .section-label .num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink-primary);
+    background: var(--surface-deep);
+    padding: 3px 7px;
+    border-radius: 2px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── Thickness option cards ───────────────────────────── */
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+  .opt-card {
+    background: var(--surface-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 16px 14px 14px;
+    cursor: pointer;
+    transition: all 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-height: 156px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .opt-card:hover {
+    border-color: var(--ink-secondary);
+    transform: translateY(-1px);
+  }
+  .opt-card.selected {
+    border-color: var(--ezon-ink);
+    background: var(--surface-card);
+    box-shadow: 0 0 0 2px var(--ezon-ink), 0 4px 16px -4px rgba(0,0,0,0.08);
+  }
+  .opt-card.selected::before {
+    content: '';
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 14px; height: 14px;
+    background: var(--ezon);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--surface-card);
+  }
+  .opt-card.selected::after {
+    content: '';
+    position: absolute;
+    top: 13px; right: 13px;
+    width: 8px; height: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' fill='none'%3E%3Cpath d='M1.5 4L3 5.5L6.5 2' stroke='%230A0A0A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    z-index: 1;
+  }
+  .opt-card .diagram {
+    height: 56px;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .opt-card .door-section {
+    background: var(--ink-primary);
+    height: 56px;
+    border-radius: 1px;
+    position: relative;
+  }
+  .opt-card .door-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 3px,
+      rgba(255,255,255,0.08) 3px,
+      rgba(255,255,255,0.08) 4px
+    );
+  }
+  .opt-card[data-thickness="2-3"] .door-section { width: 12px; }
+  .opt-card[data-thickness="3-5"] .door-section { width: 18px; }
+  .opt-card[data-thickness="5-7"] .door-section { width: 26px; }
+  .opt-card[data-thickness="7-10"] .door-section { width: 36px; }
+
+  .opt-card .measure-line {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    height: 1px;
+    background: var(--ink-primary);
+  }
+  .opt-card[data-thickness="2-3"] .measure-line { width: 12px; }
+  .opt-card[data-thickness="3-5"] .measure-line { width: 18px; }
+  .opt-card[data-thickness="5-7"] .measure-line { width: 26px; }
+  .opt-card[data-thickness="7-10"] .measure-line { width: 36px; }
+
+  .opt-card .measure-line::before,
+  .opt-card .measure-line::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 5px;
+    top: -2px;
+    background: var(--ink-primary);
+  }
+  .opt-card .measure-line::before { left: 0; }
+  .opt-card .measure-line::after { right: 0; }
+
+  .opt-card .value {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--ink-primary);
+    margin-bottom: 4px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .opt-card .value .unit {
+    font-size: 11px;
+    color: var(--ink-tertiary);
+    font-weight: 500;
+    margin-left: 3px;
+    letter-spacing: 0;
+  }
+  .opt-card .desc {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--ink-secondary);
+    font-weight: 400;
+  }
+
+  /* "No lo sé" card */
+  .opt-card.unknown {
+    background: var(--surface-deep);
+    border-color: var(--ink-quaternary);
+    border-style: dashed;
+  }
+  .opt-card.unknown .diagram {
+    align-items: center;
+    justify-content: center;
+  }
+  .opt-card.unknown .question-mark {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink-secondary);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-editorial);
+    font-size: 18px;
+    color: var(--ink-secondary);
+    font-style: italic;
+  }
+  .opt-card.unknown .value {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-primary);
+    letter-spacing: -0.01em;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     INSTRUMENT — Bill measurement tool
+     ═══════════════════════════════════════════════════════════ */
+  .instrument {
+    background: var(--ink-primary);
+    color: var(--surface);
+    border-radius: var(--radius-xl);
+    padding: 22px;
+    margin: 0 -8px 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .instrument::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(126,219,138,0.06), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0, transparent 23px, rgba(255,255,255,0.02) 23px, rgba(255,255,255,0.02) 24px);
+    pointer-events: none;
+  }
+
+  .instrument-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .instrument-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--surface);
+    margin-bottom: 6px;
+    letter-spacing: -0.015em;
+  }
+  .instrument-title em {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ezon);
+    font-size: 23px;
+    letter-spacing: -0.005em;
+  }
+  .instrument-sub {
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-quaternary);
+  }
+
+  .instrument-led {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .led-row { display: flex; gap: 4px; }
+  .led {
+    width: 6px; height: 6px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+  }
+  .led.on { background: var(--ezon); box-shadow: 0 0 6px var(--ezon-shadow); }
+  .led-label {
+    font-family: var(--font-display);
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--ink-quaternary);
+    letter-spacing: 0.16em;
+  }
+
+  /* ─── Steps ────────────────────────────────────────────── */
+  .instr-step {
+    position: relative;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .instr-step:first-of-type { border-top: 1px solid rgba(255,255,255,0.12); }
+  .instr-step-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-quaternary);
+    margin-bottom: 14px;
+  }
+  .instr-step-label .num {
+    background: rgba(255,255,255,0.08);
+    color: var(--surface);
+    padding: 3px 6px;
+    border-radius: 2px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── Step A — Choose denomination ─────────────────────── */
+  .denomination-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .bill-chip {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-md);
+    padding: 12px 8px;
+    cursor: pointer;
+    transition: all 180ms ease;
+    text-align: center;
+    position: relative;
+  }
+  .bill-chip:hover { background: rgba(255,255,255,0.08); }
+  .bill-chip.active {
+    border-color: var(--ezon);
+    background: rgba(126,219,138,0.08);
+    box-shadow: inset 0 0 0 1px var(--ezon);
+  }
+  .bill-chip .denom {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--surface);
+    line-height: 1;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .bill-chip .currency {
+    font-family: var(--font-display);
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--ink-quaternary);
+    letter-spacing: 0.16em;
+  }
+  .bill-chip.active .currency { color: var(--ezon); }
+
+  /* ─── Step B — Bill diagram ─────────────────────────────── */
+  .bill-diagram {
+    margin: 18px 0 6px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px 28px;
+  }
+
+  .bill {
+    width: 220px;
+    height: 92px;
+    border-radius: 4px;
+    position: relative;
+    background: linear-gradient(135deg, #C77D5C 0%, #B26A4D 50%, #9D5A3F 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,0.2),
+      inset 0 0 0 4px rgba(255,255,255,0.08),
+      0 8px 24px -8px rgba(0,0,0,0.6),
+      0 2px 6px -2px rgba(0,0,0,0.4);
+    transition: background 400ms ease;
+  }
+  .bill[data-denom="50"] {
+    background: linear-gradient(135deg, #C77D5C 0%, #B26A4D 50%, #9D5A3F 100%);
+  }
+  .bill[data-denom="100"] {
+    background: linear-gradient(135deg, #B45A52 0%, #9C4A45 50%, #813B38 100%);
+  }
+  .bill[data-denom="200"] {
+    background: linear-gradient(135deg, #4A6A57 0%, #3A5746 50%, #2C4536 100%);
+  }
+  .bill::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  .bill .bill-num {
+    position: absolute;
+    top: 12px; left: 14px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .bill .bill-num-mirror {
+    position: absolute;
+    bottom: 12px; right: 14px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.92);
+    font-variant-numeric: tabular-nums;
+  }
+  .bill .bill-band {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 24px;
+    background: rgba(255,255,255,0.06);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bill .bill-band-text {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.1em;
+  }
+
+  /* Measurement annotations */
+  .measure-top {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 14px;
+    pointer-events: none;
+  }
+  .measure-top::before, .measure-top::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    width: 100px;
+    height: 1px;
+    background: var(--ezon);
+  }
+  .measure-top::before { left: 0; }
+  .measure-top::after { right: 0; }
+  .measure-top .label {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--ezon);
+    letter-spacing: 0.04em;
+    background: var(--ink-primary);
+    padding: 0 6px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .measure-top .tick-l, .measure-top .tick-r {
+    position: absolute;
+    top: 4px;
+    width: 1px;
+    height: 7px;
+    background: var(--ezon);
+  }
+  .measure-top .tick-l { left: 0; }
+  .measure-top .tick-r { right: 0; }
+
+  .measure-side {
+    position: absolute;
+    right: -36px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 92px;
+    width: 14px;
+    pointer-events: none;
+  }
+  .measure-side::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--ezon);
+  }
+  .measure-side .tick-t, .measure-side .tick-b {
+    position: absolute;
+    height: 1px;
+    width: 7px;
+    background: var(--ezon);
+    left: 4px;
+  }
+  .measure-side .tick-t { top: 0; }
+  .measure-side .tick-b { bottom: 0; }
+  .measure-side .label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--ezon);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ─── Step C — Apply against door ──────────────────────── */
+  .application-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 18px 0 10px;
+    position: relative;
+  }
+  .door-edge {
+    width: 26px;
+    height: 100px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.12) 100%);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 2px;
+    position: relative;
+  }
+  .door-edge::before {
+    content: 'CANTO';
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--ink-quaternary);
+    letter-spacing: 0.16em;
+  }
+  .arrow-apply {
+    color: var(--ezon);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .arrow-apply svg { width: 24px; height: 24px; }
+  .arrow-apply .label {
+    font-family: var(--font-display);
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--ezon);
+    letter-spacing: 0.16em;
+  }
+  .mini-bill {
+    width: 90px;
+    height: 38px;
+    background: linear-gradient(135deg, #B45A52 0%, #813B38 100%);
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+    position: relative;
+  }
+  .mini-bill::before {
+    content: '6.5 cm';
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: 9px;
+    color: var(--ezon);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+
+  .application-text {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-quaternary);
+    text-align: center;
+    margin-top: 8px;
+  }
+  .application-text strong {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--surface);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     STICKY FOOTER — Navigation as instrument panel
+     ═══════════════════════════════════════════════════════════ */
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--surface-raised);
+    border-top: 1px solid var(--line);
+    padding: 12px 16px 18px;
+  }
+  .footer-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    gap: 2px;
+  }
+  .progress-segment {
+    flex: 1;
+    background: var(--line);
+    border-radius: 1px;
+  }
+  .progress-segment.done { background: var(--ezon-ink); }
+  .progress-segment.active { background: var(--ezon); }
+  .progress-text {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--ink-tertiary);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .progress-text .current { color: var(--ink-primary); }
+
+  .footer-controls {
+    display: flex;
+    gap: 8px;
+  }
+  .btn {
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: var(--radius-md);
+    transition: all 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-back {
+    background: var(--surface-card);
+    color: var(--ink-primary);
+    border: 1px solid var(--line);
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+  }
+  .btn-back:hover { background: var(--surface-deep); border-color: var(--ink-quaternary); }
+  .btn-back svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+  .btn-primary {
+    flex: 1;
+    height: 52px;
+    background: var(--ezon-ink);
+    color: var(--surface);
+    box-shadow: 0 2px 0 #000, 0 6px 16px -4px rgba(0,0,0,0.3);
+  }
+  .btn-primary:hover {
+    background: #1A1A1A;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 0 #000, 0 10px 20px -4px rgba(0,0,0,0.35);
+  }
+  .btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 0 #000, 0 4px 12px -4px rgba(0,0,0,0.25);
+  }
+  .btn-primary:disabled {
+    background: var(--ink-quaternary);
+    color: var(--surface);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  .btn-primary .arrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .btn-primary.ready {
+    background: var(--ezon);
+    color: var(--ezon-ink);
+    box-shadow: 0 2px 0 #5BAF67, 0 6px 16px -4px var(--ezon-shadow);
+  }
+  .btn-primary.ready:hover {
+    background: #6BC97A;
+    box-shadow: 0 3px 0 #5BAF67, 0 10px 20px -4px var(--ezon-shadow);
+  }
+</style>
+</head>
+<body>
+
+<div class="device" id="device">
+
+  <!-- Status bar -->
+  <div class="status-bar">
+    <span>9:41</span>
+    <div class="right">
+      <span>5G</span>
+      <div class="battery"></div>
+    </div>
+  </div>
+
+  <!-- App header -->
+  <div class="app-header">
+    <button class="back-btn" aria-label="Volver">
+      <svg viewBox="0 0 16 16"><path d="M10 12L6 8L10 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="brand">EZ<span class="accent">O</span>N</div>
+    <a class="help-btn">Ayuda</a>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <div class="step-meta">
+      <span class="dot"></span>
+      <span class="num">03 / 06</span>
+      <span>Grosor del canto</span>
+    </div>
+
+    <h1 class="question">
+      ¿Qué tan grueso es el canto de tu puerta?
+    </h1>
+    <p class="question-deck">
+      El canto es la orilla donde se instala la cerradura. Mídelo de frente a fondo.
+    </p>
+
+    <!-- Section: Options -->
+    <div class="section-label">
+      <span class="num">A</span>
+      <span>Selecciona el rango</span>
+    </div>
+
+    <div class="options-grid">
+      <div class="opt-card" data-thickness="2-3" onclick="selectThickness(this)">
+        <div class="diagram">
+          <div class="door-section"></div>
+          <div class="measure-line"></div>
+        </div>
+        <div>
+          <div class="value">2–3<span class="unit">cm</span></div>
+          <div class="desc">Puertas ligeras, interiores</div>
+        </div>
+      </div>
+
+      <div class="opt-card selected" data-thickness="3-5" onclick="selectThickness(this)">
+        <div class="diagram">
+          <div class="door-section"></div>
+          <div class="measure-line"></div>
+        </div>
+        <div>
+          <div class="value">3–5<span class="unit">cm</span></div>
+          <div class="desc">Estándar — mayoría de departamentos</div>
+        </div>
+      </div>
+
+      <div class="opt-card" data-thickness="5-7" onclick="selectThickness(this)">
+        <div class="diagram">
+          <div class="door-section"></div>
+          <div class="measure-line"></div>
+        </div>
+        <div>
+          <div class="value">5–7<span class="unit">cm</span></div>
+          <div class="desc">Reforzadas o acceso principal</div>
+        </div>
+      </div>
+
+      <div class="opt-card" data-thickness="7-10" onclick="selectThickness(this)">
+        <div class="diagram">
+          <div class="door-section"></div>
+          <div class="measure-line"></div>
+        </div>
+        <div>
+          <div class="value">7–10<span class="unit">cm</span></div>
+          <div class="desc">Seguridad o blindadas</div>
+        </div>
+      </div>
+
+      <div class="opt-card unknown" onclick="selectUnknown()">
+        <div class="diagram">
+          <div class="question-mark">?</div>
+        </div>
+        <div>
+          <div class="value">No lo sé</div>
+          <div class="desc">Te conectamos con un asesor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Instrument -->
+    <div class="section-label">
+      <span class="num">B</span>
+      <span>Instrumento de medición</span>
+    </div>
+
+    <div class="instrument">
+
+      <div class="instrument-header">
+        <div>
+          <h2 class="instrument-title">Mide con <em>un billete</em></h2>
+          <div class="instrument-sub">Sin regla · Resultado aproximado</div>
+        </div>
+        <div class="instrument-led">
+          <div class="led-row">
+            <div class="led on"></div>
+            <div class="led on"></div>
+            <div class="led"></div>
+          </div>
+          <div class="led-label">READY</div>
+        </div>
+      </div>
+
+      <!-- Step A: Pick a denomination -->
+      <div class="instr-step">
+        <div class="instr-step-label">
+          <span class="num">01</span>
+          <span>Escoge el billete que tengas</span>
+        </div>
+        <div class="denomination-row">
+          <div class="bill-chip" data-denom="50" onclick="selectDenom(this, '50')">
+            <div class="denom">$50</div>
+            <div class="currency">MXN</div>
+          </div>
+          <div class="bill-chip active" data-denom="100" onclick="selectDenom(this, '100')">
+            <div class="denom">$100</div>
+            <div class="currency">MXN</div>
+          </div>
+          <div class="bill-chip" data-denom="200" onclick="selectDenom(this, '200')">
+            <div class="denom">$200</div>
+            <div class="currency">MXN</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step B: Bill diagram -->
+      <div class="instr-step">
+        <div class="instr-step-label">
+          <span class="num">02</span>
+          <span>Estas son sus dimensiones</span>
+        </div>
+
+        <div class="bill-diagram">
+          <div class="measure-top">
+            <span class="tick-l"></span>
+            <span class="tick-r"></span>
+            <span class="label" id="billWidthLabel">13.4 cm</span>
+          </div>
+          <div class="bill" id="billViz" data-denom="100">
+            <div class="bill-num" id="billNum">100</div>
+            <div class="bill-band"><span class="bill-band-text">BANXICO</span></div>
+            <div class="bill-num-mirror" id="billNumMirror">100</div>
+          </div>
+          <div class="measure-side">
+            <span class="tick-t"></span>
+            <span class="tick-b"></span>
+            <span class="label">6.6 cm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step C: Apply -->
+      <div class="instr-step">
+        <div class="instr-step-label">
+          <span class="num">03</span>
+          <span>Apóyalo contra el canto</span>
+        </div>
+
+        <div class="application-diagram">
+          <div class="door-edge"></div>
+          <div class="arrow-apply">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="label">APOYAR</div>
+          </div>
+          <div class="mini-bill"></div>
+        </div>
+        <p class="application-text">
+          Compara el canto con el <strong>lado corto del billete (6.6 cm)</strong> y elige arriba el rango que más se parezca.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Sticky Footer -->
+  <div class="footer">
+    <div class="footer-progress">
+      <div class="progress-bar">
+        <div class="progress-segment done"></div>
+        <div class="progress-segment done"></div>
+        <div class="progress-segment active"></div>
+        <div class="progress-segment"></div>
+        <div class="progress-segment"></div>
+        <div class="progress-segment"></div>
+      </div>
+      <span class="progress-text"><span class="current">03</span> / 06</span>
+    </div>
+    <div class="footer-controls">
+      <button class="btn btn-back" aria-label="Anterior">
+        <svg viewBox="0 0 16 16"><path d="M10 12L6 8L10 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="btn btn-primary ready" id="continueBtn">
+        <span>Continuar</span>
+        <span class="arrow">→</span>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function selectThickness(card) {
+    document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    document.getElementById('continueBtn').classList.add('ready');
+  }
+
+  function selectUnknown() {
+    alert('Conectando con asesor EZON via WhatsApp…');
+  }
+
+  function selectDenom(chip, denom) {
+    document.querySelectorAll('.bill-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const bill = document.getElementById('billViz');
+    bill.dataset.denom = denom;
+    document.getElementById('billNum').textContent = denom;
+    document.getElementById('billNumMirror').textContent = denom;
+    // Real Mexican bill widths: $50 = 127mm, $100 = 134mm, $200 = 141mm. Height standard ~66mm.
+    const widths = { '50': '12.7 cm', '100': '13.4 cm', '200': '14.1 cm' };
+    document.getElementById('billWidthLabel').textContent = widths[denom];
+  }
+</script>
+
+</body>
+</html>
