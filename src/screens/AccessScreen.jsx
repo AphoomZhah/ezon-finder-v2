@@ -70,8 +70,8 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   return (
     <StepLayout
       dir={dir}
-      stepMeta={{ currentStep: 4, totalSteps: 6, stepName: 'Métodos de acceso' }}
-      footerProps={{ onBack, onNext, disabled: sel.length === 0, step: 4, totalSteps: 6 }}
+      stepMeta={{ currentStep: 5, totalSteps: 6, stepName: 'Métodos de acceso' }}
+      footerProps={{ onBack, onNext, disabled: sel.length === 0, step: 5, totalSteps: 6 }}
     >
       <div style={{ padding: '0 24px 4px' }}>
         <ScreenTitle>Selecciona tus métodos de acceso principal</ScreenTitle>

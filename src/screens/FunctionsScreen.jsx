@@ -120,8 +120,8 @@ export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
   return (
     <StepLayout
       dir={dir}
-      stepMeta={{ currentStep: 5, totalSteps: 6, stepName: 'Funciones' }}
-      footerProps={{ onBack, onNext, disabled: !canContinue, step: 5, totalSteps: 6, label: 'VER MIS RESULTADOS' }}
+      stepMeta={{ currentStep: 6, totalSteps: 6, stepName: 'Funciones' }}
+      footerProps={{ onBack, onNext, disabled: !canContinue, step: 6, totalSteps: 6, label: 'VER MIS RESULTADOS' }}
     >
       <div style={{ padding: '0 24px 4px' }}>
         <ScreenTitle>¿Qué funciones necesitas?</ScreenTitle>

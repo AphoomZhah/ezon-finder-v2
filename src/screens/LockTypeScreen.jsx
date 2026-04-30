@@ -69,8 +69,8 @@ export function LockTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
   return (
     <StepLayout
       dir={dir}
-      stepMeta={{ currentStep: 6, totalSteps: 6, stepName: 'Tipo de cerradura' }}
-      footerProps={{ onBack, onNext, disabled: false, step: 6, totalSteps: 6, label: 'VER MIS RESULTADOS' }}
+      stepMeta={{ currentStep: 4, totalSteps: 6, stepName: 'Tipo de cerradura' }}
+      footerProps={{ onBack, onNext, disabled: false, step: 4, totalSteps: 6 }}
     >
       <div style={{ padding: '0 24px 4px' }}>
         <ScreenTitle>¿Qué tipo de cerradura prefieres?</ScreenTitle>
