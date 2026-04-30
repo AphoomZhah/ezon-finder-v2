@@ -20,6 +20,7 @@ export const SURFACE_DEEP  = '#ECEAE3';
 export const EZON        = '#7EDB8A';
 export const EZON_INK    = '#0A0A0A';
 export const EZON_SHADOW = 'rgba(126, 219, 138, 0.35)';
+export const VERDE_DEEP  = '#5DC36C';
 
 /* Geometry */
 export const RADIUS_SM = '4px';

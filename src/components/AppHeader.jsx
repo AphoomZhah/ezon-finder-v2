@@ -1,6 +1,6 @@
 const WA_URL = 'https://wa.me/525500000000';
 
-export function AppHeader({ onBack, showBack = true, onHelp }) {
+export function AppHeader({ onBack, showBack = true, onHelp, onReset }) {
   const handleHelp = onHelp || (() => window.open(WA_URL, '_blank'));
 
   return (
@@ -50,26 +50,45 @@ export function AppHeader({ onBack, showBack = true, onHelp }) {
         EZ<span style={{ color: 'var(--ezon)' }}>O</span>N
       </div>
 
-      <button
-        onClick={handleHelp}
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 10,
-          fontWeight: 600,
-          letterSpacing: '0.14em',
-          color: 'var(--ink-tertiary)',
-          textTransform: 'uppercase',
-          background: 'none',
-          borderTop: 'none',
-          borderLeft: 'none',
-          borderRight: 'none',
-          borderBottom: '1px solid var(--line)',
-          padding: '0 0 2px 0',
-          cursor: 'pointer',
-        }}
-      >
-        Ayuda
-      </button>
+      {onReset ? (
+        <button
+          onClick={onReset}
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 12,
+            fontWeight: 500,
+            color: 'var(--ink-secondary)',
+            background: 'transparent',
+            border: '1px solid var(--line)',
+            borderRadius: 999,
+            padding: '7px 14px',
+            cursor: 'pointer',
+          }}
+        >
+          Reiniciar
+        </button>
+      ) : (
+        <button
+          onClick={handleHelp}
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 10,
+            fontWeight: 600,
+            letterSpacing: '0.14em',
+            color: 'var(--ink-tertiary)',
+            textTransform: 'uppercase',
+            background: 'none',
+            borderTop: 'none',
+            borderLeft: 'none',
+            borderRight: 'none',
+            borderBottom: '1px solid var(--line)',
+            padding: '0 0 2px 0',
+            cursor: 'pointer',
+          }}
+        >
+          Ayuda
+        </button>
+      )}
     </div>
   );
 }
