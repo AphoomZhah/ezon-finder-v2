@@ -5,14 +5,14 @@ export function AppHeader({ onBack, showBack = true, onHelp, onReset }) {
 
   return (
     <div style={{
-      padding: '4px 24px 18px',
+      padding: '18px 24px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       background: 'var(--surface)',
       flexShrink: 0,
     }}>
-      {showBack ? (
+      {/* {showBack ? (
         <button
           onClick={onBack}
           aria-label="Volver"
@@ -37,11 +37,11 @@ export function AppHeader({ onBack, showBack = true, onHelp, onReset }) {
         </button>
       ) : (
         <div style={{ width: 36 }} />
-      )}
+      )} */}
 
       <div style={{
         fontFamily: 'var(--font-display)',
-        fontSize: 13,
+        fontSize: 16,
         fontWeight: 800,
         letterSpacing: '0.16em',
         color: 'var(--ink-primary)',

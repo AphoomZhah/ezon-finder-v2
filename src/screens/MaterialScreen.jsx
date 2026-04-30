@@ -1,7 +1,5 @@
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../components';
 
-const WA_URL = 'https://wa.me/525500000000';
-
 const MATERIALS = [
   {
     id: 'madera',
@@ -31,6 +29,13 @@ const MATERIALS = [
     mood: 'neutral',
     badgeLabel: 'Otro',
   },
+  {
+    id: 'unknown',
+    title: 'No lo sé',
+    subtitle: 'Continúa y te mostramos opciones compatibles',
+    mood: 'unknown',
+    badge: false,
+  },
 ];
 
 export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
@@ -53,11 +58,6 @@ export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
           options={MATERIALS}
           value={sel}
           onChange={(id) => setAnswers(a => ({ ...a, material: id }))}
-          unknownOption={{
-            title: 'No lo sé',
-            subtitle: 'Te conectamos con un asesor',
-            onSelect: () => window.open(WA_URL, '_blank'),
-          }}
         />
       </div>
     </StepLayout>

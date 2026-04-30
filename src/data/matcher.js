@@ -48,11 +48,14 @@ function softScore(product, answers) {
 }
 
 export function matchProducts(answers) {
-  if (!answers.material || answers.material === 'vidrio' || answers.material === 'otros') return [];
+  // 'vidrio' and 'otros' → hard block (no compatible products in catalog)
+  // 'unknown' → no material filter; show all products (treated as null)
+  if (answers.material === 'vidrio' || answers.material === 'otros') return [];
+  const materialFilter = answers.material === 'unknown' ? null : answers.material;
 
   const matched = PRODUCTS
     .filter(p =>
-      categoryHard(p.material, answers.material) &&
+      categoryHard(p.material, materialFilter) &&
       categoryHard(p.doorType, answers.doorType) &&
       thicknessHard(p, answers.thickness)
       // TODO post-V1: reactivar cuando se reintroduzca LocationScreen

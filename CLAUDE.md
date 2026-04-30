@@ -200,6 +200,7 @@ This is a placeholder. Replace with the real number when provided by EZON.
 | # | Task | Completed |
 |---|---|---|
 | DL-9 | ResultsScreen 3.0 — rediseño completo: cards verticales, `<ProductCard />`, `<FeatureIcon />` | 2026-04-29 |
+| — | MaterialScreen: "No lo sé" convertido en opción seleccionable (id `unknown`), elimina WhatsApp trigger; `matcher.js` no filtra por material cuando `material === 'unknown'` | 2026-04-30 |
 | DL-6 | EZON Design Language — Tarea 6: `<FinderFooter />` canónico (negro→verde, sticky-on-scroll) | 2026-04-29 |
 | DL-5 | EZON Design Language — Tarea 5: `<OptionCard />` y `<OptionCardGrid />` | 2026-04-29 |
 | DL-4 | EZON Design Language — Tarea 4: Componentes `<ScreenTitle />` y `<ScreenDeck />` | 2026-04-29 |

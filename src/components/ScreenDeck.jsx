@@ -21,7 +21,6 @@ export function ScreenDeck({ children, style }) {
         color: 'var(--ink-secondary)',
         marginBottom: 28,
         marginTop: 0,
-        maxWidth: '32ch',
         ...style,
       }}
     >
