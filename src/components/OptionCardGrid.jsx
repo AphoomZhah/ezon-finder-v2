@@ -279,47 +279,72 @@ function DiagramCard({ option, isSelected, onClick }) {
       {isSelected && <div style={dot} />}
       {isSelected && <div style={check} />}
 
-      {/* Diagram zone */}
-      <div style={{
-        height: 56,
-        display: 'flex',
-        alignItems: 'flex-end',
-        marginBottom: 28, /* room for measure-line below */
-        position: 'relative',
-      }}>
-        {/* Door section block */}
+      {/* Diagram zone — or ? hero for unknown */}
+      {option.id === 'unknown' ? (
         <div style={{
-          background: INK_PRIMARY,
           height: 56,
-          width: doorWidth,
-          borderRadius: 1,
-          position: 'relative',
-          backgroundImage: `repeating-linear-gradient(
-            135deg,
-            transparent 0, transparent 3px,
-            rgba(255,255,255,0.08) 3px, rgba(255,255,255,0.08) 4px)`,
-        }} />
-        {/* Measure line */}
-        <div style={{
-          position: 'absolute',
-          bottom: -18,
-          left: 0,
-          height: 1,
-          width: doorWidth,
-          background: INK_PRIMARY,
+          marginBottom: 28,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
         }}>
-          {/* Left tick */}
           <div style={{
-            position: 'absolute', left: 0, top: -2,
-            width: 1, height: 5, background: INK_PRIMARY,
-          }} />
-          {/* Right tick */}
-          <div style={{
-            position: 'absolute', right: 0, top: -2,
-            width: 1, height: 5, background: INK_PRIMARY,
-          }} />
+            width: 38, height: 38,
+            borderRadius: '50%',
+            border: `1.5px solid ${INK_SECONDARY}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 18,
+            fontWeight: 700,
+            color: INK_SECONDARY,
+          }}>
+            ?
+          </div>
         </div>
-      </div>
+      ) : (
+        <div style={{
+          height: 56,
+          display: 'flex',
+          alignItems: 'flex-end',
+          marginBottom: 28, /* room for measure-line below */
+          position: 'relative',
+        }}>
+          {/* Door section block */}
+          <div style={{
+            background: INK_PRIMARY,
+            height: 56,
+            width: doorWidth,
+            borderRadius: 1,
+            position: 'relative',
+            backgroundImage: `repeating-linear-gradient(
+              135deg,
+              transparent 0, transparent 3px,
+              rgba(255,255,255,0.08) 3px, rgba(255,255,255,0.08) 4px)`,
+          }} />
+          {/* Measure line */}
+          <div style={{
+            position: 'absolute',
+            bottom: -18,
+            left: 0,
+            height: 1,
+            width: doorWidth,
+            background: INK_PRIMARY,
+          }}>
+            {/* Left tick */}
+            <div style={{
+              position: 'absolute', left: 0, top: -2,
+              width: 1, height: 5, background: INK_PRIMARY,
+            }} />
+            {/* Right tick */}
+            <div style={{
+              position: 'absolute', right: 0, top: -2,
+              width: 1, height: 5, background: INK_PRIMARY,
+            }} />
+          </div>
+        </div>
+      )}
 
       {/* Value + desc */}
       <div>
