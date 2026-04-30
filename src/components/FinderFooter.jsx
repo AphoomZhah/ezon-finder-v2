@@ -23,7 +23,7 @@ import {
 const CHEVRON_LEFT = (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M10 12L6 8L10 4"/>
+    <path d="M10 12L6 8L10 4" />
   </svg>
 );
 
@@ -54,9 +54,9 @@ export function FinderFooter({ onBack, onNext, disabled = true, step = 1, totalS
       color: EZON_INK,
       boxShadow: `0 2px 0 #5BAF67, 0 6px 16px -4px ${EZON_SHADOW}`,
     } : {
-      background: INK_PRIMARY,
+      background: INK_QUATERNARY,
       color: '#F4F3EF', /* --surface */
-      boxShadow: '0 2px 0 #000, 0 6px 16px -4px rgba(0,0,0,0.2)',
+      // boxShadow: '0 2px 0 #000, 0 6px 16px -4px rgba(0,0,0,0.2)',
     }),
   };
 
@@ -98,7 +98,7 @@ export function FinderFooter({ onBack, onNext, disabled = true, step = 1, totalS
         }}>
           {Array.from({ length: totalSteps }).map((_, i) => {
             let bg;
-            if (i < step - 1) bg = INK_PRIMARY;       /* done — black */
+            if (i < step - 1) bg = EZON;       /* done — black */
             else if (i === step - 1) bg = EZON;        /* active — green */
             else bg = LINE;                            /* pending — grey */
             return (
