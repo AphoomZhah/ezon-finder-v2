@@ -23,6 +23,8 @@ export { AlertBox } from './AlertBox';
 export { BillIllustration } from './BillIllustration';
 export { AccessIcon } from './AccessIcon';
 export { LockProductPlaceholder } from './LockProductPlaceholder';
+export { ProductCard } from './ProductCard';
+export { FeatureIcon } from './FeatureIcon';
 
 // Deprecated style objects — use <ScreenTitle /> and <ScreenDeck /> instead.
 export const headingStyle = {
