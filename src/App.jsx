@@ -67,26 +67,26 @@ export default function App() {
 
       <Route path="/thickness" element={
         <ThicknessScreen {...p}
-          onNext={() => go('/access')}
+          onNext={() => go('/lock-type')}
           onBack={() => go('/door-type', 'back')}/>
+      }/>
+
+      <Route path="/lock-type" element={
+        <LockTypeScreen {...p}
+          onNext={() => go('/access')}
+          onBack={() => go('/thickness', 'back')}/>
       }/>
 
       <Route path="/access" element={
         <AccessScreen {...p}
           onNext={() => go('/functions')}
-          onBack={() => go('/thickness', 'back')}/>
+          onBack={() => go('/lock-type', 'back')}/>
       }/>
 
       <Route path="/functions" element={
         <FunctionsScreen {...p}
-          onNext={() => go('/lock-type')}
-          onBack={() => go('/access', 'back')}/>
-      }/>
-
-      <Route path="/lock-type" element={
-        <LockTypeScreen {...p}
           onNext={() => go('/loading')}
-          onBack={() => go('/functions', 'back')}/>
+          onBack={() => go('/access', 'back')}/>
       }/>
 
       <Route path="/loading" element={
