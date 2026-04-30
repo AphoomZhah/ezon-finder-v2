@@ -54,6 +54,10 @@ const MATERIAL_TEXTURES = {
       linear-gradient(160deg, #C9C5BE 0%, #ADA89F 50%, #908B82 100%)`,
     backgroundSize: '14px 14px, 18px 18px, 22px 22px, 100% 100%',
   },
+  /* unknown — "No lo sé" selectable card: muted gray surface, no badge */
+  unknown: {
+    background: SURFACE_DEEP,
+  },
   /* fallback for door-type diagrams with SVG image */
   abatible:  { background: 'linear-gradient(145deg, #5B6880 0%, #44526A 100%)' },
   corrediza: { background: 'linear-gradient(145deg, #4A6070 0%, #374D5C 100%)' },
@@ -146,8 +150,30 @@ function VisualCard({ option, isSelected, onClick }) {
         borderRadius: `${RADIUS_LG} ${RADIUS_LG} 0 0`,
         ...texture,
       }}>
+        {/* Unknown mood: show "?" circle hero instead of material texture content */}
+        {option.mood === 'unknown' && (
+          <div style={{
+            position: 'absolute', inset: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <div style={{
+              width: 38, height: 38,
+              borderRadius: '50%',
+              border: `1.5px solid ${INK_SECONDARY}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: 18,
+              fontWeight: 700,
+              color: INK_SECONDARY,
+            }}>
+              ?
+            </div>
+          </div>
+        )}
         {/* SVG image overlay (for door-type cards) */}
-        {option.image && (
+        {option.image && option.mood !== 'unknown' && (
           <div style={{
             position: 'absolute', inset: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -161,8 +187,8 @@ function VisualCard({ option, isSelected, onClick }) {
           boxShadow: 'inset 0 -1px 0 rgba(0,0,0,0.06)',
           pointerEvents: 'none',
         }} />
-        {/* Material badge */}
-        {option.badge !== false && (
+        {/* Material badge — hidden when badge===false or mood==='unknown' */}
+        {option.badge !== false && option.mood !== 'unknown' && (
           <div style={{
             position: 'absolute', bottom: 10, left: 12,
             background: 'rgba(10,10,10,0.85)',
