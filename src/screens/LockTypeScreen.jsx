@@ -61,6 +61,13 @@ const LOCK_TYPES = [
     ),
     badge: false,
   },
+  {
+    id: 'unknown',
+    title: 'No lo sé',
+    subtitle: 'Continúa y te mostramos opciones compatibles',
+    mood: 'unknown',
+    badge: false,
+  },
 ];
 
 export function LockTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
@@ -74,7 +81,7 @@ export function LockTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
     >
       <div style={{ padding: '0 24px 4px' }}>
         <ScreenTitle>¿Qué tipo de cerradura prefieres?</ScreenTitle>
-        <ScreenDeck>Opcional — si no sabes, puedes omitir esta pregunta y continuar.</ScreenDeck>
+        <ScreenDeck>El tipo define el mecanismo y la instalación necesaria.</ScreenDeck>
       </div>
 
       <div style={{ padding: '0 24px 4px' }}>
@@ -85,24 +92,6 @@ export function LockTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
           value={sel}
           onChange={(id) => setAnswers(a => ({ ...a, lockType: a.lockType === id ? null : id }))}
         />
-      </div>
-
-      {/* Skip link — below the grid, per design spec */}
-      <div style={{ padding: '12px 24px 4px', textAlign: 'center' }}>
-        <button onClick={onNext} style={{
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          fontFamily: "'Open Sans', sans-serif",
-          fontWeight: 400,
-          fontSize: 13,
-          color: '#8A8A8A',
-          textDecoration: 'underline',
-          textUnderlineOffset: 3,
-          padding: '4px 0',
-        }}>
-          No sé — omitir esta pregunta
-        </button>
       </div>
     </StepLayout>
   );
