@@ -9,8 +9,8 @@
  *   disabled=false → ready:   EZON green bg, black text, shadow 0 2px 0 #5BAF67
  *
  * Positioning:
- *   position: fixed; bottom: 0; left: 0; right: 0 — always visible regardless
- *   of whether the mobile browser chrome is shown or hidden (dynamic viewport).
+ *   position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; maxWidth: 480
+ *   Centered and width-constrained to match the app container — prevents full-bleed on desktop.
  *   Shadow is always active. IntersectionObserver sentinel not needed with fixed.
  */
 
@@ -71,8 +71,10 @@ export function FinderFooter({ onBack, onNext, disabled = true, step = 1, totalS
     <div style={{
       position: 'fixed',
       bottom: 0,
-      left: 0,
-      right: 0,
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '100%',
+      maxWidth: 480,
       background: SURFACE_RAISED,
       borderTop: `1px solid ${LINE}`,
       boxShadow: '0 -4px 16px -4px rgba(0,0,0,0.10)',
