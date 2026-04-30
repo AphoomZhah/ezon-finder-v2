@@ -14,13 +14,13 @@ import { SURFACE } from '../design-tokens/tokens';
  */
 export function StepLayout({ children, dir = 'forward', footerProps, stepMeta, showBack = true, onHelp }) {
   return (
-    <Screen dir={dir} style={{ background: SURFACE }}>
+    <Screen dir={dir} style={{ background: SURFACE }} className="finder-step-layout">
       <AppHeader
         onBack={footerProps?.onBack}
         showBack={showBack}
         onHelp={onHelp}
       />
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, paddingBottom: 96 }}>
         {stepMeta && (
           <div style={{ padding: '0 24px' }}>
             <StepMeta

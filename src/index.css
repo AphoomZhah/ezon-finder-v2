@@ -70,3 +70,16 @@ body {
 .screen-back {
   animation: slideInBack 0.22s ease;
 }
+
+/* Dynamic viewport height — adjusts when mobile browser chrome shows/hides.
+   Two declarations intentional: 100vh is the fallback for older browsers,
+   100dvh is the real value on Chrome 108+, Safari 15.4+, Firefox 101+. */
+.finder-step-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.finder-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}

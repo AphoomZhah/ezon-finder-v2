@@ -307,3 +307,27 @@ src/components/index.js             ← exportar OptionCard
 - When adding a new screen, add it to the `SCREENS` array in `App.jsx` and wire up the conditional render.
 - When updating product data, edit `data/products.js` only — never hardcode product info in screens.
 - When a task is completed, note it in the Task Log above with today's date.
+
+---
+
+## Footer positioning — mobile browser fix
+
+**Patrón establecido. No revertir.**
+
+El `FinderFooter` usa `position: fixed` (no `sticky`) para garantizar
+visibilidad constante en mobile browsers que muestran/ocultan la barra
+de URL dinámicamente.
+
+Reglas aplicadas:
+- `FinderFooter`: `position: fixed; bottom: 0; left: 0; right: 0`
+- Padding inferior del footer: `max(18px, env(safe-area-inset-bottom))` — cubre el home indicator de iOS
+- Shadow siempre activo (sin condición): `0 -4px 16px -4px rgba(0,0,0,0.10)`
+- El sentinel div y el IntersectionObserver fueron eliminados — no aplican con fixed
+- `StepLayout` y `Screen`: `min-height: 100dvh` con fallback `min-height: 100vh` (vía clase CSS, no inline)
+- Área scrollable de `StepLayout`: `paddingBottom: 96` para compensar la altura del footer fijo
+
+Por qué: `100vh` en mobile toma la altura máxima del viewport (con browser chrome
+oculto). Cuando el browser muestra la barra de URL el viewport se contrae y `sticky`
+queda fuera del área visible. `fixed` se ancla al viewport real ignorando el scroll
+container. `100dvh` se ajusta dinámicamente al viewport visible en cada momento.
+Soporte: Chrome 108+, Safari 15.4+, Firefox 101+ — fallback `100vh` cubre el resto.
