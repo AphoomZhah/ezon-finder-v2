@@ -16,7 +16,8 @@ function categoryHard(productFlags, userValue) {
 
 function thicknessHard(product, thickness) {
   if (product.thicknessMin === null && product.thicknessMax === null) return true;
-  if (!thickness || thickness === 'no-se') return true;
+  // 'unknown' and legacy 'no-se' → skip filter
+  if (!thickness || thickness === 'no-se' || thickness === 'unknown') return true;
   const range = THICKNESS_RANGES[thickness];
   if (!range) return true;
   return product.thicknessMax >= range.min && product.thicknessMin <= range.max;
@@ -26,7 +27,7 @@ function softScore(product, answers) {
   let earned = 0;
   let possible = 0;
 
-  const accessMethods = answers.accessMethods || [];
+  const accessMethods = (answers.accessMethods || []).filter(m => m !== 'unknown');
   for (const method of accessMethods) {
     possible++;
     if (product.access[method] === true) earned++;
@@ -38,9 +39,10 @@ function softScore(product, answers) {
     if (product.functions[fn] === true) earned++;
   }
 
-  if (answers.lockType) {
+  const lockType = answers.lockType;
+  if (lockType && lockType !== 'unknown') {
     possible += 2;
-    if (product.lockType[answers.lockType] === true) earned += 2;
+    if (product.lockType[lockType] === true) earned += 2;
   }
 
   if (possible === 0) return 100;
@@ -49,14 +51,15 @@ function softScore(product, answers) {
 
 export function matchProducts(answers) {
   // 'vidrio' and 'otros' → hard block (no compatible products in catalog)
-  // 'unknown' → no material filter; show all products (treated as null)
+  // 'unknown' → no filter for that criterion; show all compatible products
   if (answers.material === 'vidrio' || answers.material === 'otros') return [];
   const materialFilter = answers.material === 'unknown' ? null : answers.material;
+  const doorTypeFilter = answers.doorType === 'unknown' ? null : answers.doorType;
 
   const matched = PRODUCTS
     .filter(p =>
       categoryHard(p.material, materialFilter) &&
-      categoryHard(p.doorType, answers.doorType) &&
+      categoryHard(p.doorType, doorTypeFilter) &&
       thicknessHard(p, answers.thickness)
       // TODO post-V1: reactivar cuando se reintroduzca LocationScreen
       // && categoryHard(p.location, answers.location)

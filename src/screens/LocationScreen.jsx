@@ -86,6 +86,12 @@ export function LocationScreen({ answers, setAnswers, onNext, onBack, dir }) {
             )}
           </div>
         ))}
+
+        <LocButton
+          loc={{ id: 'unknown', label: 'No lo sé', hint: 'Continúa y te mostramos opciones compatibles' }}
+          sel={sel}
+          onSelect={onSelect}
+        />
       </div>
 
     </StepLayout>

@@ -1,12 +1,11 @@
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid, SectionLabel, MeasurementInstrument } from '../components';
 
-const WA_URL = 'https://wa.me/525500000000';
-
 const THICKNESSES = [
   { id: '2-3',  label: '2–3',  unit: 'cm', hint: 'Puertas ligeras, interiores' },
   { id: '3-5',  label: '3–5',  unit: 'cm', hint: 'Estándar — mayoría de departamentos' },
   { id: '5-7',  label: '5–7',  unit: 'cm', hint: 'Reforzadas o acceso principal' },
   { id: '7-10', label: '7–10', unit: 'cm', hint: 'Seguridad o blindadas' },
+  { id: 'unknown', label: 'No lo sé', hint: 'Continúa y te mostramos opciones compatibles' },
 ];
 
 export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
@@ -32,11 +31,6 @@ export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
             options={THICKNESSES}
             value={sel}
             onChange={(id) => setAnswers(a => ({ ...a, thickness: id }))}
-            unknownOption={{
-              title: 'No lo sé',
-              subtitle: 'Te conectamos con un asesor',
-              onSelect: () => window.open(WA_URL, '_blank'),
-            }}
           />
         </div>
 

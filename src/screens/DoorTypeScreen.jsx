@@ -1,7 +1,5 @@
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../components';
 
-const WA_URL = 'https://wa.me/525500000000';
-
 const DOOR_TYPES = [
   {
     id: 'abatible1hoja',
@@ -78,6 +76,13 @@ const DOOR_TYPES = [
       </svg>
     ),
   },
+  {
+    id: 'unknown',
+    title: 'No lo sé',
+    subtitle: 'Continúa y te mostramos opciones compatibles',
+    mood: 'unknown',
+    badge: false,
+  },
 ];
 
 export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
@@ -99,11 +104,6 @@ export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
           options={DOOR_TYPES}
           value={sel}
           onChange={(id) => setAnswers(a => ({ ...a, doorType: id }))}
-          unknownOption={{
-            title: 'No lo sé',
-            subtitle: 'Te conectamos con un asesor',
-            onSelect: () => window.open(WA_URL, '_blank'),
-          }}
         />
       </div>
 

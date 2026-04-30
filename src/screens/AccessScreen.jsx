@@ -64,8 +64,27 @@ const ACCESS_OPTIONS = ACCESS_METHODS.map(m => ({
   badge: false,
 }));
 
+const UNKNOWN_ACCESS = {
+  id: 'unknown',
+  title: 'No lo sé',
+  subtitle: 'Continúa y te mostramos opciones compatibles',
+  mood: 'unknown',
+  badge: false,
+};
+
 export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.accessMethods || [];
+
+  const handleChange = (ids) => {
+    // If 'unknown' was just added, clear all other selections
+    if (ids.includes('unknown') && !sel.includes('unknown')) {
+      setAnswers(a => ({ ...a, accessMethods: ['unknown'] }));
+      return;
+    }
+    // If any real method was added while 'unknown' was selected, remove 'unknown'
+    const filtered = ids.filter(id => id !== 'unknown');
+    setAnswers(a => ({ ...a, accessMethods: filtered }));
+  };
 
   return (
     <StepLayout
@@ -83,9 +102,9 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
           variant="visual"
           gap={8}
           multiple
-          options={ACCESS_OPTIONS}
+          options={[...ACCESS_OPTIONS, UNKNOWN_ACCESS]}
           value={sel}
-          onChange={(ids) => setAnswers(a => ({ ...a, accessMethods: ids }))}
+          onChange={handleChange}
         />
       </div>
     </StepLayout>
