@@ -20,7 +20,7 @@ export function StepLayout({ children, dir = 'forward', footerProps, stepMeta, s
         showBack={showBack}
         onHelp={onHelp}
       />
-      <div style={{ flex: 1, paddingBottom: 96 }}>
+      <div style={{ flex: 1, paddingBottom: 120 }}>
         {stepMeta && (
           <div style={{ padding: '0 24px' }}>
             <StepMeta

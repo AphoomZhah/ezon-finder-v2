@@ -319,12 +319,12 @@ visibilidad constante en mobile browsers que muestran/ocultan la barra
 de URL dinámicamente.
 
 Reglas aplicadas:
-- `FinderFooter`: `position: fixed; bottom: 0; left: 0; right: 0`
+- `FinderFooter`: `position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; maxWidth: 480` — se centra y respeta el ancho del contenedor en desktop
 - Padding inferior del footer: `max(18px, env(safe-area-inset-bottom))` — cubre el home indicator de iOS
 - Shadow siempre activo (sin condición): `0 -4px 16px -4px rgba(0,0,0,0.10)`
 - El sentinel div y el IntersectionObserver fueron eliminados — no aplican con fixed
 - `StepLayout` y `Screen`: `min-height: 100dvh` con fallback `min-height: 100vh` (vía clase CSS, no inline)
-- Área scrollable de `StepLayout`: `paddingBottom: 96` para compensar la altura del footer fijo
+- Área scrollable de `StepLayout`: `paddingBottom: 120` (no 96) para garantizar visibilidad completa del último elemento
 
 Por qué: `100vh` en mobile toma la altura máxima del viewport (con browser chrome
 oculto). Cuando el browser muestra la barra de URL el viewport se contrae y `sticky`
