@@ -1,4 +1,4 @@
-// Data extracted from: EZON--Matriz_de_recomendaciones_-_20260422_v7 - Catálogo Smart Lock Finder.csv
+// Data extracted from: EZON--Matriz_de_recomendaciones_-_20260422_v7 - Catálogo Smart Lock Finder.csv
 export const PRODUCTS = [
   {
     brand: 'Igloohome',
@@ -31,6 +31,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: true,
     },
+    accessIcons: ['huella_digital', 'acceso_app'],
   },
   {
     brand: 'Igloohome',
@@ -63,6 +64,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: true,
     },
+    accessIcons: ['codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Igloohome',
@@ -95,6 +97,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: true,
     },
+    accessIcons: ['codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -127,6 +130,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -159,6 +163,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios'],
   },
   {
     brand: 'Excel',
@@ -191,6 +196,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false,_cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios'],
   },
   {
     brand: 'Moorgen',
@@ -223,6 +229,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios'],
   },
   {
     brand: 'Moorgen',
@@ -255,6 +262,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios', 'vena_dactilar'],
   },
   {
     brand: 'Moorgen',
@@ -287,6 +295,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios', 'vena_palmar'],
   },
   {
     brand: 'Moorgen',
@@ -319,6 +328,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios'],
   },
   {
     brand: 'Excel',
@@ -351,6 +361,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -383,6 +394,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -415,6 +427,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -447,6 +460,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -479,6 +493,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -511,6 +526,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -543,6 +559,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -575,6 +592,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Moorgen',
@@ -607,6 +625,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Moorgen',
@@ -639,6 +658,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app', 'vena_dactilar'],
   },
   {
     brand: 'Igloohome',
@@ -671,6 +691,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Igloohome',
@@ -703,6 +724,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Igloohome',
@@ -735,6 +757,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Igloohome',
@@ -767,6 +790,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Zigbang',
@@ -799,6 +823,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Igloohome',
@@ -831,6 +856,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -863,6 +889,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -895,6 +922,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin'],
   },
   {
     brand: 'Igloohome',
@@ -927,6 +955,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Igloohome',
@@ -959,6 +988,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
+    accessIcons: ['codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -991,6 +1021,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
+    accessIcons: ['huella_digital', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -1023,6 +1054,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -1055,6 +1087,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Excel',
@@ -1087,6 +1120,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Igloohome',
@@ -1119,6 +1153,7 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: false, candado: false,
     },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
     brand: 'Samsung',
@@ -1151,5 +1186,6 @@ export const PRODUCTS = [
     lockType: {
       conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
+    accessIcons: ['huella_digital', 'codigo_pin', 'acceso_app'],
   },
 ];

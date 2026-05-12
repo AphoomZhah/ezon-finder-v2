@@ -1,42 +1,10 @@
 import { useState } from 'react';
 import {
-  INK_PRIMARY, INK_SECONDARY, INK_QUATERNARY,
-  LINE, SURFACE, SURFACE_CARD, SURFACE_DEEP,
+  INK_PRIMARY, INK_SECONDARY, INK_TERTIARY, INK_QUATERNARY,
+  LINE, SURFACE_CARD, SURFACE_DEEP,
   EZON, VERDE_DEEP,
 } from '../design-tokens/tokens';
-import { FeatureIcon } from './FeatureIcon';
-
-const ACCESS_FEATURES = [
-  { key: 'huella',        label: 'Huella digital',  from: 'access' },
-  { key: 'app',           label: 'App móvil',        from: 'access' },
-  { key: 'pin',           label: 'Código PIN',       from: 'access' },
-  { key: 'rfid',          label: 'Tarjeta RFID',     from: 'access' },
-  { key: 'facial',        label: 'Reconocimiento',   from: 'access' },
-  { key: 'llaveRespaldo', label: 'Llave física',     from: 'access' },
-];
-
-const FUNCTION_FEATURES = [
-  { key: 'camara',            label: 'Cámara',          from: 'functions' },
-  { key: 'codigosTemporales', label: 'Códigos temp.',   from: 'functions' },
-  { key: 'aperturaRemota',    label: 'Apertura remota', from: 'functions' },
-  { key: 'googleHomeAlexa',   label: 'Asistente voz',   from: 'functions' },
-  { key: 'adminAirbnb',       label: 'Gestión Airbnb',  from: 'functions' },
-  { key: 'bloqueoAutomatico', label: 'Bloqueo auto',    from: 'functions' },
-  { key: 'modoNino',          label: 'Modo niño',       from: 'functions' },
-];
-
-function deriveFeatures(product) {
-  const result = [];
-  for (const f of ACCESS_FEATURES) {
-    if (product.access?.[f.key]) result.push(f);
-    if (result.length === 4) return result;
-  }
-  for (const f of FUNCTION_FEATURES) {
-    if (product.functions?.[f.key]) result.push(f);
-    if (result.length === 4) return result;
-  }
-  return result;
-}
+import { ACCESS_ICONS, ICON_DISPLAY_ORDER } from '../data/accessIcons';
 
 function formatMXN(n) {
   if (n == null) return null;
@@ -65,40 +33,45 @@ function PlaceholderMedia() {
   );
 }
 
-function FeatureGrid({ features }) {
-  const cols = Math.max(3, Math.min(4, features.length));
+function AccessIconRow({ product }) {
+  const icons = ICON_DISPLAY_ORDER
+    .filter((key) => product.accessIcons?.includes(key))
+    .slice(0, 4)
+    .map((key) => ({ key, ...ACCESS_ICONS[key] }));
+
+  if (icons.length === 0) return null;
+
   return (
     <div style={{
-      display: 'grid',
-      gridTemplateColumns: `repeat(${cols}, 1fr)`,
-      gap: 8,
       padding: '14px 0',
       borderTop: `1px solid ${LINE}`,
       borderBottom: `1px solid ${LINE}`,
       marginBottom: 16,
     }}>
-      {features.map((f) => (
-        <div key={f.key} style={{
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', textAlign: 'center', gap: 6,
-        }}>
-          <div style={{
-            width: 38, height: 38, borderRadius: '50%',
-            background: SURFACE,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: INK_PRIMARY,
+      <div style={{
+        display: 'flex', flexDirection: 'row',
+        gap: icons.length === 4 ? 6 : 8,
+        flexWrap: 'nowrap', overflow: 'hidden',
+      }}>
+        {icons.map(({ key, label, url }) => (
+          <div key={key} style={{
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', gap: 4,
           }}>
-            <FeatureIcon name={f.key} size={18}/>
+            <img src={url} alt={label}
+              style={{ width: 24, height: 24, objectFit: 'contain' }}/>
+            <span style={{
+              fontFamily: "'Open Sans', sans-serif",
+              fontSize: 10, fontWeight: 400,
+              color: INK_TERTIARY, textAlign: 'center',
+              maxWidth: 56, whiteSpace: 'normal',
+              lineHeight: 1.2,
+            }}>
+              {label}
+            </span>
           </div>
-          <span style={{
-            fontFamily: "'Open Sans', sans-serif",
-            fontSize: 10.5, fontWeight: 500,
-            lineHeight: 1.2, color: INK_SECONDARY,
-          }}>
-            {f.label}
-          </span>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
@@ -107,7 +80,6 @@ export function ProductCard({ product }) {
   const [cardHovered, setCardHovered] = useState(false);
   const [ctaHovered, setCtaHovered] = useState(false);
 
-  const features = deriveFeatures(product);
   const hasDiscount = product.priceFull > product.priceDiscount;
   const priceFormatted = formatMXN(product.priceDiscount);
   const originalFormatted = hasDiscount ? formatMXN(product.priceFull) : null;
@@ -212,8 +184,8 @@ export function ProductCard({ product }) {
           )}
         </div>
 
-        {/* Features grid */}
-        {features.length >= 3 && <FeatureGrid features={features}/>}
+        {/* Access icons */}
+        <AccessIconRow product={product}/>
 
         {/* CTA */}
         <button
