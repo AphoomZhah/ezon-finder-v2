@@ -1,4 +1,5 @@
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../components';
+import { getViableDoorTypes } from '../data/matcher';
 
 const DOOR_TYPES = [
   {
@@ -56,6 +57,10 @@ const DOOR_TYPES = [
 
 export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.doorType;
+  const viableDoorTypeIds = getViableDoorTypes(answers);
+  const visibleOptions = DOOR_TYPES.filter(opt =>
+    opt.id === 'unknown' || viableDoorTypeIds.includes(opt.id)
+  );
 
   return (
     <StepLayout
@@ -70,7 +75,7 @@ export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
 
       <div style={{ padding: '0 24px' }}>
         <OptionCardGrid
-          options={DOOR_TYPES}
+          options={visibleOptions}
           value={sel}
           onChange={(id) => setAnswers(a => ({ ...a, doorType: id }))}
         />

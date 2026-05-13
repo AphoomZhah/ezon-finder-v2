@@ -1,4 +1,5 @@
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../components';
+import { getViableLockTypes } from '../data/matcher';
 
 const LOCK_TYPES = [
   {
@@ -72,6 +73,10 @@ const LOCK_TYPES = [
 
 export function LockTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.lockType;
+  const viableLockTypeIds = getViableLockTypes(answers);
+  const visibleOptions = LOCK_TYPES.filter(opt =>
+    opt.id === 'unknown' || viableLockTypeIds.includes(opt.id)
+  );
 
   return (
     <StepLayout
@@ -88,7 +93,7 @@ export function LockTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
         <OptionCardGrid
           variant="visual"
           gap={8}
-          options={LOCK_TYPES}
+          options={visibleOptions}
           value={sel}
           onChange={(id) => setAnswers(a => ({ ...a, lockType: a.lockType === id ? null : id }))}
         />

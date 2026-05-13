@@ -90,6 +90,10 @@ export function matchProducts(answers) {
 }
 
 export function getViableLockTypes(answers) {
+  // Domain rule: reja always maps to candado only, regardless of matrix.
+  // No product in the catalog has reja=true; candado products are universal doorType.
+  if (answers.doorType === 'reja') return ['candado'];
+
   const candidates = PRODUCTS.filter(p =>
     categoryHard(p.material, answers.material === 'unknown' ? null : answers.material) &&
     doorTypeHard(p.doorType, answers.doorType)
@@ -99,8 +103,29 @@ export function getViableLockTypes(answers) {
   return lockTypeKeys.filter(lt => {
     return candidates.some(p => {
       const anyTrue = Object.values(p.lockType).some(v => v === true);
-      if (!anyTrue) return true; // universal
+      if (!anyTrue) return true;
       return p.lockType[lt] === true;
     });
+  });
+}
+
+export function getViableDoorTypes(answers) {
+  // Domain rule: vidrio doors are never rejas.
+  // For all other materials, all three doorType options are potentially valid.
+  const materialFilter = (!answers.material || answers.material === 'unknown')
+    ? null
+    : answers.material;
+
+  const doorTypeKeys = ['abatible', 'corrediza', 'reja'];
+
+  return doorTypeKeys.filter(dt => {
+    // Domain rule: reja never applies to vidrio
+    if (dt === 'reja' && answers.material === 'vidrio') return false;
+
+    const candidates = PRODUCTS.filter(p =>
+      categoryHard(p.material, materialFilter) &&
+      doorTypeHard(p.doorType, dt)
+    );
+    return candidates.length > 0;
   });
 }
