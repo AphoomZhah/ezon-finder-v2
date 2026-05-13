@@ -14,6 +14,24 @@ function categoryHard(productFlags, userValue) {
   return productFlags[userValue] === true;
 }
 
+function doorTypeHard(productDoorType, userValue) {
+  if (!userValue || userValue === 'unknown') return true;
+  const anyTrue = Object.values(productDoorType).some(v => v === true);
+  if (!anyTrue) return true; // universal product — compatible with everything
+
+  if (userValue === 'abatible') {
+    return productDoorType.abatible1hoja === true || productDoorType.abatible2hojas === true;
+  }
+  if (userValue === 'corrediza') {
+    return productDoorType.corrediza1hoja === true || productDoorType.corrediza2hojas === true;
+  }
+  if (userValue === 'reja') {
+    return productDoorType.reja === true;
+  }
+  // legacy fallback: exact key match
+  return productDoorType[userValue] === true;
+}
+
 function thicknessHard(product, thickness) {
   if (product.thicknessMin === null && product.thicknessMax === null) return true;
   // 'unknown' and legacy 'no-se' → skip filter
@@ -54,12 +72,11 @@ export function matchProducts(answers) {
   // 'unknown' → no filter for that criterion; show all compatible products
   if (answers.material === 'vidrio' || answers.material === 'otros') return [];
   const materialFilter = answers.material === 'unknown' ? null : answers.material;
-  const doorTypeFilter = answers.doorType === 'unknown' ? null : answers.doorType;
 
   const matched = PRODUCTS
     .filter(p =>
       categoryHard(p.material, materialFilter) &&
-      categoryHard(p.doorType, doorTypeFilter) &&
+      doorTypeHard(p.doorType, answers.doorType) &&
       thicknessHard(p, answers.thickness)
       // TODO post-V1: reactivar cuando se reintroduzca LocationScreen
       // && categoryHard(p.location, answers.location)
@@ -70,4 +87,20 @@ export function matchProducts(answers) {
     .slice(0, 5);
 
   return matched;
+}
+
+export function getViableLockTypes(answers) {
+  const candidates = PRODUCTS.filter(p =>
+    categoryHard(p.material, answers.material === 'unknown' ? null : answers.material) &&
+    doorTypeHard(p.doorType, answers.doorType)
+  );
+
+  const lockTypeKeys = ['conManija', 'pushPull', 'cerrojo', 'candado'];
+  return lockTypeKeys.filter(lt => {
+    return candidates.some(p => {
+      const anyTrue = Object.values(p.lockType).some(v => v === true);
+      if (!anyTrue) return true; // universal
+      return p.lockType[lt] === true;
+    });
+  });
 }
