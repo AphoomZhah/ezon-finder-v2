@@ -187,34 +187,6 @@ function VisualCard({ option, isSelected, onClick }) {
           boxShadow: 'inset 0 -1px 0 rgba(0,0,0,0.06)',
           pointerEvents: 'none',
         }} />
-        {/* Material badge — hidden when badge===false or mood==='unknown' */}
-        {option.badge !== false && option.mood !== 'unknown' && (
-          <div style={{
-            position: 'absolute', bottom: 10, left: 12,
-            background: 'rgba(10,10,10,0.85)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            padding: '4px 8px',
-            borderRadius: 3,
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: 8,
-            fontWeight: 700,
-            letterSpacing: '0.18em',
-            color: '#F4F3EF',
-            textTransform: 'uppercase',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-          }}>
-            <span style={{
-              display: 'inline-block',
-              width: 4, height: 4,
-              background: EZON,
-              borderRadius: '50%',
-            }} />
-            {option.badgeLabel || option.title}
-          </div>
-        )}
       </div>
 
       {/* Text body */}
@@ -458,6 +430,15 @@ function UnknownCard({ title = 'No lo sé', subtitle = 'Te conectamos con un ase
    OptionCard — public single-card export (for per-card render control)
    ══════════════════════════════════════════════════════════════════════════════ */
 export function OptionCard({ option, isSelected, onClick, variant = 'visual' }) {
+  if (option.id === 'unknown') {
+    return (
+      <UnknownCard
+        title={option.label || option.title || 'No lo sé'}
+        subtitle={option.hint || option.subtitle}
+        onSelect={onClick}
+      />
+    );
+  }
   if (variant === 'diagram') {
     return <DiagramCard option={option} isSelected={isSelected} onClick={onClick} />;
   }

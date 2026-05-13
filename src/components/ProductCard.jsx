@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  INK_PRIMARY, INK_SECONDARY, INK_TERTIARY, INK_QUATERNARY,
+  INK_PRIMARY, INK_SECONDARY, INK_QUATERNARY,
   LINE, SURFACE_CARD, SURFACE_DEEP,
   EZON, VERDE_DEEP,
 } from '../design-tokens/tokens';
@@ -24,10 +24,10 @@ function PlaceholderMedia() {
     }}>
       <svg width="56" height="56" viewBox="0 0 24 24" fill="none"
         style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.10))' }}>
-        <rect x="3" y="11" width="18" height="11" rx="2" stroke="rgba(255,255,255,0.95)" strokeWidth="1.6"/>
+        <rect x="3" y="11" width="18" height="11" rx="2" stroke="rgba(255,255,255,0.95)" strokeWidth="1.6" />
         <path d="M8 11 L8 7 C8 4.79 9.79 3 12 3 C14.21 3 16 4.79 16 7 L16 11"
-          stroke="rgba(255,255,255,0.95)" strokeWidth="1.6" strokeLinecap="round"/>
-        <circle cx="12" cy="16" r="1.5" fill="rgba(255,255,255,0.95)"/>
+          stroke="rgba(255,255,255,0.95)" strokeWidth="1.6" strokeLinecap="round" />
+        <circle cx="12" cy="16" r="1.5" fill="rgba(255,255,255,0.95)" />
       </svg>
     </div>
   );
@@ -42,30 +42,31 @@ function AccessIconRow({ product }) {
   if (icons.length === 0) return null;
 
   return (
-    <div style={{
-      padding: '14px 0',
-      borderTop: `1px solid ${LINE}`,
-      borderBottom: `1px solid ${LINE}`,
-      marginBottom: 16,
-    }}>
+    <div style={{ marginBottom: 16 }}>
       <div style={{
         display: 'flex', flexDirection: 'row',
-        gap: icons.length === 4 ? 6 : 8,
-        flexWrap: 'nowrap', overflow: 'hidden',
+        gap: 16, flexWrap: 'nowrap',
+        overflowX: 'auto', paddingBottom: 2,
       }}>
         {icons.map(({ key, label, url }) => (
           <div key={key} style={{
             display: 'flex', flexDirection: 'column',
             alignItems: 'center', gap: 4,
           }}>
-            <img src={url} alt={label}
-              style={{ width: 24, height: 24, objectFit: 'contain' }}/>
+            <div style={{
+              width: 40, height: 40, borderRadius: '50%',
+              background: '#F0F0F0',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0,
+            }}>
+              <img src={url} alt={label}
+                style={{ width: 20, height: 20, objectFit: 'contain' }} />
+            </div>
             <span style={{
               fontFamily: "'Open Sans', sans-serif",
-              fontSize: 10, fontWeight: 400,
-              color: INK_TERTIARY, textAlign: 'center',
-              maxWidth: 56, whiteSpace: 'normal',
-              lineHeight: 1.2,
+              fontSize: 11, fontWeight: 400,
+              color: INK_SECONDARY, textAlign: 'center',
+              maxWidth: 64, lineHeight: 1.3,
             }}>
               {label}
             </span>
@@ -112,14 +113,15 @@ export function ProductCard({ product }) {
       <div style={{
         position: 'relative',
         width: '100%',
-        aspectRatio: '16 / 11',
-        background: SURFACE_DEEP,
+        height: 220,
+        backgroundColor: '#F5F5F5',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         overflow: 'hidden',
       }}>
         {product.urlImg
           ? <img src={product.urlImg} alt={product.name}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}/>
-          : <PlaceholderMedia/>
+            style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+          : <PlaceholderMedia />
         }
         {/* Brand badge */}
         <div style={{
@@ -185,7 +187,7 @@ export function ProductCard({ product }) {
         </div>
 
         {/* Access icons */}
-        <AccessIconRow product={product}/>
+        <AccessIconRow product={product} />
 
         {/* CTA */}
         <button
@@ -212,7 +214,7 @@ export function ProductCard({ product }) {
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
             style={{ transform: ctaHovered ? 'translateX(3px)' : 'translateX(0)', transition: 'transform 160ms ease' }}>
             <path d="M3 8 L13 8 M9 4 L13 8 L9 12"
-              stroke={INK_PRIMARY} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              stroke={INK_PRIMARY} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
