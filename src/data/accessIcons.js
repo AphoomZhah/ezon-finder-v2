@@ -17,7 +17,7 @@ export const ACCESS_ICONS = {
   },
   usuarios: {
     label: 'Reconocimiento facial',
-    url: 'https://cdn.shopify.com/s/files/1/0571/0400/7337/files/icon-ezon-usuario.svg?v=1689132524',
+    url: 'https://cdn.shopify.com/s/files/1/0571/0400/7337/files/videoportero.png?v=1731447780',
   },
   vena_palmar: {
     label: 'Vena palmar',
