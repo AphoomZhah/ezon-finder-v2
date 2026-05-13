@@ -68,9 +68,7 @@ function softScore(product, answers) {
 }
 
 export function matchProducts(answers) {
-  // 'vidrio' and 'otros' → hard block (no compatible products in catalog)
-  // 'unknown' → no filter for that criterion; show all compatible products
-  if (answers.material === 'vidrio' || answers.material === 'otros') return [];
+  if (answers.material === 'otros') return [];
   const materialFilter = answers.material === 'unknown' ? null : answers.material;
 
   const matched = PRODUCTS
@@ -128,4 +126,52 @@ export function getViableDoorTypes(answers) {
     );
     return candidates.length > 0;
   });
+}
+
+export function getViableAccessMethods(answers) {
+  const materialFilter = (!answers.material || answers.material === 'unknown')
+    ? null : answers.material;
+  const lockTypeFilter = (!answers.lockType || answers.lockType === 'unknown')
+    ? null : answers.lockType;
+
+  const candidates = PRODUCTS.filter(p =>
+    categoryHard(p.material, materialFilter) &&
+    doorTypeHard(p.doorType, answers.doorType) &&
+    categoryHard(p.lockType, lockTypeFilter)
+  );
+
+  const accessKeys = ['huella', 'facial', 'pin', 'app', 'rfid', 'llaveRespaldo'];
+  return accessKeys.filter(method =>
+    candidates.some(p => p.access[method] === true)
+  );
+}
+
+export function getViableFunctions(answers) {
+  const materialFilter = (!answers.material || answers.material === 'unknown')
+    ? null : answers.material;
+  const lockTypeFilter = (!answers.lockType || answers.lockType === 'unknown')
+    ? null : answers.lockType;
+
+  // For functions, also filter by selected access methods (soft: at least one must match)
+  const accessMethods = (answers.accessMethods || []).filter(m => m !== 'unknown');
+
+  const candidates = PRODUCTS.filter(p => {
+    if (!categoryHard(p.material, materialFilter)) return false;
+    if (!doorTypeHard(p.doorType, answers.doorType)) return false;
+    if (!categoryHard(p.lockType, lockTypeFilter)) return false;
+    // If user selected access methods, product must support at least one
+    if (accessMethods.length > 0) {
+      const matchesAny = accessMethods.some(m => p.access[m] === true);
+      if (!matchesAny) return false;
+    }
+    return true;
+  });
+
+  const fnKeys = [
+    'bloqueoAutomatico', 'modoNino', 'camara', 'codigosTemporales',
+    'aperturaRemota', 'googleHomeAlexa', 'adminAirbnb'
+  ];
+  return fnKeys.filter(fn =>
+    candidates.some(p => p.functions[fn] === true)
+  );
 }

@@ -235,6 +235,9 @@ This is a placeholder. Replace with the real number when provided by EZON.
 
 | # | Task | Completed |
 |---|---|---|
+| — | `matcher.js`: `getViableDoorTypes`, `getViableAccessMethods`, `getViableFunctions` exports; reja→candado domain rule in `getViableLockTypes` | 2026-05-13 |
+| — | `DoorTypeScreen` + `LockTypeScreen`: dynamic option filtering via `getViableDoorTypes` / `getViableLockTypes` | 2026-05-13 |
+| — | `AccessScreen` + `FunctionsScreen`: dynamic option filtering via `getViableAccessMethods` / `getViableFunctions` | 2026-05-13 |
 | — | `matcher.js`: `doorTypeHard()` for collapsed doorType values + `getViableLockTypes()` export | 2026-05-13 |
 | — | `DoorTypeScreen`: collapsed to 3 options (abatible, corrediza, reja) + unknown | 2026-05-13 |
 | — | `App.jsx`: vidrio no longer → /incompatible; LockTypeScreen auto-skip via `getViableLockTypes` | 2026-05-13 |

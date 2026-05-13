@@ -1,4 +1,5 @@
 import { StepLayout, ScreenTitle, ScreenDeck, HorizontalOptionCard } from '../components';
+import { getViableFunctions } from '../data/matcher';
 
 const FUNCTIONS = [
   {
@@ -99,6 +100,10 @@ const NONE_OPTION = {
 export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.functions || [];
   const noneSelected = answers.functionsNone;
+  const viableFunctionIds = getViableFunctions(answers);
+  const visibleFunctions = FUNCTIONS.filter(fn =>
+    viableFunctionIds.includes(fn.id)
+  );
 
   const toggle = (id) => {
     setAnswers(a => {
@@ -129,7 +134,7 @@ export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
       </div>
 
       <div style={{ padding: '0 24px 4px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {FUNCTIONS.map(fn => (
+        {visibleFunctions.map(fn => (
           <HorizontalOptionCard
             key={fn.id}
             option={fn}
