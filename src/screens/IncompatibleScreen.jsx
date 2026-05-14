@@ -25,7 +25,7 @@ export function IncompatibleScreen({ onRestart }) {
           color: ALERT_TEXT, letterSpacing: '0.08em', textTransform: 'uppercase',
           marginBottom: 10,
         }}>
-          Material no compatible
+          Tipo de puerta no compatible
         </p>
 
         <h2 style={{
@@ -33,7 +33,7 @@ export function IncompatibleScreen({ onRestart }) {
           fontSize: 22, color: TEXT_PRIMARY, textAlign: 'center',
           lineHeight: 1.2, marginBottom: 16,
         }}>
-          Las cerraduras inteligentes no son compatibles con puertas de vidrio
+          No encontramos cerraduras inteligentes para este tipo de puerta
         </h2>
 
         <p style={{
@@ -41,7 +41,7 @@ export function IncompatibleScreen({ onRestart }) {
           color: TEXT_SECONDARY, lineHeight: 1.65, textAlign: 'center',
           marginBottom: 28,
         }}>
-          Las cerraduras digitales requieren instalarse en el canto lateral de la puerta. El vidrio templado no permite hacer perforaciones ni soporta el mecanismo de instalación.
+          Las cerraduras digitales requieren instalarse en el canto lateral de la puerta. Algunos tipos de construcción no permiten hacer la instalación estándar.
         </p>
 
         <div style={{

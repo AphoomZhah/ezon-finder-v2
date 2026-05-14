@@ -1,8 +1,9 @@
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../components';
+import { getViableDoorTypes } from '../data/matcher';
 
 const DOOR_TYPES = [
   {
-    id: 'abatible1hoja',
+    id: 'abatible',
     title: 'Abatible',
     subtitle: 'Abre hacia adentro o afuera sobre bisagras',
     mood: 'abatible',
@@ -16,23 +17,7 @@ const DOOR_TYPES = [
     ),
   },
   {
-    id: 'abatible2hojas',
-    title: 'Abatible 2 hojas',
-    subtitle: 'Dos puertas que abren desde el centro',
-    mood: 'abatible',
-    image: (
-      <svg width="70" height="70" viewBox="0 0 70 70" fill="none" opacity="0.5">
-        <rect x="5" y="5" width="28" height="58" rx="3" stroke="white" strokeWidth="2"/>
-        <rect x="37" y="5" width="28" height="58" rx="3" stroke="white" strokeWidth="2"/>
-        <line x1="5" y1="5" x2="5" y2="63" stroke="white" strokeWidth="3"/>
-        <line x1="65" y1="5" x2="65" y2="63" stroke="white" strokeWidth="3"/>
-        <path d="M33 34 A28 28 0 0 0 13 60" stroke="white" strokeWidth="1.3" strokeDasharray="3 2"/>
-        <path d="M37 34 A28 28 0 0 1 57 60" stroke="white" strokeWidth="1.3" strokeDasharray="3 2"/>
-      </svg>
-    ),
-  },
-  {
-    id: 'corrediza1hoja',
+    id: 'corrediza',
     title: 'Corrediza',
     subtitle: 'Se desliza sobre un riel horizontal',
     mood: 'corrediza',
@@ -42,21 +27,6 @@ const DOOR_TYPES = [
         <line x1="0" y1="52" x2="70" y2="52" stroke="white" strokeWidth="2.5"/>
         <path d="M43 28 H65" stroke="white" strokeWidth="1.5" strokeDasharray="4 3"/>
         <path d="M60 23 L67 28 L60 33" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    id: 'corrediza2hojas',
-    title: 'Corrediza 2 hojas',
-    subtitle: 'Dos paneles que se deslizan en sentido opuesto',
-    mood: 'corrediza',
-    image: (
-      <svg width="70" height="60" viewBox="0 0 70 60" fill="none" opacity="0.5">
-        <rect x="5" y="8" width="27" height="42" rx="3" stroke="white" strokeWidth="2"/>
-        <rect x="38" y="8" width="27" height="42" rx="3" stroke="white" strokeWidth="2"/>
-        <line x1="0" y1="52" x2="70" y2="52" stroke="white" strokeWidth="2.5"/>
-        <path d="M7 28 H-8" stroke="white" strokeWidth="1.3" strokeDasharray="3 2"/>
-        <path d="M63 28 H78" stroke="white" strokeWidth="1.3" strokeDasharray="3 2"/>
       </svg>
     ),
   },
@@ -85,16 +55,20 @@ const DOOR_TYPES = [
   },
 ];
 
-const PHOTO_TYPES = { abatible1hoja: 'abatible', corrediza1hoja: 'corrediza' };
+const PHOTO_TYPES = { abatible: 'abatible', corrediza: 'corrediza' };
 
 export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.doorType;
+  const viableDoorTypeIds = getViableDoorTypes(answers);
+  const visibleOptions = DOOR_TYPES.filter(opt =>
+    opt.id === 'unknown' || viableDoorTypeIds.includes(opt.id)
+  );
 
   const materialKey = ['madera', 'metal', 'vidrio'].includes(answers.material)
     ? answers.material
     : 'madera';
 
-  const options = DOOR_TYPES.map(opt => {
+  const options = visibleOptions.map(opt => {
     const typeKey = PHOTO_TYPES[opt.id];
     if (!typeKey) return opt;
     const base = `/assets/img/imagenes-preguntas/p2-${materialKey}-${typeKey}`;

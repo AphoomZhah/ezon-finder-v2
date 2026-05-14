@@ -1,4 +1,5 @@
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid, AccessIcon } from '../components';
+import { getViableAccessMethods } from '../data/matcher';
 
 const ACCESS_METHODS = [
   {
@@ -74,6 +75,10 @@ const UNKNOWN_ACCESS = {
 
 export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.accessMethods || [];
+  const viableAccessIds = getViableAccessMethods(answers);
+  const visibleAccessOptions = ACCESS_OPTIONS.filter(opt =>
+    viableAccessIds.includes(opt.id)
+  );
 
   const handleChange = (ids) => {
     // If 'unknown' was just added, clear all other selections
@@ -102,7 +107,7 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
           variant="visual"
           gap={8}
           multiple
-          options={[...ACCESS_OPTIONS, UNKNOWN_ACCESS]}
+          options={[...visibleAccessOptions, UNKNOWN_ACCESS]}
           value={sel}
           onChange={handleChange}
         />

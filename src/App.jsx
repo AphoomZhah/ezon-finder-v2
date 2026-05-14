@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getViableLockTypes } from './data/matcher';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { EntryScreen } from './screens/EntryScreen';
 import { MaterialScreen } from './screens/MaterialScreen';
@@ -49,7 +50,7 @@ export default function App() {
         <MaterialScreen {...p}
           onNext={() => {
             const m = answers.material;
-            if (m === 'vidrio' || m === 'otros') go('/incompatible');
+            if (m === 'otros') go('/incompatible');
             else go('/door-type');
           }}
           onBack={() => go('/', 'back')}/>
@@ -67,7 +68,15 @@ export default function App() {
 
       <Route path="/thickness" element={
         <ThicknessScreen {...p}
-          onNext={() => go('/lock-type')}
+          onNext={() => {
+            const viableLockTypes = getViableLockTypes(answers);
+            if (viableLockTypes.length === 1) {
+              setAnswers(a => ({ ...a, lockType: viableLockTypes[0] }));
+              go('/access');
+            } else {
+              go('/lock-type');
+            }
+          }}
           onBack={() => go('/door-type', 'back')}/>
       }/>
 
