@@ -7,6 +7,7 @@ const MATERIALS = [
     subtitle: 'Puertas residenciales, departamentos y casas',
     mood: 'madera',
     badgeLabel: 'Madera',
+    image: '/assets/img/imagenes-preguntas/p01-madera.webp',
   },
   {
     id: 'metal',
@@ -14,6 +15,7 @@ const MATERIALS = [
     subtitle: 'Herrería pesada, portones o puertas industriales',
     mood: 'metal',
     badgeLabel: 'Metal',
+    image: '/assets/img/imagenes-preguntas/p01-metal.webp',
   },
   {
     id: 'vidrio',
@@ -21,6 +23,7 @@ const MATERIALS = [
     subtitle: 'Templado, sin marcos metálicos o con herraje',
     mood: 'vidrio',
     badgeLabel: 'Vidrio',
+    image: '/assets/img/imagenes-preguntas/p01-vidrio.webp',
   },
   {
     id: 'otros',

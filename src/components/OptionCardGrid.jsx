@@ -111,7 +111,8 @@ const DIAGRAM_WIDTHS = { '2-3': 12, '3-5': 18, '5-7': 26, '7-10': 36 };
    VARIANT: visual — hero photo + badge + title + desc
    ══════════════════════════════════════════════════════════════════════════════ */
 function VisualCard({ option, isSelected, onClick }) {
-  const texture = MATERIAL_TEXTURES[option.mood] || MATERIAL_TEXTURES.neutral;
+  const hasPhoto = typeof option.image === 'string';
+  const texture = hasPhoto ? {} : (MATERIAL_TEXTURES[option.mood] || MATERIAL_TEXTURES.neutral);
   const { dot, check } = selectedOverlay();
 
   return (
@@ -148,38 +149,80 @@ function VisualCard({ option, isSelected, onClick }) {
         position: 'relative',
         overflow: 'hidden',
         borderRadius: `${RADIUS_LG} ${RADIUS_LG} 0 0`,
+        background: hasPhoto ? '#F5F5F5' : undefined,
         ...texture,
       }}>
-        {/* Unknown mood: show "?" circle hero instead of material texture content */}
-        {option.mood === 'unknown' && (
-          <div style={{
-            position: 'absolute', inset: 0,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <div style={{
-              width: 38, height: 38,
-              borderRadius: '50%',
-              border: `1.5px solid ${INK_SECONDARY}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: 18,
-              fontWeight: 700,
-              color: INK_SECONDARY,
-            }}>
-              ?
-            </div>
-          </div>
-        )}
-        {/* SVG image overlay (for door-type cards) */}
-        {option.image && option.mood !== 'unknown' && (
-          <div style={{
-            position: 'absolute', inset: 0,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            {option.image}
-          </div>
+        {hasPhoto ? (
+          option.imageOpen ? (
+            <>
+              <img
+                src={option.image}
+                alt=""
+                style={{
+                  position: 'absolute', inset: 0,
+                  width: '100%', height: '100%',
+                  objectFit: 'contain',
+                  transition: 'opacity 0.35s ease',
+                  opacity: isSelected ? 0 : 1,
+                }}
+              />
+              <img
+                src={option.imageOpen}
+                alt=""
+                style={{
+                  position: 'absolute', inset: 0,
+                  width: '100%', height: '100%',
+                  objectFit: 'contain',
+                  transition: 'opacity 0.35s ease',
+                  opacity: isSelected ? 1 : 0,
+                }}
+              />
+            </>
+          ) : (
+            <img
+              src={option.image}
+              alt=""
+              style={{
+                position: 'absolute', inset: 0,
+                width: '100%', height: '100%',
+                objectFit: 'contain',
+              }}
+            />
+          )
+        ) : (
+          <>
+            {/* Unknown mood: show "?" circle hero instead of material texture content */}
+            {option.mood === 'unknown' && (
+              <div style={{
+                position: 'absolute', inset: 0,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <div style={{
+                  width: 38, height: 38,
+                  borderRadius: '50%',
+                  border: `1.5px solid ${INK_SECONDARY}`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 18,
+                  fontWeight: 700,
+                  color: INK_SECONDARY,
+                }}>
+                  ?
+                </div>
+              </div>
+            )}
+            {/* SVG image overlay (for door-type cards) */}
+            {option.image && option.mood !== 'unknown' && (
+              <div style={{
+                position: 'absolute', inset: 0,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                {option.image}
+              </div>
+            )}
+          </>
         )}
         {/* Inset shadow for depth */}
         <div style={{

@@ -3,7 +3,7 @@ import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../componen
 const DOOR_TYPES = [
   {
     id: 'abatible1hoja',
-    title: 'Abatible 1 hoja',
+    title: 'Abatible',
     subtitle: 'Abre hacia adentro o afuera sobre bisagras',
     mood: 'abatible',
     image: (
@@ -33,7 +33,7 @@ const DOOR_TYPES = [
   },
   {
     id: 'corrediza1hoja',
-    title: 'Corrediza 1 hoja',
+    title: 'Corrediza',
     subtitle: 'Se desliza sobre un riel horizontal',
     mood: 'corrediza',
     image: (
@@ -85,8 +85,21 @@ const DOOR_TYPES = [
   },
 ];
 
+const PHOTO_TYPES = { abatible1hoja: 'abatible', corrediza1hoja: 'corrediza' };
+
 export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.doorType;
+
+  const materialKey = ['madera', 'metal', 'vidrio'].includes(answers.material)
+    ? answers.material
+    : 'madera';
+
+  const options = DOOR_TYPES.map(opt => {
+    const typeKey = PHOTO_TYPES[opt.id];
+    if (!typeKey) return opt;
+    const base = `/assets/img/imagenes-preguntas/p2-${materialKey}-${typeKey}`;
+    return { ...opt, image: `${base}-cerrada.webp`, imageOpen: `${base}-abierta.webp` };
+  });
 
   return (
     <StepLayout
@@ -101,7 +114,7 @@ export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
 
       <div style={{ padding: '0 24px' }}>
         <OptionCardGrid
-          options={DOOR_TYPES}
+          options={options}
           value={sel}
           onChange={(id) => setAnswers(a => ({ ...a, doorType: id }))}
         />
