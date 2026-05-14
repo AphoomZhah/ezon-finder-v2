@@ -59,22 +59,22 @@ const MATERIAL_TEXTURES = {
     background: SURFACE_DEEP,
   },
   /* fallback for door-type diagrams with SVG image */
-  abatible:  { background: 'linear-gradient(145deg, #5B6880 0%, #44526A 100%)' },
+  abatible: { background: 'linear-gradient(145deg, #5B6880 0%, #44526A 100%)' },
   corrediza: { background: 'linear-gradient(145deg, #4A6070 0%, #374D5C 100%)' },
-  reja:      { background: 'linear-gradient(145deg, #3C3C3C 0%, #282828 100%)' },
-  otros:     { background: 'linear-gradient(145deg, #8A8A8A 0%, #6A6A6A 100%)' },
+  reja: { background: 'linear-gradient(145deg, #3C3C3C 0%, #282828 100%)' },
+  otros: { background: 'linear-gradient(145deg, #8A8A8A 0%, #6A6A6A 100%)' },
   /* access method cards — uniform dark neutral for icon legibility */
-  'access-huella':  { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
-  'access-pin':     { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
-  'access-rfid':    { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
-  'access-app':     { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
-  'access-facial':  { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
-  'access-llave':   { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
+  'access-huella': { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
+  'access-pin': { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
+  'access-rfid': { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
+  'access-app': { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
+  'access-facial': { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
+  'access-llave': { background: 'linear-gradient(145deg, #3A3F4A 0%, #272C36 100%)' },
   /* lock type cards */
-  'lock-manija':    { background: 'linear-gradient(145deg, #5B6880 0%, #44526A 100%)' },
-  'lock-pushpull':  { background: 'linear-gradient(145deg, #3A4550 0%, #2A3540 100%)' },
-  'lock-cerrojo':   { background: 'linear-gradient(145deg, #3C3C3C 0%, #282828 100%)' },
-  'lock-candado':   { background: 'linear-gradient(145deg, #4A5060 0%, #353B4A 100%)' },
+  'lock-manija': { background: 'linear-gradient(145deg, #5B6880 0%, #44526A 100%)' },
+  'lock-pushpull': { background: 'linear-gradient(145deg, #3A4550 0%, #2A3540 100%)' },
+  'lock-cerrojo': { background: 'linear-gradient(145deg, #3C3C3C 0%, #282828 100%)' },
+  'lock-candado': { background: 'linear-gradient(145deg, #4A5060 0%, #353B4A 100%)' },
 };
 
 /* ─── Checkmark SVG data-uri (black on green dot) ─────────────────────────── */
@@ -145,7 +145,7 @@ function VisualCard({ option, isSelected, onClick }) {
 
       {/* Hero visual */}
       <div style={{
-        height: 124,
+        height: 145,
         position: 'relative',
         overflow: 'hidden',
         borderRadius: `${RADIUS_LG} ${RADIUS_LG} 0 0`,
@@ -159,9 +159,10 @@ function VisualCard({ option, isSelected, onClick }) {
                 src={option.image}
                 alt=""
                 style={{
-                  position: 'absolute', inset: 0,
-                  width: '100%', height: '100%',
-                  objectFit: 'contain',
+                  position: 'absolute',
+                  height: '100%', width: 'auto',
+                  top: 0, left: '50%',
+                  transform: 'translateX(-50%)',
                   transition: 'opacity 0.35s ease',
                   opacity: isSelected ? 0 : 1,
                 }}
@@ -170,9 +171,10 @@ function VisualCard({ option, isSelected, onClick }) {
                 src={option.imageOpen}
                 alt=""
                 style={{
-                  position: 'absolute', inset: 0,
-                  width: '100%', height: '100%',
-                  objectFit: 'contain',
+                  position: 'absolute',
+                  height: '100%', width: 'auto',
+                  top: 0, left: '50%',
+                  transform: 'translateX(-50%)',
                   transition: 'opacity 0.35s ease',
                   opacity: isSelected ? 1 : 0,
                 }}
@@ -183,9 +185,10 @@ function VisualCard({ option, isSelected, onClick }) {
               src={option.image}
               alt=""
               style={{
-                position: 'absolute', inset: 0,
-                width: '100%', height: '100%',
-                objectFit: 'contain',
+                position: 'absolute',
+                height: '100%', width: 'auto',
+                top: 0, left: '50%',
+                transform: 'translateX(-50%)',
               }}
             />
           )
@@ -421,7 +424,7 @@ function UnknownCard({ title = 'No lo sé', subtitle = 'Te conectamos con un ase
     >
       {/* Question mark zone */}
       <div style={{
-        height: 100,
+        height: 120,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
