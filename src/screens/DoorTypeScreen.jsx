@@ -72,7 +72,7 @@ export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
     const typeKey = PHOTO_TYPES[opt.id];
     if (!typeKey) return opt;
     const base = `/assets/img/imagenes-preguntas/p2-${materialKey}-${typeKey}`;
-    return { ...opt, image: `${base}-cerrada.webp`, imageOpen: `${base}-abierta.webp` };
+    return { ...opt, image: `${base}-abierta.webp` };
   });
 
   return (

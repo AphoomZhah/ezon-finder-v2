@@ -204,6 +204,7 @@ Access methods → Functions/features → Loading → Results
 - **Photos** — placeholder stripes currently. Real AI-generated photos coming from Rodrigo. Don't spend time on stock photos.
 - **Prices** — manually updated strings in `products.js`. No live data.
 - **Door type collapsed** — UI presents 3 options (abatible / corrediza / reja) instead of 5. Matcher uses `doorTypeHard()` which OR-maps collapsed values to their sub-keys in product data.
+- **Option card image-swap behavior — deferred** — `VisualCard` in `OptionCardGrid.jsx` supports an `imageOpen` prop that crossfades from `image` (unselected) to `imageOpen` (selected). This was used in Step 02 (DoorTypeScreen) to swap closed→open door photos on selection. **Removed 2026-05-14**: Step 02 now always shows the open door (`-abierta.webp`); Step 01 (MaterialScreen) only has a single photo per card (`p01-*.webp`) and never had swap behavior. Decide whether to add swap to remaining steps (Grosor, Tipo de cerradura, Acceso, Funciones) before re-enabling.
 
 ---
 
