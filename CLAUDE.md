@@ -114,6 +114,42 @@ ALERT_TEXT    = '#92400E'
 
 ---
 
+## Icon System — V2
+
+**Stack:** `lucide-react` as primary library · custom SVG inline only for P04 (Tipos de cerradura) · EZON CDN SVGs as preferred source for P05 (Funciones and Métodos de acceso) with Lucide as fallback.
+
+**Tokens** (in `src/design-tokens/tokens.js`):
+
+```js
+ICON_STROKE         = 1.5
+ICON_SIZE_HERO      = 32       // hero of visual selection card
+ICON_SIZE_INLINE    = 28       // compact horizontal card
+ICON_SIZE_SMALL     = 20       // feature chip or badge
+ICON_COLOR_ON_DARK  = '#FAFAF8'
+ICON_COLOR_ON_LIGHT = '#111111'
+ICON_COLOR_MUTED    = '#6B6B6B'
+```
+
+**Inviolable rules:**
+- Stroke weight = 1.5 on all icons (Lucide and custom).
+- Sizes: 32 in hero · 28 in compact · 20 in chips. No other values.
+- Color on dark backgrounds = `#FAFAF8` at opacity 0.85 (1.0 if selected).
+- Do not mix Lucide stroke weights. Never use `strokeWidth={2}` on some icons and `{1.5}` on others.
+- When an icon does not exist in a library, do not generate it with AI — use Lucide or request it from EZON.
+
+**Source by screen:**
+| Screen | Source |
+|---|---|
+| P01 Material | Photographic textures in `/public/assets/img/textures/` (pending — CSS mood fallback in use) |
+| P02 Apertura | Lucide (`DoorOpen`, `MoveHorizontal`, `Fence`, `HelpCircle`) |
+| P03 Grosor | Inline CSS diagram (no change) |
+| P04 Lock Type | Custom inline SVG in `LockTypeScreen.jsx` |
+| P05 Access | EZON CDN (via `accessIcons.js`) + Lucide fallback |
+| P05 Functions | EZON CDN (when available) + Lucide fallback |
+| Results (FeatureIcon) | Same source as P05 — reuses |
+
+---
+
 ## App Navigation Model
 
 Navigation uses React Router v6. `App.jsx` owns `answers` state and a `go(path, dir?)` helper that calls `navigate(path)` and sets animation direction.
@@ -201,10 +237,10 @@ Access methods → Functions/features → Loading → Results
 - **`otros` material → /incompatible** — hard dead-end. `vidrio` is NOT blocked — compatible products exist for glass-framed doors.
 - **Exterior expuesto → alert** — hardware damage from sun/rain exposure. Show alert but do not hard-block. (LocationScreen deferred post-V1.)
 - **"Prefiero hablar con ventas"** — secondary CTA on EntryScreen (not "Ver catálogo").
-- **Photos** — placeholder stripes currently. Real AI-generated photos coming from Rodrigo. Don't spend time on stock photos.
+- **Photos / Icons (V2)** — unified visual system. P01 uses photographic textures (madera, metal, vidrio, neutral) in `/public/assets/img/textures/`, NOT door photos. P02–P06 use icons (Lucide primary, custom for P04, EZON CDN for P05). Rodrigo no longer participates in asset generation — the V1 system with 37 conditional photos is deprecated. See `CLAUDE/EZON-Finder-Icons-V2-Prompts.md` for full detail.
 - **Prices** — manually updated strings in `products.js`. No live data.
 - **Door type collapsed** — UI presents 3 options (abatible / corrediza / reja) instead of 5. Matcher uses `doorTypeHard()` which OR-maps collapsed values to their sub-keys in product data.
-- **Option card image-swap behavior — deferred** — `VisualCard` in `OptionCardGrid.jsx` supports an `imageOpen` prop that crossfades from `image` (unselected) to `imageOpen` (selected). This was used in Step 02 (DoorTypeScreen) to swap closed→open door photos on selection. **Removed 2026-05-14**: Step 02 now always shows the open door (`-abierta.webp`); Step 01 (MaterialScreen) only has a single photo per card (`p01-*.webp`) and never had swap behavior. Decide whether to add swap to remaining steps (Grosor, Tipo de cerradura, Acceso, Funciones) before re-enabling.
+- **Option card image-swap behavior — REMOVED in V2** — the `imageOpen` prop in `VisualCard` (`OptionCardGrid.jsx`) that crossfaded `image` → `imageOpen` on selection is no longer used. It was part of the V1 photo system. In V2, selection cards use stable icons that do not change between states (only border and opacity change). If the prop is still in the component, remove it in the next OptionCardGrid refactor.
 
 ---
 
@@ -225,17 +261,25 @@ This is a placeholder. Replace with the real number when provided by EZON.
 | # | Task | Context | Size |
 |---|---|---|---|
 | DL-8 | Tarea 8: QA visual transversal | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 8 | S |
+| V2-2 | Fase 2: Generar/curar 4 texturas P01 e integrar | CLAUDE/EZON-Finder-Icons-V2-Prompts.md §3 | M |
+| V2-4 | Fase 4: Recalibrar 4 SVG custom P04 en Figma | CLAUDE/EZON-Finder-Icons-V2-Prompts.md §6 | S |
+| V2-5 | Fase 5: Refactor AccessIcon/FeatureIcon a estrategia CDN+Lucide | CLAUDE/EZON-Finder-Icons-V2-Prompts.md §5 | M |
+| V2-6 | Fase 5 (paralelo): enviar a Dan brief de iconos para EZON | CLAUDE/EZON-Finder-EZON-Icons-Request.md | XS |
+| V2-7 | Fase 6: Validación transversal mobile + deck antes/después | — | M |
+| V2-8 | Fase 7: Review Dan + ajustes + cierre V2 | — | M |
 
 ### 🟡 In Progress
 
-| # | Task | Context | Size |
-|---|---|---|---|
-| DL-7 | Tarea 7: Migración de pantallas restantes (Apertura, Grosor, Métodos, Funciones, Tipo) | CLAUDE/EZON_PROMPT_CLAUDE_CODE.md §Tarea 7 | XL |
+_(none)_
 
 ### ✅ Done
 
 | # | Task | Completed |
 |---|---|---|
+| V2-3 | Fase 3: Reemplazar SVG inline P02 por Lucide (`DoorOpen`, `MoveHorizontal`, `Fence`, `HelpCircle`) | 2026-05-25 |
+| V2-1 | Fase 1: Install lucide-react (pinned exact) + setup icon tokens in tokens.js | 2026-05-25 |
+| V2-0 | Fase 0: Revert P01 (remove .webp image paths, keep mood textures) + Revert P02 (remove material-conditioned image logic) | 2026-05-25 |
+| DL-7 | Tarea 7: Migración de pantallas restantes (Apertura, Grosor, Métodos, Funciones, Tipo) | 2026-05-25 |
 | — | `matcher.js`: `getViableDoorTypes`, `getViableAccessMethods`, `getViableFunctions` exports; reja→candado domain rule in `getViableLockTypes` | 2026-05-13 |
 | — | `DoorTypeScreen` + `LockTypeScreen`: dynamic option filtering via `getViableDoorTypes` / `getViableLockTypes` | 2026-05-13 |
 | — | `AccessScreen` + `FunctionsScreen`: dynamic option filtering via `getViableAccessMethods` / `getViableFunctions` | 2026-05-13 |
@@ -274,6 +318,7 @@ This is a placeholder. Replace with the real number when provided by EZON.
 - When adding a new screen, add a `<Route>` in `App.jsx` and wire it into the navigation chain.
 - When updating product data, edit `data/products.js` only — never hardcode product info in screens.
 - When a task is completed, note it in the Task Log above with today's date.
+- **Do not generate icons with AI.** If an icon is missing: first look in Lucide, then request from EZON (see `CLAUDE/EZON-Finder-EZON-Icons-Request.md`), and as a last resort draw manually in Figma. AI-generated icons break stroke consistency.
 
 ---
 

@@ -32,6 +32,15 @@ export const RADIUS_XL = '22px';
 export const ALERT_BG   = '#FEF3C7';
 export const ALERT_TEXT = '#92400E';
 
+/* Icon system — V2 */
+export const ICON_STROKE         = 1.5;
+export const ICON_SIZE_HERO      = 32;
+export const ICON_SIZE_INLINE    = 28;
+export const ICON_SIZE_SMALL     = 20;
+export const ICON_COLOR_ON_DARK  = '#FAFAF8';
+export const ICON_COLOR_ON_LIGHT = '#111111';
+export const ICON_COLOR_MUTED    = '#6B6B6B';
+
 /* Legacy aliases — kept for backwards compatibility with existing screen code */
 export const VERDE         = EZON;
 export const BG_APP        = SURFACE;
