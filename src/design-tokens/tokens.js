@@ -34,7 +34,7 @@ export const ALERT_TEXT = '#92400E';
 
 /* Icon system — V2 */
 export const ICON_STROKE         = 1.5;
-export const ICON_SIZE_HERO      = 32;
+export const ICON_SIZE_HERO      = 40;
 export const ICON_SIZE_INLINE    = 28;
 export const ICON_SIZE_SMALL     = 20;
 export const ICON_COLOR_ON_DARK  = '#FAFAF8';

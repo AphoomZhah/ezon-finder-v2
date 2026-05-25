@@ -148,7 +148,6 @@ function VisualCard({ option, isSelected, onClick }) {
         height: 145,
         position: 'relative',
         overflow: 'hidden',
-        borderRadius: `${RADIUS_LG} ${RADIUS_LG} 0 0`,
         background: hasPhoto ? '#F5F5F5' : undefined,
         ...texture,
       }}>
@@ -185,10 +184,11 @@ function VisualCard({ option, isSelected, onClick }) {
               src={option.image}
               alt=""
               style={{
-                position: 'absolute',
-                height: '100%', width: 'auto',
-                top: 0, left: '50%',
-                transform: 'translateX(-50%)',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block',
               }}
             />
           )

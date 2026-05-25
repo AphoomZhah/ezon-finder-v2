@@ -34,9 +34,10 @@ export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
           />
         </div>
 
-        {/* Section B — Measurement instrument */}
+        {/* Section B — Measurement instrument (temporarily hidden — restore by uncommenting)
         <SectionLabel letter="B">Instrumento de medición</SectionLabel>
         <MeasurementInstrument />
+        */}
       </div>
     </StepLayout>
   );

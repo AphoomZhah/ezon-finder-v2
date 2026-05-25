@@ -241,6 +241,7 @@ Access methods → Functions/features → Loading → Results
 - **Prices** — manually updated strings in `products.js`. No live data.
 - **Door type collapsed** — UI presents 3 options (abatible / corrediza / reja) instead of 5. Matcher uses `doorTypeHard()` which OR-maps collapsed values to their sub-keys in product data.
 - **Option card image-swap behavior — REMOVED in V2** — the `imageOpen` prop in `VisualCard` (`OptionCardGrid.jsx`) that crossfaded `image` → `imageOpen` on selection is no longer used. It was part of the V1 photo system. In V2, selection cards use stable icons that do not change between states (only border and opacity change). If the prop is still in the component, remove it in the next OptionCardGrid refactor.
+- **MeasurementInstrument — temporarily hidden (ThicknessScreen.jsx)** — The `<MeasurementInstrument />` component (Section B of ThicknessScreen) is commented out pending final design. To restore it, uncomment the Section B block in `ThicknessScreen.jsx`. The component itself lives in `src/components/MeasurementInstrument.jsx` and remains in the codebase — do not delete it.
 
 ---
 

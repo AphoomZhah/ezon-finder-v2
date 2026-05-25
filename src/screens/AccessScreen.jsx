@@ -57,7 +57,7 @@ const ACCESS_OPTIONS = ACCESS_METHODS.map(m => ({
       display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
     }}>
       <div style={{ color: '#FAFAF8', opacity: 0.85 }}>
-        <AccessIcon type={m.iconType} size={28} />
+        <AccessIcon type={m.iconType} size={36} />
       </div>
     </div>
   ),
