@@ -404,24 +404,34 @@ function DiagramCard({ option, isSelected, onClick }) {
 /* ══════════════════════════════════════════════════════════════════════════════
    VARIANT: unknown — "No lo sé" escape card
    ══════════════════════════════════════════════════════════════════════════════ */
-function UnknownCard({ title = 'No lo sé', subtitle = 'Te conectamos con un asesor', onSelect }) {
+function UnknownCard({ title = 'No lo sé', subtitle = 'Te conectamos con un asesor', onSelect, isSelected = false }) {
+  const { dot, check } = selectedOverlay();
   return (
     <button
       onClick={onSelect}
+      aria-pressed={isSelected}
       style={{
-        border: `1px dashed ${INK_QUATERNARY}`,
+        border: isSelected
+          ? `2px solid ${INK_PRIMARY}`
+          : `1px dashed ${INK_QUATERNARY}`,
+        boxShadow: isSelected
+          ? `0 0 0 2px ${INK_PRIMARY}, 0 8px 20px -6px rgba(0,0,0,0.12)`
+          : 'none',
         borderRadius: RADIUS_LG,
         overflow: 'hidden',
         cursor: 'pointer',
         background: SURFACE_DEEP,
         padding: 0,
         textAlign: 'left',
-        transition: 'border-color 180ms ease, opacity 180ms ease',
+        transform: isSelected ? 'translateY(-2px)' : 'none',
+        transition: 'border-color 180ms ease, opacity 180ms ease, box-shadow 200ms cubic-bezier(0.2,0.8,0.2,1), transform 200ms cubic-bezier(0.2,0.8,0.2,1)',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
       }}
     >
+      {isSelected && <div style={dot} />}
+      {isSelected && <div style={check} />}
       {/* Question mark zone */}
       <div style={{
         height: 120,
@@ -482,6 +492,7 @@ export function OptionCard({ option, isSelected, onClick, variant = 'visual' }) 
         title={option.label || option.title || 'No lo sé'}
         subtitle={option.hint || option.subtitle}
         onSelect={onClick}
+        isSelected={isSelected}
       />
     );
   }
@@ -494,6 +505,7 @@ export function OptionCard({ option, isSelected, onClick, variant = 'visual' }) 
         title={option.title}
         subtitle={option.subtitle}
         onSelect={onClick}
+        isSelected={isSelected}
       />
     );
   }
@@ -549,6 +561,7 @@ export function OptionCardGrid({
           title={unknownOption.title}
           subtitle={unknownOption.subtitle}
           onSelect={unknownOption.onSelect}
+          isSelected={isSelected(unknownOption.id || 'unknown')}
         />
       )}
     </div>

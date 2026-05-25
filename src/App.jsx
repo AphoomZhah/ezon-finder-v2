@@ -48,11 +48,7 @@ export default function App() {
 
       <Route path="/material" element={
         <MaterialScreen {...p}
-          onNext={() => {
-            const m = answers.material;
-            if (m === 'otros') go('/incompatible');
-            else go('/door-type');
-          }}
+          onNext={() => go('/door-type')}
           onBack={() => go('/', 'back')}/>
       }/>
 
