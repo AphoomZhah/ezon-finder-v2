@@ -68,8 +68,9 @@ function softScore(product, answers) {
 }
 
 export function matchProducts(answers) {
-  if (answers.material === 'otros') return [];
-  const materialFilter = answers.material === 'unknown' ? null : answers.material;
+  const materialFilter = (!answers.material || answers.material === 'unknown' || answers.material === 'otros')
+    ? null
+    : answers.material;
 
   const matched = PRODUCTS
     .filter(p =>
@@ -93,7 +94,7 @@ export function getViableLockTypes(answers) {
   if (answers.doorType === 'reja') return ['candado'];
 
   const candidates = PRODUCTS.filter(p =>
-    categoryHard(p.material, answers.material === 'unknown' ? null : answers.material) &&
+    categoryHard(p.material, (!answers.material || answers.material === 'unknown' || answers.material === 'otros') ? null : answers.material) &&
     doorTypeHard(p.doorType, answers.doorType)
   );
 
@@ -110,7 +111,7 @@ export function getViableLockTypes(answers) {
 export function getViableDoorTypes(answers) {
   // Domain rule: vidrio doors are never rejas.
   // For all other materials, all three doorType options are potentially valid.
-  const materialFilter = (!answers.material || answers.material === 'unknown')
+  const materialFilter = (!answers.material || answers.material === 'unknown' || answers.material === 'otros')
     ? null
     : answers.material;
 
@@ -129,7 +130,7 @@ export function getViableDoorTypes(answers) {
 }
 
 export function getViableAccessMethods(answers) {
-  const materialFilter = (!answers.material || answers.material === 'unknown')
+  const materialFilter = (!answers.material || answers.material === 'unknown' || answers.material === 'otros')
     ? null : answers.material;
   const lockTypeFilter = (!answers.lockType || answers.lockType === 'unknown')
     ? null : answers.lockType;
@@ -147,7 +148,7 @@ export function getViableAccessMethods(answers) {
 }
 
 export function getViableFunctions(answers) {
-  const materialFilter = (!answers.material || answers.material === 'unknown')
+  const materialFilter = (!answers.material || answers.material === 'unknown' || answers.material === 'otros')
     ? null : answers.material;
   const lockTypeFilter = (!answers.lockType || answers.lockType === 'unknown')
     ? null : answers.lockType;

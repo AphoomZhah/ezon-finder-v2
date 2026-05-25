@@ -194,7 +194,7 @@ export const PRODUCTS = [
       googleHomeAlexa: false, adminAirbnb: false,
     },
     lockType: {
-      conManija: true, pushPull: false,_cerrojo: false, candado: false,
+      conManija: true, pushPull: false, cerrojo: false, candado: false,
     },
     accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios'],
   },
