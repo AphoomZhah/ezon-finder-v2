@@ -6,7 +6,12 @@
       "Bash(node -e \"require\\('./node_modules/rollup/dist/parseAst.js'\\)\")",
       "Bash(npm list *)",
       "Bash(NODE_TLS_REJECT_UNAUTHORIZED=0 npm install)",
-      "Bash(npm config *)"
+      "Bash(npm config *)",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(findstr /i \"node_modules dist\")",
+      "Bash(dir /b node_modules dist)"
     ]
   }
 }
