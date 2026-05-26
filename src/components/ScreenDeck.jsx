@@ -19,7 +19,7 @@ export function ScreenDeck({ children, style }) {
         fontSize: 14,
         lineHeight: 1.55,
         color: 'var(--ink-secondary)',
-        marginBottom: 28,
+        marginBottom: 20,
         marginTop: 0,
         ...style,
       }}

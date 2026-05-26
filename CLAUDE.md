@@ -266,7 +266,6 @@ This is a placeholder. Replace with the real number when provided by EZON.
 | V2-4 | Fase 4: Recalibrar 4 SVG custom P04 en Figma | CLAUDE/EZON-Finder-Icons-V2-Prompts.md §6 | S |
 | V2-5 | Fase 5: Refactor AccessIcon/FeatureIcon a estrategia CDN+Lucide | CLAUDE/EZON-Finder-Icons-V2-Prompts.md §5 | M |
 | V2-6 | Fase 5 (paralelo): enviar a Dan brief de iconos para EZON | CLAUDE/EZON-Finder-EZON-Icons-Request.md | XS |
-| V2-7 | Fase 6: Validación transversal mobile + deck antes/después | — | M |
 | V2-8 | Fase 7: Review Dan + ajustes + cierre V2 | — | M |
 
 ### 🟡 In Progress
@@ -277,6 +276,7 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| V2-7 | Fase 6: Validación transversal mobile + deck antes/después | 2026-05-26 |
 | V2-3 | Fase 3: Reemplazar SVG inline P02 por Lucide (`DoorOpen`, `MoveHorizontal`, `Fence`, `HelpCircle`) | 2026-05-25 |
 | V2-1 | Fase 1: Install lucide-react (pinned exact) + setup icon tokens in tokens.js | 2026-05-25 |
 | V2-0 | Fase 0: Revert P01 (remove .webp image paths, keep mood textures) + Revert P02 (remove material-conditioned image logic) | 2026-05-25 |

@@ -5,7 +5,7 @@ export function AppHeader({ onBack, showBack = true, onHelp, onReset }) {
 
   return (
     <div style={{
-      padding: '18px 24px',
+      padding: '12px 24px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',

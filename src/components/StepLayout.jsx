@@ -22,7 +22,7 @@ export function StepLayout({ children, dir = 'forward', footerProps, stepMeta, s
       />
       <div style={{ flex: 1, paddingBottom: 120 }}>
         {stepMeta && (
-          <div style={{ padding: '0 24px' }}>
+          <div style={{ padding: '4px 24px 0' }}>
             <StepMeta
               currentStep={stepMeta.currentStep}
               totalSteps={stepMeta.totalSteps}
