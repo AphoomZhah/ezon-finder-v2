@@ -48,22 +48,47 @@ const ACCESS_METHODS = [
 
 // Map access method options to inject an icon image element that sits centered
 // in the visual hero area (neutral dark background, icon centered).
-const ACCESS_OPTIONS = ACCESS_METHODS.map(m => ({
-  ...m,
-  // The VisualCard renders `option.image` centered over the texture when present.
-  // We use a neutral dark mood so the icon reads on a dark surface.
-  image: (
-    <div style={{
-      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
-    }}>
-      <div style={{ color: '#FAFAF8', opacity: 0.85 }}>
-        <AccessIcon type={m.iconType} size={36} />
+const ACCESS_OPTIONS = ACCESS_METHODS.map(m => {
+  const cdnUrls = {
+    huella: 'https://cdn.shopify.com/s/files/1/0571/0400/7337/files/icon-ezon-huella-digital_9501b436-d07d-4278-b44d-405b100779b4.svg?v=1689132524',
+    pin: 'https://cdn.shopify.com/s/files/1/0571/0400/7337/files/icon-ezon-pin-code.svg?v=1689132524',
+    rfid: 'https://cdn.shopify.com/s/files/1/0571/0400/7337/files/icon-ezon-rfid_58a8c994-091e-45d3-afe5-efc9bcea8c44.svg?v=1689132524',
+    app: 'https://cdn.shopify.com/s/files/1/0571/0400/7337/files/icon-ezon-acceso-remoto_57db8e49-09f4-4148-a8ba-6be45018a7ec.svg?v=1689132524',
+  };
+
+  const useCdn = ['huella', 'pin', 'rfid', 'app'].includes(m.id);
+
+  return {
+    ...m,
+    // The VisualCard renders `option.image` centered over the texture when present.
+    // We use a neutral dark mood so the icon reads on a dark surface.
+    image: (
+      <div style={{
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
+      }}>
+        <div style={{ color: '#FAFAF8', opacity: 0.85 }}>
+          {useCdn ? (
+            <img
+              src={cdnUrls[m.id]}
+              alt={m.title}
+              style={{
+                width: '36px',
+                height: '36px',
+                objectFit: 'contain',
+                filter: 'brightness(0) invert(1)',
+                opacity: 0.85,
+              }}
+            />
+          ) : (
+            <AccessIcon type={m.iconType} size={36} />
+          )}
+        </div>
       </div>
-    </div>
-  ),
-  // Override badge: don't show material badge for access method cards
-  badge: false,
-}));
+    ),
+    // Override badge: don't show material badge for access method cards
+    badge: false,
+  };
+});
 
 const UNKNOWN_ACCESS = {
   id: 'unknown',
