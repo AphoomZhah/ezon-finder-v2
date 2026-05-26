@@ -72,8 +72,8 @@ const ACCESS_OPTIONS = ACCESS_METHODS.map(m => {
               src={cdnUrls[m.id]}
               alt={m.title}
               style={{
-                width: '36px',
-                height: '36px',
+                width: '48px',
+                height: '48px',
                 objectFit: 'contain',
                 filter: 'brightness(0) invert(1)',
                 opacity: 0.85,
