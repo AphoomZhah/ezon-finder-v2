@@ -1,4 +1,4 @@
-import { DoorOpen, Fence, MoveHorizontal, HelpCircle } from 'lucide-react';
+import { Fence, HelpCircle } from 'lucide-react';
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid } from '../components';
 import { getViableDoorTypes } from '../data/matcher';
 import { ICON_SIZE_HERO, ICON_STROKE, ICON_COLOR_ON_DARK, ICON_COLOR_MUTED } from '../design-tokens/tokens';
@@ -9,14 +9,34 @@ const DOOR_TYPES = [
     title: 'Abatible',
     subtitle: 'Abre hacia adentro o afuera sobre bisagras',
     mood: 'abatible',
-    image: <DoorOpen size={ICON_SIZE_HERO} strokeWidth={ICON_STROKE} color={ICON_COLOR_ON_DARK} />,
+    image: (
+      <img
+        src="/assets/img/ico-puerta-01-abatible.svg"
+        style={{
+          height: '78%',
+          width: 'auto',
+          filter: 'brightness(0) invert(1)',
+          opacity: 0.85,
+        }}
+      />
+    ),
   },
   {
     id: 'corrediza',
     title: 'Corrediza',
     subtitle: 'Se desliza sobre un riel horizontal',
     mood: 'corrediza',
-    image: <MoveHorizontal size={ICON_SIZE_HERO} strokeWidth={ICON_STROKE} color={ICON_COLOR_ON_DARK} />,
+    image: (
+      <img
+        src="/assets/img/ico-puerta-02-corrediza.svg"
+        style={{
+          height: '74%',
+          width: 'auto',
+          filter: 'brightness(0) invert(1)',
+          opacity: 0.85,
+        }}
+      />
+    ),
   },
   {
     id: 'reja',
