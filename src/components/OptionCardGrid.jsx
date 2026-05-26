@@ -148,6 +148,9 @@ function VisualCard({ option, isSelected, onClick }) {
         height: 145,
         position: 'relative',
         overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         background: hasPhoto ? '#F5F5F5' : undefined,
         ...texture,
       }}>

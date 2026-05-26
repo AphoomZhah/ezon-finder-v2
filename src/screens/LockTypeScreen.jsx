@@ -8,11 +8,8 @@ const LOCK_TYPES = [
     subtitle: 'Palanca o pomo — la más común en casas y departamentos',
     mood: 'lock-manija',
     image: (
-      <svg width="64" height="64" viewBox="0 0 52 52" fill="none" opacity="0.85">
-        <rect x="8" y="6" width="10" height="36" rx="3" stroke="white" strokeWidth="1.5"/>
-        <path d="M18 24 H34 C34 24 40 24 40 30 V36" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="14" cy="28" r="3.5" stroke="white" strokeWidth="1.5"/>
-      </svg>
+      <img src="/assets/img/ico-cerradura-01-manija.svg"
+        style={{ height: '72%', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />
     ),
     badge: false,
   },
@@ -22,13 +19,8 @@ const LOCK_TYPES = [
     subtitle: 'Sin manija saliente — se empuja o jala la placa plana',
     mood: 'lock-pushpull',
     image: (
-      <svg width="64" height="64" viewBox="0 0 52 52" fill="none" opacity="0.85">
-        <rect x="10" y="6" width="12" height="40" rx="4" stroke="white" strokeWidth="1.5"/>
-        <path d="M22 18 H36" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M22 34 H36" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M30 14 L36 18 L30 22" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M30 30 L36 34 L30 38" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
+      <img src="/assets/img/ico-cerradura-02-push-pull.svg"
+        style={{ height: '80%', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />
     ),
     badge: false,
   },
@@ -38,12 +30,8 @@ const LOCK_TYPES = [
     subtitle: 'Se instala sobre la cerradura existente — opción sin reemplazar',
     mood: 'lock-cerrojo',
     image: (
-      <svg width="64" height="64" viewBox="0 0 52 52" fill="none" opacity="0.85">
-        <rect x="10" y="14" width="20" height="24" rx="4" stroke="white" strokeWidth="1.5"/>
-        <path d="M30 26 H44" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-        <rect x="36" y="22" width="8" height="8" rx="2" stroke="white" strokeWidth="1.5"/>
-        <circle cx="20" cy="26" r="3" stroke="white" strokeWidth="1.5"/>
-      </svg>
+      <img src="/assets/img/ico-cerradura-03-cerrojo.svg"
+        style={{ height: '58%', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />
     ),
     badge: false,
   },
@@ -53,12 +41,8 @@ const LOCK_TYPES = [
     subtitle: 'Portátil — se coloca en argolla, reja o portón sin instalación',
     mood: 'lock-candado',
     image: (
-      <svg width="64" height="64" viewBox="0 0 52 52" fill="none" opacity="0.85">
-        <rect x="13" y="24" width="26" height="20" rx="4" stroke="white" strokeWidth="1.5"/>
-        <path d="M19 24V18a7 7 0 0114 0v6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="26" cy="34" r="3" stroke="white" strokeWidth="1.5"/>
-        <line x1="26" y1="37" x2="26" y2="40" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-      </svg>
+      <img src="/assets/img/ico-cerradura-04-candado.svg"
+        style={{ height: '50%', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />
     ),
     badge: false,
   },
