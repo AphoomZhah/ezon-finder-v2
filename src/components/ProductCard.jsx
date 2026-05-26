@@ -90,7 +90,7 @@ export function ProductCard({ product }) {
     if (url) {
       window.open(url, '_blank', 'noopener,noreferrer');
     } else {
-      window.open('https://wa.me/525500000000', '_blank', 'noopener,noreferrer');
+      window.open('https://wa.me/525587432050?text=Hola%2C%20me%20interesa%20cotizar%20una%20cerradura%20inteligente.', '_blank', 'noopener,noreferrer');
     }
   };
 

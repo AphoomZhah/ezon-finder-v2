@@ -2,7 +2,7 @@ import { TEXT_SECONDARY } from '../design-tokens/tokens';
 
 export function WhatsAppLink({ text = 'Hablar con un asesor', style }) {
   return (
-    <a href="https://wa.me/525500000000" target="_blank" rel="noreferrer" style={{
+    <a href="https://wa.me/525587432050?text=Hola%2C%20me%20interesa%20cotizar%20una%20cerradura%20inteligente." target="_blank" rel="noreferrer" style={{
       display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
       gap: 6, padding: '8px 12px',
       border: 'none', borderRadius: 6,

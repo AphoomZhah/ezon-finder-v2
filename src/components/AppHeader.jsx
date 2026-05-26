@@ -1,4 +1,4 @@
-const WA_URL = 'https://wa.me/525500000000';
+const WA_URL = 'https://wa.me/525587432050?text=Hola%2C%20me%20interesa%20cotizar%20una%20cerradura%20inteligente.';
 
 export function AppHeader({ onBack, showBack = true, onHelp, onReset }) {
   const handleHelp = onHelp || (() => window.open(WA_URL, '_blank'));
