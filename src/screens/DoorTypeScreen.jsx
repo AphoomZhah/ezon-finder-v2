@@ -59,7 +59,8 @@ export function DoorTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const sel = answers.doorType;
   const viableDoorTypeIds = getViableDoorTypes(answers);
   const visibleOptions = DOOR_TYPES.filter(opt =>
-    opt.id === 'unknown' || viableDoorTypeIds.includes(opt.id)
+    opt.id === 'unknown' ||
+    (opt.id !== 'reja' && viableDoorTypeIds.includes(opt.id))
   );
 
   return (
