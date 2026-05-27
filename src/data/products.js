@@ -194,7 +194,7 @@ export const PRODUCTS = [
       googleHomeAlexa: false, adminAirbnb: false,
     },
     lockType: {
-      conManija: true, pushPull: false, cerrojo: false, candado: false,
+      conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
     accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios'],
   },
@@ -486,7 +486,7 @@ export const PRODUCTS = [
       app: true, rfid: true, llaveRespaldo: true,
     },
     functions: {
-      bloqueoAutomatico: true, modoNino: false,_camara: false,
+      bloqueoAutomatico: true, modoNino: false, _camara: false,
       codigosTemporales: true, aperturaRemota: true,
       googleHomeAlexa: false, adminAirbnb: false,
     },
@@ -936,8 +936,8 @@ export const PRODUCTS = [
       abatible1hoja: false, abatible2hojas: false,
       corrediza1hoja: false, corrediza2hojas: false, reja: false,
     },
-    thicknessMin: null,
-    thicknessMax: null,
+    thicknessMin: 2,
+    thicknessMax: 3,
     location: {
       interiorPrincipal: false, interiorRecamara: false,
       interiorCloset: false, interiorOficina: true,
@@ -1101,8 +1101,8 @@ export const PRODUCTS = [
       abatible1hoja: true, abatible2hojas: false,
       corrediza1hoja: false, corrediza2hojas: false, reja: false,
     },
-    thicknessMin: null,
-    thicknessMax: null,
+    thicknessMin: 2,
+    thicknessMax: 3,
     location: {
       interiorPrincipal: false, interiorRecamara: false,
       interiorCloset: false, interiorOficina: true,
