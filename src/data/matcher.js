@@ -96,15 +96,16 @@ export function matchProducts(answers) {
     .sort((a, b) => b.score - a.score)
     .slice(0, 5);
 
-  if (matched.length > 0) return matched;
+  if (matched.length > 0) return { products: matched, isFallback: false };
 
   // Fallback: no compatible products found — show candado alternatives
-  return PRODUCTS
+  const candados = PRODUCTS
     .filter(p => p.lockType.candado === true)
     .map(p => ({ ...p, score: softScore(p, answers) }))
     .filter(p => p.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, 5);
+  return { products: candados, isFallback: true };
 }
 
 export function getViableLockTypes(answers) {

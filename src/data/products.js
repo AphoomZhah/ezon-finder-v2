@@ -227,7 +227,7 @@ export const PRODUCTS = [
       googleHomeAlexa: false, adminAirbnb: false,
     },
     lockType: {
-      conManija: false, pushPull: false, cerrojo: false, candado: false,
+      conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
     accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios'],
   },
@@ -293,7 +293,7 @@ export const PRODUCTS = [
       googleHomeAlexa: false, adminAirbnb: false,
     },
     lockType: {
-      conManija: false, pushPull: false, cerrojo: false, candado: false,
+      conManija: false, pushPull: true, cerrojo: false, candado: false,
     },
     accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios', 'vena_palmar'],
   },
@@ -920,7 +920,7 @@ export const PRODUCTS = [
       googleHomeAlexa: false, adminAirbnb: false,
     },
     lockType: {
-      conManija: false, pushPull: false, cerrojo: false, candado: false,
+      conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
     accessIcons: ['tarjeta_rfid', 'codigo_pin'],
   },
@@ -953,7 +953,7 @@ export const PRODUCTS = [
       googleHomeAlexa: false, adminAirbnb: true,
     },
     lockType: {
-      conManija: false, pushPull: false, cerrojo: false, candado: false,
+      conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
     accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
@@ -1118,7 +1118,7 @@ export const PRODUCTS = [
       googleHomeAlexa: false, adminAirbnb: false,
     },
     lockType: {
-      conManija: false, pushPull: false, cerrojo: false, candado: false,
+      conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
     accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
@@ -1151,7 +1151,7 @@ export const PRODUCTS = [
       googleHomeAlexa: false, adminAirbnb: true,
     },
     lockType: {
-      conManija: false, pushPull: false, cerrojo: false, candado: false,
+      conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
     accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },

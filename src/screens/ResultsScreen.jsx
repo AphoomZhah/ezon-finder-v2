@@ -77,7 +77,7 @@ function EmptyState({ onRestart }) {
 }
 
 export function ResultsScreen({ answers, onRestart, dir }) {
-  const products = matchProducts(answers);
+  const { products, isFallback } = matchProducts(answers);
   const count = products.length;
 
   return (
@@ -109,17 +109,52 @@ export function ResultsScreen({ answers, onRestart, dir }) {
               fontSize: 13.5, fontWeight: 400,
               lineHeight: 1.5, color: INK_SECONDARY,
             }}>
-              Basado en tus respuestas, encontramos{' '}
-              <strong style={{ color: INK_PRIMARY, fontWeight: 600 }}>
-                {count === 1 ? '1 cerradura compatible' : `${count} cerraduras compatibles`}
-              </strong>{' '}
-              con tu instalación específica.
+              {isFallback
+                ? 'No encontramos una coincidencia exacta, pero te mostramos opciones que pueden funcionar.'
+                : <>Basado en tus respuestas, encontramos{' '}
+                    <strong style={{ color: INK_PRIMARY, fontWeight: 600 }}>
+                      {count === 1 ? '1 cerradura compatible' : `${count} cerraduras compatibles`}
+                    </strong>{' '}
+                    con tu instalación específica.</>
+              }
             </p>
           )}
         </div>
 
         {count === 0 ? (
           <EmptyState onRestart={onRestart}/>
+        ) : isFallback ? (
+          <>
+            <ResultSectionLabel variant="alt">Puede que te funcione</ResultSectionLabel>
+            <p style={{
+              fontFamily: "'Open Sans', sans-serif",
+              fontSize: 13, color: INK_SECONDARY,
+              lineHeight: 1.6,
+              padding: '0 20px 12px',
+            }}>
+              No encontramos cerraduras que cumplan con todas tus necesidades, pero estos candados inteligentes pueden ser una buena alternativa para tu caso.
+            </p>
+            {products.map(p => (
+              <ProductCard key={p.urlShopify || p.name} product={p}/>
+            ))}
+
+            {/* Footer help */}
+            <div style={{
+              padding: '24px 20px 32px',
+              borderTop: `1px solid ${LINE}`,
+              marginTop: 8,
+              textAlign: 'center',
+            }}>
+              <p style={{
+                fontFamily: "'Open Sans', sans-serif",
+                fontSize: 13, color: INK_SECONDARY,
+                marginBottom: 10,
+              }}>
+                ¿No estás seguro cuál elegir?
+              </p>
+              <WhatsAppLink text="Hablar con un ejecutivo"/>
+            </div>
+          </>
         ) : (
           <>
             <ResultSectionLabel variant="ideal">
