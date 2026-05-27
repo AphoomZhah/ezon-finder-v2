@@ -1,0 +1,22 @@
+{
+    "name": "EZON Smart Lock Finder",
+    "short_name": "EZON Finder",
+    "description": "Encuentra la cerradura inteligente compatible con tu puerta",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#F5F5F5",
+    "theme_color": "#7EDB8A",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

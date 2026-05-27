@@ -109,7 +109,7 @@ ALERT_TEXT    = '#92400E'
 ```
 
 **Typography:** Montserrat weight 900 for all headings (`fontFamily: "'Montserrat', sans-serif", fontWeight: 900`). Open Sans for all body/UI text.
-**Mobile-first:** All screens designed at 375px. Container max-width is 480px, centered.
+**Mobile-first:** All screens designed at 375px. Container max-width is 520px, centered.
 **No dark mode.** Light surface only — do not introduce dark backgrounds.
 
 ---

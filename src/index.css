@@ -1,28 +1,28 @@
 :root {
   /* Ink scale */
-  --ink-primary:    #0A0A0A;
-  --ink-secondary:  #4A4A4A;
-  --ink-tertiary:   #8A8A8A;
+  --ink-primary: #0A0A0A;
+  --ink-secondary: #4A4A4A;
+  --ink-tertiary: #8A8A8A;
   --ink-quaternary: #BCBCBC;
 
   /* Borders */
-  --line:           #E4E4E4;
-  --line-strong:    #1A1A1A;
+  --line: #E4E4E4;
+  --line-strong: #1A1A1A;
 
   /* Surfaces */
-  --surface:        #F4F3EF;
+  --surface: #F4F3EF;
   --surface-raised: #FAFAF8;
-  --surface-card:   #FFFFFF;
-  --surface-deep:   #ECEAE3;
+  --surface-card: #FFFFFF;
+  --surface-deep: #ECEAE3;
 
   /* EZON green — single accent */
-  --ezon:           #7EDB8A;
-  --ezon-ink:       #0A0A0A;
-  --ezon-shadow:    rgba(126, 219, 138, 0.35);
+  --ezon: #7EDB8A;
+  --ezon-ink: #0A0A0A;
+  --ezon-shadow: rgba(126, 219, 138, 0.35);
 
   /* Typography */
-  --font-display:   'Montserrat', -apple-system, sans-serif;
-  --font-body:      'Open Sans', -apple-system, sans-serif;
+  --font-display: 'Montserrat', -apple-system, sans-serif;
+  --font-body: 'Open Sans', -apple-system, sans-serif;
 
   /* Geometry */
   --radius-sm: 4px;
@@ -44,23 +44,44 @@ body {
 }
 
 #ezon-finder {
-  max-width: 480px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
 @keyframes slideInForward {
-  from { opacity: 0; transform: translateX(32px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInBack {
-  from { opacity: 0; transform: translateX(-32px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .screen-forward {

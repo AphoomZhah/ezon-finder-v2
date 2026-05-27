@@ -227,7 +227,7 @@ Este patrón es **inviolable** — si una pantalla se desvía de él, está rota
 
 ### 4.3 Mobile-first
 
-El sistema está diseñado para **375px** como ancho de referencia. En desktop, el contenedor se centra con `max-width: 480px` (similar a un container móvil ampliado) o se monta en una columna lateral si Shopify lo embebe en un sidebar. Las decisiones tipográficas y de spacing **no se escalan** entre mobile y desktop — son las mismas. Lo que cambia es el contenedor, no el contenido.
+El sistema está diseñado para **375px** como ancho de referencia. En desktop, el contenedor se centra con `max-width: 520px` (similar a un container móvil ampliado) o se monta en una columna lateral si Shopify lo embebe en un sidebar. Las decisiones tipográficas y de spacing **no se escalan** entre mobile y desktop — son las mismas. Lo que cambia es el contenedor, no el contenido.
 
 ---
 
