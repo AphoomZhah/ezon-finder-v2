@@ -72,11 +72,15 @@ export function matchProducts(answers) {
     ? null
     : answers.material;
 
+  const selectedFunctions = (answers.functions || []).filter(f => f !== 'unknown');
+
   const matched = PRODUCTS
     .filter(p =>
       categoryHard(p.material, materialFilter) &&
       doorTypeHard(p.doorType, answers.doorType) &&
-      thicknessHard(p, answers.thickness)
+      thicknessHard(p, answers.thickness) &&
+      // Hard filter: product must support ALL selected functions
+      (selectedFunctions.length === 0 || selectedFunctions.every(fn => p.functions[fn] === true))
       // TODO post-V1: reactivar cuando se reintroduzca LocationScreen
       // && categoryHard(p.location, answers.location)
     )
@@ -85,7 +89,15 @@ export function matchProducts(answers) {
     .sort((a, b) => b.score - a.score)
     .slice(0, 5);
 
-  return matched;
+  if (matched.length > 0) return matched;
+
+  // Fallback: no compatible products found — show candado alternatives
+  return PRODUCTS
+    .filter(p => p.lockType.candado === true)
+    .map(p => ({ ...p, score: softScore(p, answers) }))
+    .filter(p => p.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
 }
 
 export function getViableLockTypes(answers) {
