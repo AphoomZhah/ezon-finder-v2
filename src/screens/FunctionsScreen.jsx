@@ -108,11 +108,12 @@ export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
   const toggle = (id) => {
     setAnswers(a => {
       const cur = a.functions || [];
-      return {
-        ...a,
-        functions: cur.includes(id) ? cur.filter(x => x !== id) : [...cur, id],
-        functionsNone: false,
-      };
+      if (cur.includes(id)) {
+        return { ...a, functions: cur.filter(x => x !== id), functionsNone: false };
+      }
+      // Enforce max 3 when >= 3 options are visible
+      if (visibleFunctions.length >= 3 && cur.length >= 3) return a;
+      return { ...a, functions: [...cur, id], functionsNone: false };
     });
   };
 
@@ -122,6 +123,10 @@ export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
 
   const canContinue = sel.length > 0 || noneSelected;
 
+  const deckText = visibleFunctions.length >= 3
+    ? 'Elige hasta 3. Estas funciones filtran los modelos disponibles.'
+    : 'Estas funciones filtran los modelos disponibles.';
+
   return (
     <StepLayout
       dir={dir}
@@ -130,7 +135,7 @@ export function FunctionsScreen({ answers, setAnswers, onNext, onBack, dir }) {
     >
       <div style={{ padding: '0 24px 4px' }}>
         <ScreenTitle>¿Qué funciones necesitas?</ScreenTitle>
-        <ScreenDeck>Elige todas las que te interesen. Estas funciones filtran los modelos disponibles.</ScreenDeck>
+        <ScreenDeck>{deckText}</ScreenDeck>
       </div>
 
       <div style={{ padding: '0 24px 4px', display: 'flex', flexDirection: 'column', gap: 8 }}>

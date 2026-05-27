@@ -111,10 +111,15 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
       setAnswers(a => ({ ...a, accessMethods: ['unknown'] }));
       return;
     }
-    // If any real method was added while 'unknown' was selected, remove 'unknown'
     const filtered = ids.filter(id => id !== 'unknown');
+    // Enforce max 3 when >= 3 options are visible
+    if (visibleAccessOptions.length >= 3 && filtered.length > 3) return;
     setAnswers(a => ({ ...a, accessMethods: filtered }));
   };
+
+  const deckText = visibleAccessOptions.length >= 3
+    ? 'Puedes elegir hasta 3. Lo que selecciones define los métodos disponibles día a día.'
+    : 'Lo que selecciones define los métodos disponibles día a día.';
 
   return (
     <StepLayout
@@ -124,7 +129,7 @@ export function AccessScreen({ answers, setAnswers, onNext, onBack, dir }) {
     >
       <div style={{ padding: '0 24px 4px' }}>
         <ScreenTitle>Selecciona tus métodos de acceso principal</ScreenTitle>
-        <ScreenDeck>Puedes elegir varios. Lo que selecciones define los métodos disponibles día a día.</ScreenDeck>
+        <ScreenDeck>{deckText}</ScreenDeck>
       </div>
 
       <div style={{ padding: '0 24px 4px' }}>
