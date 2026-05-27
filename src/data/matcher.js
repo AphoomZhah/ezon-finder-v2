@@ -80,7 +80,14 @@ export function matchProducts(answers) {
       doorTypeHard(p.doorType, answers.doorType) &&
       thicknessHard(p, answers.thickness) &&
       // Hard filter: product must support ALL selected functions
-      (selectedFunctions.length === 0 || selectedFunctions.every(fn => p.functions[fn] === true))
+      (selectedFunctions.length === 0 || selectedFunctions.every(fn => p.functions[fn] === true)) &&
+      // Hard filter: lockType — respects all-false = universal rule
+      (
+        !answers.lockType ||
+        answers.lockType === 'unknown' ||
+        !Object.values(p.lockType).some(v => v === true) ||
+        p.lockType[answers.lockType] === true
+      )
       // TODO post-V1: reactivar cuando se reintroduzca LocationScreen
       // && categoryHard(p.location, answers.location)
     )
