@@ -1,8 +1,8 @@
 import { StepLayout, ScreenTitle, ScreenDeck, OptionCardGrid, MeasurementInstrument } from '../components';
 
 const THICKNESSES = [
+  { id: '3-5',  label: '3–5',  unit: 'cm', hint: 'Estándar — mayoría de puertas residenciales', badge: 'Más común' },
   { id: '2-3',  label: '2–3',  unit: 'cm', hint: 'Puertas ligeras, interiores' },
-  { id: '3-5',  label: '3–5',  unit: 'cm', hint: 'Estándar — mayoría de departamentos' },
   { id: '5-7',  label: '5–7',  unit: 'cm', hint: 'Reforzadas o acceso principal' },
   { id: '7-10', label: '7–10', unit: 'cm', hint: 'Seguridad o blindadas' },
   { id: 'unknown', label: 'No lo sé', hint: 'Continúa y te mostramos opciones compatibles' },
@@ -40,9 +40,9 @@ export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
             </div>
           }
         >
-          ¿Qué tan grueso es el canto de tu puerta?
+          ¿Cuál es el grosor de tu puerta?
         </ScreenTitle>
-        <ScreenDeck>El canto es la orilla donde se instala la cerradura. Mídelo de frente a fondo.</ScreenDeck>
+        <ScreenDeck>Si no sabes cómo medirlo, abajo encuentras una guía.</ScreenDeck>
       </div>
 
       <div style={{ padding: '0 24px' }}>

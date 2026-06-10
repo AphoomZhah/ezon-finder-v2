@@ -12,7 +12,7 @@ const MATERIALS = [
   {
     id: 'metal',
     title: 'Metal',
-    subtitle: 'Herrería pesada, portones o puertas industriales',
+    subtitle: 'Puertas con laminado de metal, construcción de metal, interior de metal o herrería',
     mood: 'metal',
     badgeLabel: 'Metal',
     image: '/assets/P01_B_Metal.png',
@@ -20,15 +20,15 @@ const MATERIALS = [
   {
     id: 'vidrio',
     title: 'Vidrio',
-    subtitle: 'Templado, sin marcos metálicos o con herraje',
+    subtitle: 'Vidrio templado o vidrio normal, con o sin marcos metálicos',
     mood: 'vidrio',
     badgeLabel: 'Vidrio',
     image: '/assets/P01_C_Vidrio.png',
   },
   {
     id: 'otros',
-    title: 'Otro',
-    subtitle: 'Aluminio, PVC u otro material',
+    title: 'No estoy seguro',
+    subtitle: 'Aluminio, PVC u otro material no listado',
     mood: 'neutral',
     badgeLabel: 'Otro',
     image: '/assets/P01_D_Otros.png',

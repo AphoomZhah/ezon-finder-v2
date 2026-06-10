@@ -276,6 +276,8 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| Tarea A | Copy: MaterialScreen — Metal/Vidrio subtitles, Otros title+subtitle | 2026-06-10 |
+| Tarea B | Copy+orden: ThicknessScreen — ScreenTitle, ScreenDeck, THICKNESSES reorder + badge 3-5 | 2026-06-10 |
 | V2-7 | Fase 6: Validación transversal mobile + deck antes/después | 2026-05-26 |
 | V2-3 | Fase 3: Reemplazar SVG inline P02 por Lucide (`DoorOpen`, `MoveHorizontal`, `Fence`, `HelpCircle`) | 2026-05-25 |
 | V2-1 | Fase 1: Install lucide-react (pinned exact) + setup icon tokens in tokens.js | 2026-05-25 |
