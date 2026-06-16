@@ -276,6 +276,7 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | ProductCard: removido precio tachado/descuento — solo se muestra priceFull. | 2026-06-16 |
 | Tarea A | Copy: MaterialScreen — Metal/Vidrio subtitles, Otros title+subtitle | 2026-06-10 |
 | Tarea B | Copy+orden: ThicknessScreen — ScreenTitle, ScreenDeck, THICKNESSES reorder + badge 3-5 | 2026-06-10 |
 | V2-7 | Fase 6: Validación transversal mobile + deck antes/después | 2026-05-26 |

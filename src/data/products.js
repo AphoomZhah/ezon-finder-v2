@@ -105,7 +105,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-camara-excel-sl204',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/EXCEL_EXC-SL204.jpg',
     priceFull: 6199,
-    priceDiscount: 3719,
+    priceDiscount: 6199,
     material: { madera: true, metal: true, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -236,8 +236,8 @@ export const PRODUCTS = [
     name: 'Cerradura Inteligente con cámara Moorgen T9',
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-con-camara-moorgen-t9',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasMoorgen_T9-02.jpg',
-    priceFull: 20277,
-    priceDiscount: 20277,
+    priceFull: 21595,
+    priceDiscount: 21595,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -270,7 +270,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-con-camara-moorgen-t66',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasMoorgen_T66-01.jpg',
     priceFull: 50367,
-    priceDiscount: 37775,
+    priceDiscount: 50367,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -303,7 +303,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-con-camara-moorgen-x5',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasMoorgen_X5_-03.jpg',
     priceFull: 14869,
-    priceDiscount: 5948,
+    priceDiscount: 14869,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -336,7 +336,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-perfil-angosto-excel-sl275',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesEXC-SL275-01.jpg',
     priceFull: 6959,
-    priceDiscount: 3827,
+    priceDiscount: 6959,
     material: { madera: true, metal: true, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -369,7 +369,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-huella-excel-sh100',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesEXC-SH100-02.jpg',
     priceFull: 1899,
-    priceDiscount: 1519,
+    priceDiscount: 1899,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -600,7 +600,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-moorgen-t12s',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasMoorgen_T12-01.jpg',
     priceFull: 6716,
-    priceDiscount: 4030,
+    priceDiscount: 6716,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -633,7 +633,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-moorgen-t16',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasMoorgen_T16-01.jpg',
     priceFull: 20480,
-    priceDiscount: 8192,
+    priceDiscount: 20480,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -699,7 +699,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-igloohome-mortise2plus',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesP2_Mortise2_-01.jpg',
     priceFull: 12124,
-    priceDiscount: 9093,
+    priceDiscount: 12124,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -732,7 +732,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-igloohome-huella-mortise-touch',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesP3_MortiseTouchGris-01.jpg',
     priceFull: 21227,
-    priceDiscount: 14859,
+    priceDiscount: 21227,
     material: { madera: true, metal: true, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -765,7 +765,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-huella-igloohome-push-pull-mortise',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesP2_PushPull-01.jpg',
     priceFull: 16882,
-    priceDiscount: 11818,
+    priceDiscount: 16882,
     material: { madera: false, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -798,7 +798,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-wifi-zigbang-shp-h60r',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesZigbang_H60-01.jpg',
     priceFull: 12899,
-    priceDiscount: 7095,
+    priceDiscount: 12899,
     material: { madera: false, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -897,7 +897,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-rfid-codigo-excel-d430',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesExcel_D430-01.jpg',
     priceFull: 3919,
-    priceDiscount: 3135,
+    priceDiscount: 3919,
     material: { madera: true, metal: true, vidrio: false },
     doorType: {
       abatible1hoja: false, abatible2hojas: false,
@@ -930,7 +930,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerrojo-puerta-vidrio-igloohome-glass-door-lock',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesP1_GlassDoors-01.jpg',
     priceFull: 5932,
-    priceDiscount: 4449,
+    priceDiscount: 5932,
     material: { madera: false, metal: false, vidrio: true },
     doorType: {
       abatible1hoja: false, abatible2hojas: false,
@@ -996,7 +996,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerrojo-inteligente-huella-excel-sd300',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesEZON5.0_SD300-01.jpg',
     priceFull: 2974,
-    priceDiscount: 1635,
+    priceDiscount: 2974,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -1029,7 +1029,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerrojo-inteligente-huella-excel-sd335',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesEXCSD335-01_646167e6-8680-4294-a483-5d8a6c3776bf.jpg',
     priceFull: 4789,
-    priceDiscount: 3113,
+    priceDiscount: 4789,
     material: { madera: true, metal: true, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -1095,7 +1095,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-puerta-vidrio-excel-sd345',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesEXC-SD345-01.jpg',
     priceFull: 4995,
-    priceDiscount: 3497,
+    priceDiscount: 4995,
     material: { madera: false, metal: false, vidrio: true },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
@@ -1128,7 +1128,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerrojo-inteligente-igloohome-rimlock',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesP1_WoodenDoors-01.jpg',
     priceFull: 5503,
-    priceDiscount: 4402,
+    priceDiscount: 5503,
     material: { madera: true, metal: false, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,

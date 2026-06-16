@@ -81,9 +81,7 @@ export function ProductCard({ product }) {
   const [cardHovered, setCardHovered] = useState(false);
   const [ctaHovered, setCtaHovered] = useState(false);
 
-  const hasDiscount = product.priceFull > product.priceDiscount;
-  const priceFormatted = formatMXN(product.priceDiscount);
-  const originalFormatted = hasDiscount ? formatMXN(product.priceFull) : null;
+  const priceFormatted = formatMXN(product.priceFull);
 
   const handleCTA = () => {
     const url = product.urlShopify;
@@ -171,19 +169,10 @@ export function ProductCard({ product }) {
             fontFamily: "'Montserrat', sans-serif",
             fontWeight: 900, fontSize: 24,
             lineHeight: 1, letterSpacing: '-0.02em',
-            color: hasDiscount ? VERDE_DEEP : INK_PRIMARY,
+            color: INK_PRIMARY,
           }}>
             {priceFormatted}
           </span>
-          {originalFormatted && (
-            <span style={{
-              fontFamily: "'Open Sans', sans-serif",
-              fontSize: 13, fontWeight: 500,
-              color: INK_QUATERNARY, textDecoration: 'line-through',
-            }}>
-              {originalFormatted}
-            </span>
-          )}
         </div>
 
         {/* Access icons */}
