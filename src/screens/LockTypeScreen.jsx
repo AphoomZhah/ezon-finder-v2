@@ -3,6 +3,13 @@ import { getViableLockTypes } from '../data/matcher';
 
 const LOCK_TYPES = [
   {
+    id: 'unknown',
+    title: 'Todos',
+    subtitle: 'Muéstrame todos los tipos compatibles',
+    mood: 'unknown',
+    badge: false,
+  },
+  {
     id: 'conManija',
     title: 'Con manija',
     subtitle: 'Palanca o pomo — la más común en casas y departamentos',
@@ -44,13 +51,6 @@ const LOCK_TYPES = [
       <img src="/assets/img/ico-cerradura-04-candado.svg"
         style={{ height: '50%', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />
     ),
-    badge: false,
-  },
-  {
-    id: 'unknown',
-    title: 'No lo sé',
-    subtitle: 'Continúa y te mostramos opciones compatibles',
-    mood: 'unknown',
     badge: false,
   },
 ];

@@ -36,7 +36,6 @@ function PlaceholderMedia() {
 function AccessIconRow({ product }) {
   const icons = ICON_DISPLAY_ORDER
     .filter((key) => product.accessIcons?.includes(key))
-    .slice(0, 4)
     .map((key) => ({ key, ...ACCESS_ICONS[key] }));
 
   if (icons.length === 0) return null;
@@ -44,9 +43,7 @@ function AccessIconRow({ product }) {
   return (
     <div style={{ marginBottom: 16 }}>
       <div style={{
-        display: 'flex', flexDirection: 'row',
-        gap: 16, flexWrap: 'nowrap',
-        overflowX: 'auto', paddingBottom: 2,
+        display: 'flex', flexWrap: 'wrap', gap: 16, rowGap: 14,
       }}>
         {icons.map(({ key, label, url }) => (
           <div key={key} style={{
@@ -77,7 +74,7 @@ function AccessIconRow({ product }) {
   );
 }
 
-export function ProductCard({ product }) {
+export function ProductCard({ product, highlighted = false }) {
   const [cardHovered, setCardHovered] = useState(false);
   const [ctaHovered, setCtaHovered] = useState(false);
 
@@ -98,12 +95,14 @@ export function ProductCard({ product }) {
       onMouseLeave={() => setCardHovered(false)}
       style={{
         background: SURFACE_CARD,
-        border: `1px solid ${cardHovered ? INK_QUATERNARY : LINE}`,
+        border: highlighted ? `1.5px solid ${EZON}` : `1px solid ${cardHovered ? INK_QUATERNARY : LINE}`,
         borderRadius: 20,
         margin: '0 20px 16px',
         overflow: 'hidden',
         transform: cardHovered ? 'translateY(-1px)' : 'translateY(0)',
-        boxShadow: cardHovered ? '0 8px 24px -12px rgba(0,0,0,0.12)' : 'none',
+        boxShadow: highlighted 
+          ? '0 0 0 1px rgba(126,219,138,0.4), 0 8px 24px -12px rgba(0,0,0,0.12)'
+          : cardHovered ? '0 8px 24px -12px rgba(0,0,0,0.12)' : 'none',
         transition: 'border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease',
       }}
     >

@@ -23,7 +23,21 @@ function ResultSectionLabel({ variant, children }) {
         boxShadow: isIdeal ? `0 0 8px ${EZON}` : 'none',
         flexShrink: 0,
       }}/>
-      {children}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span>{children}</span>
+        {isIdeal && (
+          <span style={{
+            background: 'rgba(126,219,138,0.2)',
+            color: '#2A6331',
+            padding: '3px 6px',
+            borderRadius: 4,
+            fontSize: 9,
+            letterSpacing: '0.05em',
+          }}>
+            100% compatible
+          </span>
+        )}
+      </div>
     </div>
   );
 }
@@ -160,7 +174,7 @@ export function ResultsScreen({ answers, onRestart, dir }) {
             <ResultSectionLabel variant="ideal">
               Recomendación ideal
             </ResultSectionLabel>
-            <ProductCard product={products[0]}/>
+            <ProductCard product={products[0]} highlighted={true} />
 
             {products.length > 1 && (
               <>

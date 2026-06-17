@@ -26,17 +26,9 @@ const MATERIALS = [
     image: '/assets/P01_C_Vidrio.png',
   },
   {
-    id: 'otros',
-    title: 'No estoy seguro',
-    subtitle: 'Aluminio, PVC u otro material no listado',
-    mood: 'neutral',
-    badgeLabel: 'Otro',
-    image: '/assets/P01_D_Otros.png',
-  },
-  {
     id: 'unknown',
     title: 'No lo sé',
-    subtitle: 'Continúa y te mostramos opciones compatibles',
+    subtitle: 'Aluminio, PVC u otro material — continúa y te mostramos opciones compatibles',
     mood: 'unknown',
     badge: false,
   },
@@ -51,7 +43,7 @@ export function MaterialScreen({ answers, setAnswers, onNext, onBack, dir }) {
       footerProps={{ onBack, onNext, disabled: !sel, step: 1, totalSteps: 6 }}
     >
       <div style={{ padding: '0 24px 4px' }}>
-        <ScreenTitle>¿De qué material es tu puerta?</ScreenTitle>
+        <ScreenTitle>Selecciona el material de la superficie de tu puerta</ScreenTitle>
         <ScreenDeck>La foto te ayuda a identificarla, no necesitas saber el nombre técnico.</ScreenDeck>
       </div>
 

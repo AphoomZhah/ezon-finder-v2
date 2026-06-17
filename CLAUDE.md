@@ -276,6 +276,11 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | ResultsScreen: realce visual del resultado ideal | 2026-06-17 |
+| — | ProductCard: AccessIconRow sin límite, grid fluido en filas | 2026-06-17 |
+| — | Paso 1: copy explícito + opción 'otros' eliminada (unificada en 'No lo sé') | 2026-06-17 |
+| — | Paso 4: opción unknown → "Todos" al inicio (id intacto) | 2026-06-17 |
+| — | Paso 5: label huella → "Acceso biométrico" (id intacto) | 2026-06-17 |
 | — | Fix logo: EntryScreen ahora usa SVG inline (letras blancas, O verde #88C384), elimina filter brightness/invert; nitidez vectorial verificada | 2026-06-17 |
 | — | LockType multi-select: answers.lockType → string[]; matcher.js lockTypeMatch() OR + all-false universal; App.jsx auto-skip a array; LockTypeScreen patrón AccessScreen | 2026-06-17 |
 | — | Logo SVG en AppHeader + EntryScreen (reemplaza texto EZON) | 2026-06-17 |

@@ -52,6 +52,8 @@ export default function App() {
           onBack={() => go('/', 'back')}/>
       }/>
 
+      {/* Ruta conservada: ya no se alcanza desde MaterialScreen (opción 'otros' eliminada */}
+      {/* 2026-06-17). Disponible si se reactiva una derivación dura por material. */}
       <Route path="/incompatible" element={
         <IncompatibleScreen onRestart={reset}/>
       }/>

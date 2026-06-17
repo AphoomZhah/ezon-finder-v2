@@ -4,8 +4,8 @@ import { getViableAccessMethods } from '../data/matcher';
 const ACCESS_METHODS = [
   {
     id: 'huella',
-    title: 'Huella digital',
-    subtitle: 'Pones tu dedo en el lector.',
+    title: 'Acceso biométrico',
+    subtitle: 'Te identifica por huella o biometría.',
     mood: 'access-huella',
     iconType: 'huella',
   },
