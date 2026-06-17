@@ -276,6 +276,7 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | Logo SVG en AppHeader + EntryScreen (reemplaza texto EZON) | 2026-06-17 |
 | — | ProductCard: removido precio tachado/descuento — solo se muestra priceFull. | 2026-06-16 |
 | Tarea A | Copy: MaterialScreen — Metal/Vidrio subtitles, Otros title+subtitle | 2026-06-10 |
 | Tarea B | Copy+orden: ThicknessScreen — ScreenTitle, ScreenDeck, THICKNESSES reorder + badge 3-5 | 2026-06-10 |

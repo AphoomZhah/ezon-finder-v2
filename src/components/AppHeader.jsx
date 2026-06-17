@@ -39,16 +39,11 @@ export function AppHeader({ onBack, showBack = true, onHelp, onReset }) {
         <div style={{ width: 36 }} />
       )} */}
 
-      <div style={{
-        fontFamily: 'var(--font-display)',
-        fontSize: 16,
-        fontWeight: 800,
-        letterSpacing: '0.16em',
-        color: 'var(--ink-primary)',
-        textTransform: 'uppercase',
-      }}>
-        EZ<span style={{ color: 'var(--ezon)' }}>O</span>N
-      </div>
+      <img
+        src="/ezon-main-logo.svg"
+        alt="EZON"
+        style={{ height: 22, width: 'auto', display: 'block' }}
+      />
 
       {onReset ? (
         <button

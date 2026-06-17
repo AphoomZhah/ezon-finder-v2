@@ -46,20 +46,13 @@ export function EntryScreen({ onStart }) {
       }} />
 
       {/* Logo — top left */}
-      <div style={{
-        position: 'absolute',
-        top: 20,
-        left: 24,
-        zIndex: 2,
-        fontFamily: "'Montserrat', sans-serif",
-        fontWeight: 900,
-        fontSize: 22,
-        letterSpacing: '-0.02em',
-        color: '#FFFFFF',
-        userSelect: 'none',
-        lineHeight: 1,
-      }}>
-        EZ<span style={{ color: EZON }}>O</span>N
+      <div style={{ position: 'absolute', top: 20, left: 24, zIndex: 2 }}>
+        <img
+          src="/ezon-main-logo.svg"
+          alt="EZON"
+          style={{ height: 26, width: 'auto', display: 'block',
+                   filter: 'brightness(0) invert(1)' }}
+        />
       </div>
 
       {/* Content — bottom */}
