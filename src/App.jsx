@@ -20,7 +20,7 @@ const INITIAL_ANSWERS = {
   accessMethods: [],
   functions: [],
   functionsNone: false,
-  lockType: null,
+  lockType: [],
 };
 
 export default function App() {
@@ -67,7 +67,7 @@ export default function App() {
           onNext={() => {
             const viableLockTypes = getViableLockTypes(answers);
             if (viableLockTypes.length === 1) {
-              setAnswers(a => ({ ...a, lockType: viableLockTypes[0] }));
+              setAnswers(a => ({ ...a, lockType: [viableLockTypes[0]] }));
               go('/access');
             } else {
               go('/lock-type');

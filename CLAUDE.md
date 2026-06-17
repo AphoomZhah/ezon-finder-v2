@@ -276,6 +276,8 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | Fix logo: EntryScreen ahora usa SVG inline (letras blancas, O verde #88C384), elimina filter brightness/invert; nitidez vectorial verificada | 2026-06-17 |
+| — | LockType multi-select: answers.lockType → string[]; matcher.js lockTypeMatch() OR + all-false universal; App.jsx auto-skip a array; LockTypeScreen patrón AccessScreen | 2026-06-17 |
 | — | Logo SVG en AppHeader + EntryScreen (reemplaza texto EZON) | 2026-06-17 |
 | — | ProductCard: removido precio tachado/descuento — solo se muestra priceFull. | 2026-06-16 |
 | Tarea A | Copy: MaterialScreen — Metal/Vidrio subtitles, Otros title+subtitle | 2026-06-10 |

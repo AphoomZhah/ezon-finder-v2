@@ -56,30 +56,41 @@ const LOCK_TYPES = [
 ];
 
 export function LockTypeScreen({ answers, setAnswers, onNext, onBack, dir }) {
-  const sel = answers.lockType;
+  const sel = answers.lockType || [];
   const viableLockTypeIds = getViableLockTypes(answers);
   const visibleOptions = LOCK_TYPES.filter(opt =>
     opt.id === 'unknown' || viableLockTypeIds.includes(opt.id)
   );
 
+  const handleChange = (ids) => {
+    // If 'unknown' was just added, clear all other selections
+    if (ids.includes('unknown') && !sel.includes('unknown')) {
+      setAnswers(a => ({ ...a, lockType: ['unknown'] }));
+      return;
+    }
+    const filtered = ids.filter(id => id !== 'unknown');
+    setAnswers(a => ({ ...a, lockType: filtered }));
+  };
+
   return (
     <StepLayout
       dir={dir}
       stepMeta={{ currentStep: 4, totalSteps: 6, stepName: 'Tipo de cerradura' }}
-      footerProps={{ onBack, onNext, disabled: false, step: 4, totalSteps: 6 }}
+      footerProps={{ onBack, onNext, disabled: sel.length === 0, step: 4, totalSteps: 6 }}
     >
       <div style={{ padding: '0 24px 4px' }}>
         <ScreenTitle>¿Qué tipo de cerradura prefieres?</ScreenTitle>
-        <ScreenDeck>El tipo define el mecanismo y la instalación necesaria.</ScreenDeck>
+        <ScreenDeck>Puedes elegir más de uno. El tipo define el mecanismo y la instalación necesaria.</ScreenDeck>
       </div>
 
       <div style={{ padding: '0 24px 4px' }}>
         <OptionCardGrid
           variant="visual"
           gap={8}
+          multiple
           options={visibleOptions}
           value={sel}
-          onChange={(id) => setAnswers(a => ({ ...a, lockType: a.lockType === id ? null : id }))}
+          onChange={handleChange}
         />
       </div>
     </StepLayout>

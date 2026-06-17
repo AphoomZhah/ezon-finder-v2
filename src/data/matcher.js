@@ -7,6 +7,18 @@ const THICKNESS_RANGES = {
   '7-10': { min: 7,  max: 10 },
 };
 
+// lockTypeMatch: OR semantics — a product matches if its lockType coincides with
+// at least one of the selected types. Empty list or ['unknown'] = no filter.
+// all-false product (universal) always matches.
+function lockTypeMatch(productLockType, selected) {
+  // selected: string[] | null | undefined
+  const list = (selected || []).filter(lt => lt !== 'unknown');
+  if (list.length === 0) return true;            // no selection → no filter
+  const anyTrue = Object.values(productLockType).some(v => v === true);
+  if (!anyTrue) return true;                     // all-false = universal product
+  return list.some(lt => productLockType[lt] === true);  // OR
+}
+
 function categoryHard(productFlags, userValue) {
   if (!userValue) return true;
   const anyTrue = Object.values(productFlags).some(v => v === true);
@@ -57,10 +69,10 @@ function softScore(product, answers) {
     if (product.functions[fn] === true) earned++;
   }
 
-  const lockType = answers.lockType;
-  if (lockType && lockType !== 'unknown') {
+  const lockTypes = (answers.lockType || []).filter(lt => lt !== 'unknown');
+  if (lockTypes.length > 0) {
     possible += 2;
-    if (product.lockType[lockType] === true) earned += 2;
+    if (lockTypes.some(lt => product.lockType[lt] === true)) earned += 2;
   }
 
   if (possible === 0) return 100;
@@ -81,13 +93,8 @@ export function matchProducts(answers) {
       thicknessHard(p, answers.thickness) &&
       // Hard filter: product must support ALL selected functions
       (selectedFunctions.length === 0 || selectedFunctions.every(fn => p.functions[fn] === true)) &&
-      // Hard filter: lockType — respects all-false = universal rule
-      (
-        !answers.lockType ||
-        answers.lockType === 'unknown' ||
-        !Object.values(p.lockType).some(v => v === true) ||
-        p.lockType[answers.lockType] === true
-      )
+      // Hard filter: lockType — OR semantics; all-false = universal; empty = no filter
+      lockTypeMatch(p.lockType, answers.lockType)
       // TODO post-V1: reactivar cuando se reintroduzca LocationScreen
       // && categoryHard(p.location, answers.location)
     )
@@ -152,13 +159,10 @@ export function getViableDoorTypes(answers) {
 export function getViableAccessMethods(answers) {
   const materialFilter = (!answers.material || answers.material === 'unknown' || answers.material === 'otros')
     ? null : answers.material;
-  const lockTypeFilter = (!answers.lockType || answers.lockType === 'unknown')
-    ? null : answers.lockType;
-
   const candidates = PRODUCTS.filter(p =>
     categoryHard(p.material, materialFilter) &&
     doorTypeHard(p.doorType, answers.doorType) &&
-    categoryHard(p.lockType, lockTypeFilter)
+    lockTypeMatch(p.lockType, answers.lockType)
   );
 
   const accessKeys = ['huella', 'facial', 'pin', 'app', 'rfid', 'llaveRespaldo'];
@@ -170,8 +174,6 @@ export function getViableAccessMethods(answers) {
 export function getViableFunctions(answers) {
   const materialFilter = (!answers.material || answers.material === 'unknown' || answers.material === 'otros')
     ? null : answers.material;
-  const lockTypeFilter = (!answers.lockType || answers.lockType === 'unknown')
-    ? null : answers.lockType;
 
   // For functions, also filter by selected access methods (soft: at least one must match)
   const accessMethods = (answers.accessMethods || []).filter(m => m !== 'unknown');
@@ -179,7 +181,7 @@ export function getViableFunctions(answers) {
   const candidates = PRODUCTS.filter(p => {
     if (!categoryHard(p.material, materialFilter)) return false;
     if (!doorTypeHard(p.doorType, answers.doorType)) return false;
-    if (!categoryHard(p.lockType, lockTypeFilter)) return false;
+    if (!lockTypeMatch(p.lockType, answers.lockType)) return false;
     // If user selected access methods, product must support at least one
     if (accessMethods.length > 0) {
       const matchesAny = accessMethods.some(m => p.access[m] === true);
