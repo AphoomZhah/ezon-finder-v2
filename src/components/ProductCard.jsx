@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {
   INK_PRIMARY, INK_SECONDARY, INK_QUATERNARY,
   LINE, SURFACE_CARD, SURFACE_DEEP,
-  EZON, VERDE_DEEP,
+  EZON, VERDE_DEEP, DISCOUNT_BADGE_BG,
 } from '../design-tokens/tokens';
 import { ACCESS_ICONS, ICON_DISPLAY_ORDER } from '../data/accessIcons';
 
@@ -84,6 +84,9 @@ export function ProductCard({ product }) {
   const hasDiscount = product.priceDiscount != null && product.priceDiscount < product.priceFull;
   const priceFormatted = formatMXN(hasDiscount ? product.priceDiscount : product.priceFull);
   const originalFormatted = hasDiscount ? formatMXN(product.priceFull) : null;
+  const discountPct = hasDiscount
+    ? Math.round((1 - product.priceDiscount / product.priceFull) * 100)
+    : 0;
 
   const handleCTA = () => {
     const url = product.urlShopify;
@@ -137,6 +140,21 @@ export function ProductCard({ product }) {
         }}>
           {product.brand}
         </div>
+        {/* Discount badge */}
+        {discountPct > 0 && (
+          <div style={{
+            position: 'absolute', top: 12, right: 12,
+            width: 50, height: 50, borderRadius: '50%',
+            background: DISCOUNT_BADGE_BG, color: '#FFFFFF',
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center',
+            fontFamily: "'Montserrat', sans-serif", fontWeight: 900,
+            lineHeight: 1,
+          }}>
+            <span style={{ fontSize: 15, letterSpacing: '-0.03em' }}>{discountPct}%</span>
+            <span style={{ fontSize: 8, letterSpacing: '0.04em', marginTop: 1 }}>OFF</span>
+          </div>
+        )}
       </div>
 
       {/* Body */}

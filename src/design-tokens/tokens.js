@@ -21,6 +21,7 @@ export const EZON        = '#7EDB8A';
 export const EZON_INK    = '#0A0A0A';
 export const EZON_SHADOW = 'rgba(126, 219, 138, 0.35)';
 export const VERDE_DEEP  = '#5DC36C';
+export const DISCOUNT_BADGE_BG = '#3F8A47'; /* dark green circle on discounted product cards */
 
 /* Geometry */
 export const RADIUS_SM = '4px';
