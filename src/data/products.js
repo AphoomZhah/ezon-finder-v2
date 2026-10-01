@@ -595,6 +595,41 @@ export const PRODUCTS = [
     accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
+    // Pending EZON validation: codigosTemporales, modoNino, googleHomeAlexa, adminAirbnb
+    // (not stated on PDP — set false). metal: true per PDP ("acero inoxidable, puertas de seguridad").
+    brand: 'Moorgen',
+    name: 'Cerradura Inteligente Moorgen T17',
+    urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-moorgen-t17',
+    urlImg: 'https://ezonmexico.com/cdn/shop/files/EZ01_T17_Moorgen_Exterior_Cover.png',
+    priceFull: 5815,
+    priceDiscount: 4652,
+    material: { madera: true, metal: true, vidrio: false },
+    doorType: {
+      abatible1hoja: true, abatible2hojas: false,
+      corrediza1hoja: false, corrediza2hojas: false, reja: false,
+    },
+    thicknessMin: 3.8,
+    thicknessMax: 12,
+    location: {
+      interiorPrincipal: true, interiorRecamara: true,
+      interiorCloset: false, interiorOficina: true,
+      exteriorConTecho: true, exteriorSinTecho: false, exteriorReja: false,
+    },
+    access: {
+      huella: true, facial: false, pin: true,
+      app: true, rfid: true, llaveRespaldo: true,
+    },
+    functions: {
+      bloqueoAutomatico: true, modoNino: false, camara: false,
+      codigosTemporales: false, aperturaRemota: true,
+      googleHomeAlexa: false, adminAirbnb: false,
+    },
+    lockType: {
+      conManija: true, pushPull: false, cerrojo: false, candado: false,
+    },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
+  },
+  {
     brand: 'Moorgen',
     name: 'Cerradura Inteligente Moorgen T16+',
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-moorgen-t16',
@@ -1154,5 +1189,41 @@ export const PRODUCTS = [
       conManija: false, pushPull: false, cerrojo: true, candado: false,
     },
     accessIcons: ['huella_digital', 'codigo_pin', 'acceso_app'],
+  },
+  {
+    // Set: smart deadbolt + mechanical lever handle → cerrojo + conManija both true.
+    // Thickness = intersection of deadbolt (3.5–5.5) and handle (3.5–5) ranges.
+    // Pending EZON validation: modoNino, adminAirbnb (not stated on PDP — set false).
+    brand: 'Black & Decker',
+    name: 'Cerrojo Inteligente con Manija de Gatillo Black and Decker',
+    urlShopify: 'https://ezonmexico.com/products/cerrojo-inteligente-manija-gatillo-black-and-decker',
+    urlImg: 'https://ezonmexico.com/cdn/shop/files/EZ01-Cerradura_BlackandDeckerExterior_0a595a7d-4f27-4cad-9d2d-6d99e088bfb9.png',
+    priceFull: 6874,
+    priceDiscount: 5843,
+    material: { madera: true, metal: true, vidrio: false },
+    doorType: {
+      abatible1hoja: true, abatible2hojas: false,
+      corrediza1hoja: false, corrediza2hojas: false, reja: false,
+    },
+    thicknessMin: 3.5,
+    thicknessMax: 5,
+    location: {
+      interiorPrincipal: true, interiorRecamara: true,
+      interiorCloset: false, interiorOficina: true,
+      exteriorConTecho: true, exteriorSinTecho: false, exteriorReja: false,
+    },
+    access: {
+      huella: true, facial: false, pin: true,
+      app: true, rfid: true, llaveRespaldo: true,
+    },
+    functions: {
+      bloqueoAutomatico: true, modoNino: false, camara: false,
+      codigosTemporales: true, aperturaRemota: true,
+      googleHomeAlexa: true, adminAirbnb: false,
+    },
+    lockType: {
+      conManija: true, pushPull: false, cerrojo: true, candado: false,
+    },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
 ];

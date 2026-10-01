@@ -267,6 +267,7 @@ This is a placeholder. Replace with the real number when provided by EZON.
 | V2-5 | Fase 5: Refactor AccessIcon/FeatureIcon a estrategia CDN+Lucide | CLAUDE/EZON-Finder-Icons-V2-Prompts.md §5 | M |
 | V2-6 | Fase 5 (paralelo): enviar a Dan brief de iconos para EZON | CLAUDE/EZON-Finder-EZON-Icons-Request.md | XS |
 | V2-8 | Fase 7: Review Dan + ajustes + cierre V2 | — | M |
+| CAT-1 | Validar con EZON datos de Moorgen T17: `codigosTemporales`, `modoNino`, `googleHomeAlexa`, `adminAirbnb` (cargados en `false` — la PDP no los menciona; usa app Moorgen Life **o Tuya**, única Moorgen con Tuya). Confirmar también `metal: true` (PDP dice acero inoxidable / puertas de seguridad; el resto de Moorgen está en `metal: false`) · Black & Decker (cerrojo + manija gatillo): validar `modoNino` y `adminAirbnb` (cargados en `false`; PDP menciona "códigos para huéspedes" pero no integración Airbnb) | `products.js` (T17, Black & Decker) | XS |
 
 ### 🟡 In Progress
 
@@ -276,6 +277,8 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | Catálogo: agregado Black & Decker cerrojo + manija gatillo a `products.js` (set → `cerrojo` + `conManija` true; grosor 3.5–5 cm = intersección cerrojo/manija; madera+metal; $6,874 / $5,843). 2 funciones pendientes → ver CAT-1 | 2026-10-01 |
+| — | Catálogo: agregada Moorgen T17 a `products.js` (manija, abatible, 3.8–12 cm, madera+metal, $5,815 / $4,652). 4 funciones pendientes de validar → ver CAT-1 | 2026-10-01 |
 | — | Optimización de imágenes: P01/P03/entry-bg → WebP redimensionado (~4.4 MB → ~180 KB); preload del hero + precarga de P01 desde EntryScreen; imágenes de producto vía `?width=800` del CDN Shopify + `loading="lazy"`; caché en `public/_headers` | 2026-10-01 |
 | — | Catálogo: removida EXC-SP800 (Cerradura con Cámara) de `products.js`; matcher/ResultsScreen no requieren cambios | 2026-10-01 |
 | — | ProductCard: badge circular de descuento (arriba-derecha de la imagen, `Math.round` del % entre priceFull y priceDiscount, solo si priceDiscount < priceFull); token nuevo `DISCOUNT_BADGE_BG` en `tokens.js` | 2026-10-01 |
