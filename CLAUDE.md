@@ -276,6 +276,11 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | Catálogo: removida EXC-SP800 (Cerradura con Cámara) de `products.js`; matcher/ResultsScreen no requieren cambios | 2026-10-01 |
+| — | ProductCard: badge circular de descuento (arriba-derecha de la imagen, `Math.round` del % entre priceFull y priceDiscount, solo si priceDiscount < priceFull); token nuevo `DISCOUNT_BADGE_BG` en `tokens.js` | 2026-10-01 |
+| — | ProductCard: reactivado precio con descuento (descuento destacado en `VERDE_DEEP` + priceFull tachado) solo cuando `priceDiscount < priceFull`; si son iguales muestra solo el precio normal | 2026-10-01 |
+| — | Precios septiembre 2026 actualizados en `products.js` (commit ee1c4f7). Quedaron sin cambio 10 productos (sin descuento vigente): Padlock Lite, SH100, SL235, SL500, SL520, Mortise 2, SHP-H60R, Smart Lever Mortise, Deadbolt 2S (+ SP800, luego retirado) | 2026-10-01 |
+| — | Infra: `npm run dev` colgado por archivos iCloud "dataless" en `node_modules` → `rm -rf node_modules && npm ci`. Borrado ref huérfano `.git/refs/heads/main 2` (copia de conflicto de iCloud). Recomendado mover el repo fuera de `~/Documents` | 2026-10-01 |
 | — | Fix logo: EntryScreen ahora usa SVG inline (letras blancas, O verde #88C384), elimina filter brightness/invert; nitidez vectorial verificada | 2026-06-17 |
 | — | LockType multi-select: answers.lockType → string[]; matcher.js lockTypeMatch() OR + all-false universal; App.jsx auto-skip a array; LockTypeScreen patrón AccessScreen | 2026-06-17 |
 | — | Logo SVG en AppHeader + EntryScreen (reemplaza texto EZON) | 2026-06-17 |

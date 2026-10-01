@@ -134,39 +134,6 @@ export const PRODUCTS = [
   },
   {
     brand: 'Excel',
-    name: 'Cerradura Inteligente Con Cámara EXC-SP800',
-    urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-camara-excel-sp800',
-    urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesDenaite_SP800-01.jpg',
-    priceFull: 14399,
-    priceDiscount: 14399,
-    material: { madera: true, metal: true, vidrio: false },
-    doorType: {
-      abatible1hoja: true, abatible2hojas: false,
-      corrediza1hoja: false, corrediza2hojas: false, reja: false,
-    },
-    thicknessMin: 4,
-    thicknessMax: 12,
-    location: {
-      interiorPrincipal: true, interiorRecamara: true,
-      interiorCloset: false, interiorOficina: true,
-      exteriorConTecho: true, exteriorSinTecho: false, exteriorReja: false,
-    },
-    access: {
-      huella: true, facial: true, pin: true,
-      app: true, rfid: true, llaveRespaldo: true,
-    },
-    functions: {
-      bloqueoAutomatico: true, modoNino: false, camara: true,
-      codigosTemporales: true, aperturaRemota: true,
-      googleHomeAlexa: false, adminAirbnb: false,
-    },
-    lockType: {
-      conManija: false, pushPull: true, cerrojo: false, candado: false,
-    },
-    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios'],
-  },
-  {
-    brand: 'Excel',
     name: 'Cerradura Inteligente con Cámara EXC-SP820',
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-camara-excel-sp820',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesEZON5.0_SP820-01.jpg',
