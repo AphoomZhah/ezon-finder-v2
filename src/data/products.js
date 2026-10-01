@@ -397,6 +397,40 @@ export const PRODUCTS = [
     accessIcons: ['huella_digital', 'acceso_app'],
   },
   {
+    // codigosTemporales: true from PDP "Contraseña dinámica sin conexión" (Tuya offline temp code).
+    brand: 'Excel',
+    name: 'Cerradura Inteligente WiFi Excel EXC-SL200',
+    urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-wifi-excel-sl200',
+    urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesPulido_P13-01.jpg',
+    priceFull: 4160,
+    priceDiscount: 3328,
+    material: { madera: true, metal: false, vidrio: false },
+    doorType: {
+      abatible1hoja: true, abatible2hojas: false,
+      corrediza1hoja: false, corrediza2hojas: false, reja: false,
+    },
+    thicknessMin: 3.5,
+    thicknessMax: 5,
+    location: {
+      interiorPrincipal: true, interiorRecamara: true,
+      interiorCloset: false, interiorOficina: true,
+      exteriorConTecho: true, exteriorSinTecho: false, exteriorReja: false,
+    },
+    access: {
+      huella: true, facial: false, pin: true,
+      app: true, rfid: true, llaveRespaldo: true,
+    },
+    functions: {
+      bloqueoAutomatico: true, modoNino: false, camara: false,
+      codigosTemporales: true, aperturaRemota: true,
+      googleHomeAlexa: false, adminAirbnb: false,
+    },
+    lockType: {
+      conManija: true, pushPull: false, cerrojo: false, candado: false,
+    },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
+  },
+  {
     brand: 'Excel',
     name: 'Cerradura Inteligente WiFi EXC-SL214',
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-wifi-excel-sl214',

@@ -277,6 +277,7 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | Catálogo: agregada Excel EXC-SL200 a `products.js` (manija, abatible, 3.5–5 cm, solo madera, app Tuya Smart, $4,160 / $3,328). `codigosTemporales: true` inferido de "Contraseña dinámica sin conexión" | 2026-10-01 |
 | — | Catálogo: agregado Black & Decker cerrojo + manija gatillo a `products.js` (set → `cerrojo` + `conManija` true; grosor 3.5–5 cm = intersección cerrojo/manija; madera+metal; $6,874 / $5,843). 2 funciones pendientes → ver CAT-1 | 2026-10-01 |
 | — | Catálogo: agregada Moorgen T17 a `products.js` (manija, abatible, 3.8–12 cm, madera+metal, $5,815 / $4,652). 4 funciones pendientes de validar → ver CAT-1 | 2026-10-01 |
 | — | Optimización de imágenes: P01/P03/entry-bg → WebP redimensionado (~4.4 MB → ~180 KB); preload del hero + precarga de P01 desde EntryScreen; imágenes de producto vía `?width=800` del CDN Shopify + `loading="lazy"`; caché en `public/_headers` | 2026-10-01 |
