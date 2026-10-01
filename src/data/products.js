@@ -138,7 +138,7 @@ export const PRODUCTS = [
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-camara-excel-sp800',
     urlImg: 'https://ezonmexico.com/cdn/shop/files/BasicasGrisesDenaite_SP800-01.jpg',
     priceFull: 14399,
-    priceDiscount: 10079,
+    priceDiscount: 14399,
     material: { madera: true, metal: true, vidrio: false },
     doorType: {
       abatible1hoja: true, abatible2hojas: false,
