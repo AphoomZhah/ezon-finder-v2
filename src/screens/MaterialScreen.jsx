@@ -7,7 +7,7 @@ const MATERIALS = [
     subtitle: 'Puertas residenciales, departamentos y casas',
     mood: 'madera',
     badgeLabel: 'Madera',
-    image: '/assets/P01_A_Madera.png',
+    image: '/assets/P01_A_Madera.webp',
   },
   {
     id: 'metal',
@@ -15,7 +15,7 @@ const MATERIALS = [
     subtitle: 'Puertas con laminado de metal, construcción de metal, interior de metal o herrería',
     mood: 'metal',
     badgeLabel: 'Metal',
-    image: '/assets/P01_B_Metal.png',
+    image: '/assets/P01_B_Metal.webp',
   },
   {
     id: 'vidrio',
@@ -23,7 +23,7 @@ const MATERIALS = [
     subtitle: 'Vidrio templado o vidrio normal, con o sin marcos metálicos',
     mood: 'vidrio',
     badgeLabel: 'Vidrio',
-    image: '/assets/P01_C_Vidrio.png',
+    image: '/assets/P01_C_Vidrio.webp',
   },
   {
     id: 'otros',
@@ -31,7 +31,7 @@ const MATERIALS = [
     subtitle: 'Aluminio, PVC u otro material no listado',
     mood: 'neutral',
     badgeLabel: 'Otro',
-    image: '/assets/P01_D_Otros.png',
+    image: '/assets/P01_D_Otros.webp',
   },
   {
     id: 'unknown',

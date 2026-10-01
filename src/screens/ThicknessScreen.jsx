@@ -21,7 +21,7 @@ export function ThicknessScreen({ answers, setAnswers, onNext, onBack, dir }) {
           helpContent={
             <div>
               <img
-                src="/assets/img/P03_door_thickness-reference.png"
+                src="/assets/img/P03_door_thickness-reference.webp"
                 alt="Cómo medir el canto de la puerta"
                 style={{ width: '100%', display: 'block' }}
               />

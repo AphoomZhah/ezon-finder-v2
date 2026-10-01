@@ -1,0 +1,9 @@
+# Static images: cache 7 days, revalidate in background after that.
+/assets/img/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/assets/P01_*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Vite-hashed JS/CSS bundles never change under the same name.
+/assets/index-*
+  Cache-Control: public, max-age=31536000, immutable

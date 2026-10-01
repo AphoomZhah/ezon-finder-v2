@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { EZON, VERDE_DEEP } from '../components';
 
 const WA_URL = 'https://wa.me/525587432050?text=Hola%2C%20me%20interesa%20cotizar%20una%20cerradura%20inteligente.';
@@ -13,7 +14,20 @@ function ArrowRightIcon() {
   );
 }
 
+// Material photos for the next step — warmed into the browser cache while the user reads the hero.
+const NEXT_STEP_IMAGES = [
+  '/assets/P01_A_Madera.webp',
+  '/assets/P01_B_Metal.webp',
+  '/assets/P01_C_Vidrio.webp',
+  '/assets/P01_D_Otros.webp',
+];
+
 export function EntryScreen({ onStart }) {
+  useEffect(() => {
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 300));
+    idle(() => NEXT_STEP_IMAGES.forEach((src) => { new Image().src = src; }));
+  }, []);
+
   return (
     <div style={{
       position: 'relative',
@@ -25,7 +39,7 @@ export function EntryScreen({ onStart }) {
     }}>
       {/* Full-bleed image */}
       <img
-        src="/assets/img/entry-bg.jpg"
+        src="/assets/img/entry-bg.webp"
         alt=""
         style={{
           position: 'absolute',

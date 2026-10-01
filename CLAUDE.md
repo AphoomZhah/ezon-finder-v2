@@ -276,6 +276,7 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | Optimización de imágenes: P01/P03/entry-bg → WebP redimensionado (~4.4 MB → ~180 KB); preload del hero + precarga de P01 desde EntryScreen; imágenes de producto vía `?width=800` del CDN Shopify + `loading="lazy"`; caché en `public/_headers` | 2026-10-01 |
 | — | Catálogo: removida EXC-SP800 (Cerradura con Cámara) de `products.js`; matcher/ResultsScreen no requieren cambios | 2026-10-01 |
 | — | ProductCard: badge circular de descuento (arriba-derecha de la imagen, `Math.round` del % entre priceFull y priceDiscount, solo si priceDiscount < priceFull); token nuevo `DISCOUNT_BADGE_BG` en `tokens.js` | 2026-10-01 |
 | — | ProductCard: reactivado precio con descuento (descuento destacado en `VERDE_DEEP` + priceFull tachado) solo cuando `priceDiscount < priceFull`; si son iguales muestra solo el precio normal | 2026-10-01 |

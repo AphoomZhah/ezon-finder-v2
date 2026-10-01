@@ -11,6 +11,12 @@ function formatMXN(n) {
   return '$ ' + Number(n).toLocaleString('es-MX');
 }
 
+// Shopify CDN resizes on the fly; the card is ≤480px wide, so 800px covers 2x screens.
+function shopifyImg(url, width) {
+  if (!url.includes('/cdn/shop/')) return url;
+  return url + (url.includes('?') ? '&' : '?') + 'width=' + width;
+}
+
 function PlaceholderMedia() {
   return (
     <div style={{
@@ -60,6 +66,7 @@ function AccessIconRow({ product }) {
               flexShrink: 0,
             }}>
               <img src={url} alt={label}
+                loading="lazy" decoding="async"
                 style={{ width: 20, height: 20, objectFit: 'contain' }} />
             </div>
             <span style={{
@@ -122,7 +129,8 @@ export function ProductCard({ product }) {
         overflow: 'hidden',
       }}>
         {product.urlImg
-          ? <img src={product.urlImg} alt={product.name}
+          ? <img src={shopifyImg(product.urlImg, 800)} alt={product.name}
+            loading="lazy" decoding="async"
             style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
           : <PlaceholderMedia />
         }
