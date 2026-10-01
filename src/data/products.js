@@ -629,8 +629,9 @@ export const PRODUCTS = [
     accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
   },
   {
-    // Pending EZON validation: codigosTemporales, modoNino, googleHomeAlexa, adminAirbnb
-    // (not stated on PDP — set false). metal: true per PDP ("acero inoxidable, puertas de seguridad").
+    // Pending EZON validation: modoNino (not stated on PDP — set false).
+    // codigosTemporales + adminAirbnb + googleHomeAlexa: true — confirmed via external source (Moorgen Life / Tuya Smart).
+    // metal: true per PDP ("acero inoxidable, puertas de seguridad").
     brand: 'Moorgen',
     name: 'Cerradura Inteligente Moorgen T17',
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-moorgen-t17',
@@ -655,8 +656,8 @@ export const PRODUCTS = [
     },
     functions: {
       bloqueoAutomatico: true, modoNino: false, camara: false,
-      codigosTemporales: false, aperturaRemota: true,
-      googleHomeAlexa: false, adminAirbnb: false,
+      codigosTemporales: true, aperturaRemota: true,
+      googleHomeAlexa: true, adminAirbnb: true,
     },
     lockType: {
       conManija: true, pushPull: false, cerrojo: false, candado: false,
@@ -1227,7 +1228,8 @@ export const PRODUCTS = [
   {
     // Set: smart deadbolt + mechanical lever handle → cerrojo + conManija both true.
     // Thickness = intersection of deadbolt (3.5–5.5) and handle (3.5–5) ranges.
-    // Pending EZON validation: modoNino, adminAirbnb (not stated on PDP — set false).
+    // adminAirbnb: true — PDP "generas códigos para huéspedes" (same criterion as T17).
+    // Pending EZON validation: modoNino (not stated on PDP — set false).
     brand: 'Black & Decker',
     name: 'Cerrojo Inteligente con Manija de Gatillo Black and Decker',
     urlShopify: 'https://ezonmexico.com/products/cerrojo-inteligente-manija-gatillo-black-and-decker',
@@ -1253,7 +1255,7 @@ export const PRODUCTS = [
     functions: {
       bloqueoAutomatico: true, modoNino: false, camara: false,
       codigosTemporales: true, aperturaRemota: true,
-      googleHomeAlexa: true, adminAirbnb: false,
+      googleHomeAlexa: true, adminAirbnb: true,
     },
     lockType: {
       conManija: true, pushPull: false, cerrojo: true, candado: false,

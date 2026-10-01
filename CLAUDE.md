@@ -245,6 +245,34 @@ Access methods → Functions/features → Loading → Results
 
 ---
 
+## Catalog Data Decisions
+
+Criteria for loading product flags in `products.js` when the PDP is ambiguous. Apply consistently to new products.
+
+**General criteria**
+- **Hard filters (material, doorType, thickness) decide visibility; functions only reorder.** Be conservative on hard filters — an incorrect `true` sends a buyer to a lock that doesn't fit.
+- **Function not mentioned on PDP → `false`** until confirmed (by EZON or a reliable external source). Never assume from the app platform alone.
+- **Lock sets (deadbolt + handle) → mark every lockType included** (`cerrojo` + `conManija`). `lockTypeMatch()` is OR, so the product ranks for both preferences.
+- **Multiple thickness ranges in one set → use the intersection** (the set only works where every piece fits).
+- **`adminAirbnb`** (UI: "Gestión Airbnb / rentas — acceso por huéspedes") → `true` when the PDP mentions guest codes/access, even without a formal Airbnb integration.
+- **`modoNino`** (UI: "Restricción de acceso — limita el acceso de niños o restringe horarios") → definition pending with EZON: child lock only, or also per-schedule user/code restriction (which most Tuya locks support)?
+- **"Doble bloqueo"** (interior privacy deadlock) ≠ `modoNino`.
+- **"Contraseña dinámica sin conexión"** (Tuya offline dynamic code) → `codigosTemporales: true`.
+
+**Per-product decisions (added 2026-10-01)**
+
+| Product | Decision | Source |
+|---|---|---|
+| Moorgen T17 | `metal: true` | PDP: "madera, cobre, acero inoxidable y puertas de seguridad". ⚠️ Other 6 Moorgen are `metal: false` — pending (CAT-1) |
+| Moorgen T17 | `codigosTemporales`, `adminAirbnb`, `googleHomeAlexa` → `true` | External source (Moorgen Life / Tuya Smart). Only Moorgen using Tuya |
+| Moorgen T17 | `location` copied from T12S (closest sibling) | PDP recommends exterior only with protective cover |
+| Black & Decker set | `cerrojo` + `conManija` → `true` | Set: smart deadbolt + mechanical trigger handle |
+| Black & Decker set | thickness 3.5–5 cm | Deadbolt 3.5–5.5, handle 3.5–5 → intersection |
+| Black & Decker set | `adminAirbnb: true` | PDP: "generas códigos para huéspedes" |
+| Excel EXC-SL200 | `codigosTemporales: true` | PDP: "Contraseña dinámica sin conexión" |
+
+---
+
 ## WhatsApp
 
 The WhatsApp number used across all `WhatsAppLink` / `WhatsAppCTA` components:
@@ -267,7 +295,7 @@ This is a placeholder. Replace with the real number when provided by EZON.
 | V2-5 | Fase 5: Refactor AccessIcon/FeatureIcon a estrategia CDN+Lucide | CLAUDE/EZON-Finder-Icons-V2-Prompts.md §5 | M |
 | V2-6 | Fase 5 (paralelo): enviar a Dan brief de iconos para EZON | CLAUDE/EZON-Finder-EZON-Icons-Request.md | XS |
 | V2-8 | Fase 7: Review Dan + ajustes + cierre V2 | — | M |
-| CAT-1 | Validar con EZON datos de Moorgen T17: `codigosTemporales`, `modoNino`, `googleHomeAlexa`, `adminAirbnb` (cargados en `false` — la PDP no los menciona; usa app Moorgen Life **o Tuya**, única Moorgen con Tuya). Confirmar también `metal: true` (PDP dice acero inoxidable / puertas de seguridad; el resto de Moorgen está en `metal: false`) · Black & Decker (cerrojo + manija gatillo): validar `modoNino` y `adminAirbnb` (cargados en `false`; PDP menciona "códigos para huéspedes" pero no integración Airbnb) | `products.js` (T17, Black & Decker) | XS |
+| CAT-1 | Validar con EZON: (1) **prioritario** — ¿las Moorgen (T5+, T9, T66, X5+, T12S, T16+, T17) se instalan en puertas metálicas? T17 está en `metal: true`, las otras 6 en `false`; (2) definición de `modoNino` (¿solo bloqueo infantil o también restricción por horario?) y su valor en T17, Black & Decker y SL200 (todos en `false`). Ya resueltos 2026-10-01: T17 `codigosTemporales`/`adminAirbnb`/`googleHomeAlexa` → `true`; Black & Decker `adminAirbnb` → `true`. Ver § Catalog Data Decisions | `products.js` | XS |
 
 ### 🟡 In Progress
 
