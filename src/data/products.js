@@ -635,7 +635,7 @@ export const PRODUCTS = [
     brand: 'Moorgen',
     name: 'Cerradura Inteligente Moorgen T17',
     urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-moorgen-t17',
-    urlImg: 'https://ezonmexico.com/cdn/shop/files/EZ01_T17_Moorgen_Exterior_Cover.png',
+    urlImg: 'https://ezonmexico.com/cdn/shop/files/EZ01_T17_Moorgen_Exterior_Cover_4e65a3c9-bc16-41ca-ae19-71a57f2da8d3.png',
     priceFull: 5815,
     priceDiscount: 4652,
     material: { madera: true, metal: true, vidrio: false },
@@ -1261,5 +1261,107 @@ export const PRODUCTS = [
       conManija: true, pushPull: false, cerrojo: true, candado: false,
     },
     accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app'],
+  },
+  {
+    // material/doorType/thickness NOT on PDP → copied from Moorgen camera siblings (T5+/T9/T66/X5+): madera only, 4–12 cm, abatible 1 hoja. Pending EZON validation (CAT-1). codigosTemporales false (not on PDP). Fingerprint + 3D face + palm vein; no mechanical key on PDP (USB-C emergency only) → llaveRespaldo false.
+    brand: 'Moorgen',
+    name: 'Cerradura Inteligente con cámara Moorgen T53S',
+    urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-con-camara-moorgen-t53s',
+    urlImg: 'https://ezonmexico.com/cdn/shop/files/EZ01_T53s_Moorgen_Exterior_Cover.png',
+    priceFull: 10612,
+    priceDiscount: 8489,
+    material: { madera: true, metal: false, vidrio: false },
+    doorType: {
+      abatible1hoja: true, abatible2hojas: false,
+      corrediza1hoja: false, corrediza2hojas: false, reja: false,
+    },
+    thicknessMin: 4,
+    thicknessMax: 12,
+    location: {
+      interiorPrincipal: true, interiorRecamara: true,
+      interiorCloset: false, interiorOficina: true,
+      exteriorConTecho: true, exteriorSinTecho: false, exteriorReja: false,
+    },
+    access: {
+      huella: true, facial: true, pin: true,
+      app: true, rfid: true, llaveRespaldo: false,
+    },
+    functions: {
+      bloqueoAutomatico: true, modoNino: true, camara: true,
+      codigosTemporales: true, aperturaRemota: true,
+      googleHomeAlexa: false, adminAirbnb: false,
+    },
+    lockType: {
+      conManija: false, pushPull: true, cerrojo: false, candado: false,
+    },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios', 'vena_palmar'],
+  },
+  {
+    // material/doorType/thickness NOT on PDP → copied from Moorgen camera siblings (T5+/T9/T66/X5+): madera only, 4–12 cm, abatible 1 hoja. Pending EZON validation (CAT-1). codigosTemporales true — confirmed by Otoniel (EZON) 2026-10-01. No fingerprint on PDP (face + palm vein + PIN + app + RFID) → huella false; no mechanical key on PDP → llaveRespaldo false.
+    brand: 'Moorgen',
+    name: 'Cerradura Inteligente con cámara Moorgen T52S',
+    urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-con-camara-moorgen-t52s',
+    urlImg: 'https://ezonmexico.com/cdn/shop/files/EZ01_T52s_Moorgen_Exterior_Cover.png',
+    priceFull: 12862,
+    priceDiscount: 10290,
+    material: { madera: true, metal: false, vidrio: false },
+    doorType: {
+      abatible1hoja: true, abatible2hojas: false,
+      corrediza1hoja: false, corrediza2hojas: false, reja: false,
+    },
+    thicknessMin: 4,
+    thicknessMax: 12,
+    location: {
+      interiorPrincipal: true, interiorRecamara: true,
+      interiorCloset: false, interiorOficina: true,
+      exteriorConTecho: true, exteriorSinTecho: false, exteriorReja: false,
+    },
+    access: {
+      huella: false, facial: true, pin: true,
+      app: true, rfid: true, llaveRespaldo: false,
+    },
+    functions: {
+      bloqueoAutomatico: true, modoNino: true, camara: true,
+      codigosTemporales: true, aperturaRemota: true,
+      googleHomeAlexa: false, adminAirbnb: false,
+    },
+    lockType: {
+      conManija: false, pushPull: true, cerrojo: false, candado: false,
+    },
+    accessIcons: ['tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios', 'vena_palmar'],
+  },
+  {
+    // material/doorType/thickness NOT on PDP → copied from Moorgen camera siblings (T5+/T9/T66/X5+): madera only, 4–12 cm, abatible 1 hoja. Pending EZON validation (CAT-1). codigosTemporales true — confirmed by Otoniel (EZON) 2026-10-01. PDP lists fingerprint, face, palm vein, PIN, RFID, app and "llave mecánica de emergencia".
+    brand: 'Moorgen',
+    name: 'Cerradura Inteligente con cámara Moorgen T11 Pro',
+    urlShopify: 'https://ezonmexico.com/products/cerradura-inteligente-con-camara-moorgen-t11-pro',
+    urlImg: 'https://ezonmexico.com/cdn/shop/files/EZ01_T11_Moorgen_Exterior_Cover_e2ceb10c-3c9c-45c4-bfcd-84c1611ee369.png',
+    priceFull: 19427,
+    priceDiscount: 15542,
+    material: { madera: true, metal: false, vidrio: false },
+    doorType: {
+      abatible1hoja: true, abatible2hojas: false,
+      corrediza1hoja: false, corrediza2hojas: false, reja: false,
+    },
+    thicknessMin: 4,
+    thicknessMax: 12,
+    location: {
+      interiorPrincipal: true, interiorRecamara: true,
+      interiorCloset: false, interiorOficina: true,
+      exteriorConTecho: true, exteriorSinTecho: false, exteriorReja: false,
+    },
+    access: {
+      huella: true, facial: true, pin: true,
+      app: true, rfid: true, llaveRespaldo: true,
+    },
+    functions: {
+      bloqueoAutomatico: true, modoNino: true, camara: true,
+      codigosTemporales: true, aperturaRemota: true,
+      googleHomeAlexa: false, adminAirbnb: false,
+    },
+    lockType: {
+      conManija: false, pushPull: true, cerrojo: false, candado: false,
+    },
+    accessIcons: ['huella_digital', 'tarjeta_rfid', 'codigo_pin', 'acceso_app', 'usuarios', 'vena_palmar'],
   },
 ];

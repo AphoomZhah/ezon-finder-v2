@@ -270,6 +270,13 @@ Criteria for loading product flags in `products.js` when the PDP is ambiguous. A
 | Black & Decker set | thickness 3.5–5 cm | Deadbolt 3.5–5.5, handle 3.5–5 → intersection |
 | Black & Decker set | `adminAirbnb: true` | PDP: "generas códigos para huéspedes" |
 | Excel EXC-SL200 | `codigosTemporales: true` | PDP: "Contraseña dinámica sin conexión" |
+| Moorgen T53S / T52S / T11 Pro | `material`/`doorType`/`thickness` copied from Moorgen camera siblings (T5+, T9, T66, X5+): madera only, 4–12 cm, abatible 1 hoja | PDP doesn't state them. ⚠️ Pending EZON (CAT-1) |
+| Moorgen T53S / T52S / T11 Pro | `modoNino: true`, `camara: true`, `bloqueoAutomatico: true`, `aperturaRemota: true` | PDP: "Seguro para niños" (adult-hand sensor), 4.5"/5" screen + 1080p camera, "Bloqueo Automático", app access |
+| Moorgen T53S / T52S / T11 Pro | `codigosTemporales` → `true` | Confirmed by Otoniel (EZON), 2026-10-01 (not stated on PDP) |
+| Moorgen T53S / T52S / T11 Pro | `googleHomeAlexa`, `adminAirbnb` → `false` | Not on PDP; not confirmed |
+| Moorgen T52S | `huella: false`, `llaveRespaldo: false` | PDP lists face, palm vein, PIN, app, RFID only |
+| Moorgen T53S | `huella: true`, `llaveRespaldo: false` | PDP: FPC fingerprint; USB-C emergency power only |
+| Moorgen T11 Pro | `huella: true`, `llaveRespaldo: true` | PDP: FPC fingerprint + "llave mecánica de emergencia" |
 
 ---
 
@@ -295,7 +302,7 @@ This is a placeholder. Replace with the real number when provided by EZON.
 | V2-5 | Fase 5: Refactor AccessIcon/FeatureIcon a estrategia CDN+Lucide | CLAUDE/EZON-Finder-Icons-V2-Prompts.md §5 | M |
 | V2-6 | Fase 5 (paralelo): enviar a Dan brief de iconos para EZON | CLAUDE/EZON-Finder-EZON-Icons-Request.md | XS |
 | V2-8 | Fase 7: Review Dan + ajustes + cierre V2 | — | M |
-| CAT-1 | Validar con EZON: (1) **prioritario** — ¿las Moorgen (T5+, T9, T66, X5+, T12S, T16+, T17) se instalan en puertas metálicas? T17 está en `metal: true`, las otras 6 en `false`; (2) definición de `modoNino` (¿solo bloqueo infantil o también restricción por horario?) y su valor en T17, Black & Decker y SL200 (todos en `false`). Ya resueltos 2026-10-01: T17 `codigosTemporales`/`adminAirbnb`/`googleHomeAlexa` → `true`; Black & Decker `adminAirbnb` → `true`. Ver § Catalog Data Decisions | `products.js` | XS |
+| CAT-1 | Validar con EZON: (1) **prioritario** — ¿las Moorgen (T5+, T9, T66, X5+, T12S, T16+, T17) se instalan en puertas metálicas? T17 está en `metal: true`, las otras 6 en `false`; (2) definición de `modoNino` (¿solo bloqueo infantil o también restricción por horario?) y su valor en T17, Black & Decker y SL200 (todos en `false`); (3) T53S, T52S y T11 Pro: ¿mismos filtros duros que las Moorgen con cámara (solo madera, 4–12 cm, abatible 1 hoja)? (`codigosTemporales` ya confirmado `true` por Otoniel, 2026-10-01). Ya resueltos 2026-10-01: T17 `codigosTemporales`/`adminAirbnb`/`googleHomeAlexa` → `true`; Black & Decker `adminAirbnb` → `true`. Ver § Catalog Data Decisions | `products.js` | XS |
 
 ### 🟡 In Progress
 
@@ -305,6 +312,7 @@ _(none)_
 
 | # | Task | Completed |
 |---|---|---|
+| — | Catálogo: agregadas Moorgen T53S, T52S y T11 Pro (push-pull, cámara, facial + vena palmar) a `products.js`. Filtros duros copiados de las Moorgen con cámara → validar en CAT-1; `codigosTemporales: true` confirmado por Otoniel (EZON) | 2026-10-01 |
 | — | Catálogo: agregada Excel EXC-SL200 a `products.js` (manija, abatible, 3.5–5 cm, solo madera, app Tuya Smart, $4,160 / $3,328). `codigosTemporales: true` inferido de "Contraseña dinámica sin conexión" | 2026-10-01 |
 | — | Catálogo: agregado Black & Decker cerrojo + manija gatillo a `products.js` (set → `cerrojo` + `conManija` true; grosor 3.5–5 cm = intersección cerrojo/manija; madera+metal; $6,874 / $5,843). 2 funciones pendientes → ver CAT-1 | 2026-10-01 |
 | — | Catálogo: agregada Moorgen T17 a `products.js` (manija, abatible, 3.8–12 cm, madera+metal, $5,815 / $4,652). 4 funciones pendientes de validar → ver CAT-1 | 2026-10-01 |

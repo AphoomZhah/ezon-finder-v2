@@ -1,5 +1,8 @@
 import { PRODUCTS } from './products';
 
+// Max number of products shown on the results screen.
+const MAX_RESULTS = 8;
+
 const THICKNESS_RANGES = {
   '2-3':  { min: 2,  max: 3  },
   '3-5':  { min: 3,  max: 5  },
@@ -101,7 +104,7 @@ export function matchProducts(answers) {
     .map(p => ({ ...p, score: softScore(p, answers) }))
     .filter(p => p.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 5);
+    .slice(0, MAX_RESULTS);
 
   if (matched.length > 0) return { products: matched, isFallback: false };
 
@@ -111,7 +114,7 @@ export function matchProducts(answers) {
     .map(p => ({ ...p, score: softScore(p, answers) }))
     .filter(p => p.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 5);
+    .slice(0, MAX_RESULTS);
   return { products: candados, isFallback: true };
 }
 
